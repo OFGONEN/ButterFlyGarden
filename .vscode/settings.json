@@ -55,6 +55,8 @@
         "UserSettings/": true,
         "*.csproj": true,
         "*.sln": true,
-        "Logs/": true
+        "Logs/": true,
+        "Assets/Lean/": true,
+        "Assets/DOTween/": true
     }
 }
