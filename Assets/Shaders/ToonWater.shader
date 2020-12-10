@@ -1,62 +1,70 @@
 ﻿Shader "Custom/ToonWater"
 {
-    Properties
+	Properties
     {
-        _Color ("Color", Color) = (1,1,1,1)
-        _MainTex ("Albedo (RGB)", 2D) = "white" {}
-        _Glossiness ("Smoothness", Range(0,1)) = 0.5
-        _Metallic ("Metallic", Range(0,1)) = 0.0
-        _HeightModifier ("Wave Height Modifier", Range(-5,5)) = 0.5
-    }
-    SubShader
+        _Color( "Color", Color ) 						       		   	 = ( 1, 1, 1, 1 )
+        _Metallic( "Metallic", Range( 0, 1 ) )							 = 0.5
+        _Smoothness( "Smoothness", Range( 0, 1 ) ) 						 = 0
+        _Emission( "Emission", Range( -1, 1 ) ) 						 = 0
+        _Color( "Color", Color ) 						       		   	 = ( 1, 1, 1, 1 )
+		_CellSize( "Cell Size", Range( 0, 50 ) ) 		       		   	 = 2
+		_RippleSpeed( "Ripple Speed", Range( 1, 100 ) ) 	       		 = 6
+		_RippleSlimness( "Ripple Slimness", Range( 1, 10 ) )   		   	 = 5
+		_RadialShearCenter( "Radial Shear Center", Vector )    		   	 = ( 0.5, 0.5, 0, 0 )
+		_RadialShearStrength( "Radial Shear Strength", Range( 0, 0.1 ) ) = 0.05
+		_RadialShearOffset( "Radial Shear Offset", Vector )    		   	 = ( 0.5, 0.5, 0, 0 )
+	}
+	SubShader
     {
-        Tags { "RenderType"="Opaque" }
-        LOD 200
+		Tags{ "RenderType" = "Opaque"   "Queue" = "Geometry" }
 
-        CGPROGRAM
-        // Physically based Standard lighting model, and enable shadows on all light types
-        #pragma surface surf Standard fullforwardshadows vertex:vert
+		CGPROGRAM
 
-        // Use shader model 3.0 target, to get nicer looking lighting
-        #pragma target 3.0
+		#pragma surface Surf Standard fullforwardshadows
+		#pragma target 3.0
 
-        float _HeightModifier;
+		#include "Random.cginc"
 
-        void vert( inout appdata_full v )
+		float4 _Color;
+		float  _Metallic;
+		float  _Smoothness;
+		float  _Emission;
+		float  _CellSize;
+		float  _RippleSpeed;
+		float  _RippleSlimness;
+		float2 _RadialShearCenter;
+		float  _RadialShearStrength;
+		float2 _RadialShearOffset;
+
+		struct Input
         {
-            v.vertex.y += _SinTime * _HeightModifier;
-            //v.vertex.xyz += v.normal * _HeightModifier;
-        }
+			float3 worldPos;
+		};
 
-        sampler2D _MainTex;
+		void Unity_RadialShear_float( float2 UV, float2 Center, float Strength, float2 Offset, out float2 Out )
+		{
+			float2 delta 		= UV - Center;
+			float  delta2 		= dot( delta.xy, delta.xy );
+			float2 delta_offset = delta2 * Strength;
+			Out 				= UV + float2( delta.y, -delta.x ) * delta_offset + Offset;
+		}
 
-        struct Input
+		void Surf( Input i, inout SurfaceOutputStandard o )
         {
-            float2 uv_MainTex;
-        };
+			float2 value = i.worldPos.xz / _CellSize;
 
-        half _Glossiness;
-        half _Metallic;
-        fixed4 _Color;
+			float2 shearedValue;
+			Unity_RadialShear_float( value, _RadialShearCenter, _RadialShearStrength, _RadialShearOffset, shearedValue );
+			
+			float noise = pow( VoronoiNoise( shearedValue, _Time * _RippleSpeed ).x, _RippleSlimness );
 
-        // Add instancing support for this shader. You need to check 'Enable Instancing' on materials that use the shader.
-        // See https://docs.unity3d.com/Manual/GPUInstancing.html for more information about instancing.
-        // #pragma instancing_options assumeuniformscaling
-        UNITY_INSTANCING_BUFFER_START(Props)
-            // put more per-instance properties here
-        UNITY_INSTANCING_BUFFER_END(Props)
-
-        void surf (Input IN, inout SurfaceOutputStandard o)
-        {
-            // Albedo comes from a texture tinted by color
-            fixed4 c = tex2D (_MainTex, IN.uv_MainTex) * _Color;
-            o.Albedo = c.rgb;
-            // Metallic and smoothness come from slider variables
-            o.Metallic = _Metallic;
-            o.Smoothness = _Glossiness;
-            o.Alpha = c.a;
-        }
-        ENDCG
-    }
-    FallBack "Diffuse"
+			o.Albedo 	 = _Color.rgb + ( _Color.rgb * noise ) * float3( 1, 1, 1.5 );
+			o.Alpha  	 = _Color.a;
+			o.Metallic   = _Metallic;
+			o.Smoothness = _Smoothness;
+			o.Emission   = _Emission;
+		}
+		ENDCG
+	}
+	FallBack "Standard"
 }
