@@ -6,7 +6,6 @@
         _Metallic( "Metallic", Range( 0, 1 ) )							 = 0.5
         _Smoothness( "Smoothness", Range( 0, 1 ) ) 						 = 0
         _Emission( "Emission", Range( -1, 1 ) ) 						 = 0
-        _Color( "Color", Color ) 						       		   	 = ( 1, 1, 1, 1 )
 		_CellSize( "Cell Size", Range( 0, 50 ) ) 		       		   	 = 2
 		_RippleSpeed( "Ripple Speed", Range( 1, 100 ) ) 	       		 = 6
 		_RippleSlimness( "Ripple Slimness", Range( 1, 10 ) )   		   	 = 5
@@ -58,7 +57,7 @@
 			
 			float noise = pow( VoronoiNoise( shearedValue, _Time * _RippleSpeed ).x, _RippleSlimness );
 
-			o.Albedo 	 = _Color.rgb + ( _Color.rgb * noise ) * float3( 1, 1, 1.5 );
+			o.Albedo 	 = _Color.rgb + ( _Color.rgb * noise );
 			o.Alpha  	 = _Color.a;
 			o.Metallic   = _Metallic;
 			o.Smoothness = _Smoothness;
