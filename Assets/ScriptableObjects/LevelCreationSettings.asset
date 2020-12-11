@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   horizontalDistance: 1.75
   verticalDistance: 1.75
+  butterFlyDistanceToLily: 0.2
+  frogFlyDistanceToLily: 0.1

@@ -9,6 +9,7 @@ public class LevelData : ScriptableObject
     public Vector2 size;
     public List<LilyData> lilyDatas = new List<LilyData>();
     public List<ButterFlyData> butterFlyDatas = new List<ButterFlyData>();
+    public List<FrogData> _frogDatas = new List<FrogData>();
 }
 
 [System.Serializable]
@@ -27,3 +28,13 @@ public struct ButterFlyData
     public Color butterFlyColor;
 
 }
+[System.Serializable]
+public struct FrogData
+{
+    public GameObject levelObject;
+    public Vector2 position;
+    public float direction;
+    public Color frogColor;
+}
+
+

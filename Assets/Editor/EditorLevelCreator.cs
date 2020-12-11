@@ -127,7 +127,15 @@ public static class EditorLevelCreator
                             direction = _worldDirection
                         });
                     }
-                    // else if (_levelObject.name.ToLower().Contains("frog"))
+                    else if (_levelObject.name.ToLower().Contains("frog"))
+                    {
+                        _levelData._frogDatas.Add(new FrogData()
+                        {
+                            levelObject = _levelObject,
+                            position = _worldPosition,
+                            direction = _worldDirection
+                        });
+                    }
                 }
             }
         }

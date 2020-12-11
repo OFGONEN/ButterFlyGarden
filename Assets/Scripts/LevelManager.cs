@@ -37,11 +37,25 @@ public class LevelManager : MonoBehaviour
             _butterFly.transform.SetParent(parentTransform);
 
             _butterFly.transform.position = new Vector3(_butterFlyData.position.x * creationSettings.horizontalDistance,
-             0.5f, // Stands on top of lily
+             creationSettings.butterFlyDistanceToLily, // Stands on top of lily
              _butterFlyData.position.y * creationSettings.verticalDistance);
 
             _butterFly.transform.rotation = Quaternion.Euler(0, _butterFlyData.direction, 0);
-            _butterFly.GetComponent<Test_ButterFly>().ChangeWingColor(_butterFlyData.butterFlyColor);
+            _butterFly.GetComponent<ButterFly>().color = _butterFlyData.butterFlyColor;
+        }
+
+        for (int i = 0; i < levelData._frogDatas.Count; i++)
+        {
+            var _frogData = levelData._frogDatas[i];
+
+            var _frog = GameObject.Instantiate(_frogData.levelObject);
+            _frog.transform.SetParent(parentTransform);
+
+            _frog.transform.position = new Vector3(_frogData.position.x * creationSettings.horizontalDistance,
+             creationSettings.frogFlyDistanceToLily, // Stands on top of lily
+             _frogData.position.y * creationSettings.verticalDistance);
+
+            _frog.transform.rotation = Quaternion.Euler(0, _frogData.direction, 0);
         }
 
         parentTransform.position = new Vector3(-creationSettings.horizontalDistance * (levelData.size.x - 1) / 2,
