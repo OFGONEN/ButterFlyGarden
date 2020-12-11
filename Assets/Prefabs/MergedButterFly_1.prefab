@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2418258055063634256}
-  - component: {fileID: 1437113078850047879}
+  - component: {fileID: 6112566927128970607}
   - component: {fileID: 814473926080416299}
   m_Layer: 0
-  m_Name: ButterFly_1
+  m_Name: MergedButterFly_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,7 +33,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1437113078850047879
+--- !u!114 &6112566927128970607
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,7 +42,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2418258055063634259}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: adb461c0ddc36c945b21588aa5f21f1e, type: 3}
+  m_Script: {fileID: 11500000, guid: 19efc89e4fba39642b87ada2608bc161, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   renderer: {fileID: 3917560675243569610}
@@ -53,6 +53,8 @@ MonoBehaviour:
   movementActions: []
   encounterActions: []
   color: {r: 0, g: 0, b: 0, a: 0}
+  patternTexture: {fileID: 2800000, guid: 672a2e6a05b87e54cbf7ac19411f15f0, type: 3}
+  inputButterFlies: []
 --- !u!95 &814473926080416299
 Animator:
   serializedVersion: 3
@@ -123,6 +125,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7506770165878862227, guid: 032db50af60542b4ebf6b370b98a422c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 43bd1189bc8628a48959bb04c4347bf3, type: 2}
+    - target: {fileID: -2191160007479923725, guid: 032db50af60542b4ebf6b370b98a422c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7b862fb3964401d44a79cc72413a8a97, type: 2}
     - target: {fileID: 919132149155446097, guid: 032db50af60542b4ebf6b370b98a422c, type: 3}
       propertyPath: m_Name
       value: Butterfly_1.1
