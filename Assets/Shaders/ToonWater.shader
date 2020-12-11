@@ -55,9 +55,10 @@
 			float2 shearedValue;
 			Unity_RadialShear_float( value, _RadialShearCenter, _RadialShearStrength, _RadialShearOffset, shearedValue );
 			
-			float noise = pow( VoronoiNoise( shearedValue, _Time * _RippleSpeed ).x, _RippleSlimness );
+            float noise = VoronoiNoise( shearedValue, _Time * _RippleSpeed ).x;
+			float noiseRaised = pow( noise, _RippleSlimness );
 
-			o.Albedo 	 = _Color.rgb + ( _Color.rgb * noise );
+            o.Albedo     = _Color.rgb + ( _Color.rgb * noiseRaised );
 			o.Alpha  	 = _Color.a;
 			o.Metallic   = _Metallic;
 			o.Smoothness = _Smoothness;
