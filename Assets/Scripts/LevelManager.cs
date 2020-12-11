@@ -7,11 +7,13 @@ public class LevelManager : MonoBehaviour
     public Camera mainCamera;
     public LevelCreationSettings creationSettings;
     public LevelData levelData;
+    public PlatformEntitySet platformEntitySet;
     public Transform parentTransform;
 
     private void Start()
     {
         CreateLevel();
+        SetUpLevel();
     }
     public void CreateLevel()
     {
@@ -27,6 +29,11 @@ public class LevelManager : MonoBehaviour
              _lilyData.position.y * creationSettings.verticalDistance);
 
             _lily.transform.rotation = Quaternion.Euler(0, Random.Range(0, 360), 0);
+
+            var _lilyComponent = _lily.GetComponent<Lily>();
+            _lilyComponent.mapCord = _lilyData.mapCord;
+            _lilyComponent.SetData();
+
         }
 
         for (int i = 0; i < levelData.butterFlyDatas.Count; i++)
@@ -41,7 +48,11 @@ public class LevelManager : MonoBehaviour
              _butterFlyData.position.y * creationSettings.verticalDistance);
 
             _butterFly.transform.rotation = Quaternion.Euler(0, _butterFlyData.direction, 0);
-            _butterFly.GetComponent<ButterFly>().color = _butterFlyData.butterFlyColor;
+
+            var _butterflyComponent = _butterFly.GetComponent<ButterFly>();
+            _butterflyComponent.color = _butterFlyData.butterFlyColor;
+            _butterflyComponent.mapCord = _butterFlyData.mapCord;
+            _butterflyComponent.SetData();
         }
 
         for (int i = 0; i < levelData._frogDatas.Count; i++)
@@ -56,16 +67,28 @@ public class LevelManager : MonoBehaviour
              _frogData.position.y * creationSettings.verticalDistance);
 
             _frog.transform.rotation = Quaternion.Euler(0, _frogData.direction, 0);
-            _frog.GetComponent<Frog>().color = _frogData.frogColor;
+
+            var _frogComponent = _frog.GetComponent<Frog>();
+            _frogComponent.color = _frogData.frogColor;
+            _frogComponent.mapCord = _frogData.mapCord;
+            _frogComponent.SetData();
         }
 
         parentTransform.position = new Vector3(-creationSettings.horizontalDistance * (levelData.size.x - 1) / 2,
         0,
         -creationSettings.verticalDistance * (levelData.size.y - 1) / 2);
 
-
         var _cameraPos = mainCamera.transform.position;
         _cameraPos.y = levelData.size.x * 3;
         mainCamera.transform.position = _cameraPos;
+    }
+
+    public void SetUpLevel()
+    {
+        for (int i = 0; i < platformEntitySet.itemList.Count; i++)
+        {
+            platformEntitySet.itemList[i].FindNeighbors();
+            platformEntitySet.itemList[i].FindOccupyingEntity();
+        }
     }
 }

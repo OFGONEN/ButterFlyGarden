@@ -84,6 +84,8 @@ MonoBehaviour:
   movementActions: []
   encounterActions: []
   color: {r: 0, g: 0, b: 0, a: 0}
+  occupyingEntitySet: {fileID: 11400000, guid: 316d0d77841efbd42a96b7992bc2f891, type: 2}
+  frogSet: {fileID: 11400000, guid: 8dd3065ee0d11bd4a989da9ae0e61fd0, type: 2}
 --- !u!95 &6651790999499762085
 Animator:
   serializedVersion: 3

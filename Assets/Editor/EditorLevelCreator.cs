@@ -103,12 +103,13 @@ public static class EditorLevelCreator
                 int _assetIndex = _pixelRed / 40;
 
                 // Add lily for every object
-                var _worldPosition = new Vector2(x, y) - _leftDown;
-                _worldPosition = new Vector2(_worldPosition.x, _worldPosition.y);
+                var _mapPosition = new Vector2(x, y) - _leftDown;
+                var _worldPosition = new Vector2(_mapPosition.x, _mapPosition.y);
                 float _worldDirection = _pixel.b * 255 * 90;
 
                 _levelData.lilyDatas.Add(new LilyData()
                 {
+                    mapCord = _mapPosition,
                     levelObject = _assetLib.trackedAssets[0],
                     position = _worldPosition,
                     direction = _worldDirection
@@ -122,6 +123,7 @@ public static class EditorLevelCreator
                     {
                         _levelData.butterFlyDatas.Add(new ButterFlyData()
                         {
+                            mapCord = _mapPosition,
                             levelObject = _levelObject,
                             position = _worldPosition,
                             direction = _worldDirection
@@ -131,6 +133,7 @@ public static class EditorLevelCreator
                     {
                         _levelData._frogDatas.Add(new FrogData()
                         {
+                            mapCord = _mapPosition,
                             levelObject = _levelObject,
                             position = _worldPosition,
                             direction = _worldDirection

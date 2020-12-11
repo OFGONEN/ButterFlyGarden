@@ -17,6 +17,7 @@ public struct LilyData
 {
     public GameObject levelObject;
     public Vector2 position;
+    public Vector2 mapCord;
     public float direction;
 }
 [System.Serializable]
@@ -24,6 +25,7 @@ public struct ButterFlyData
 {
     public GameObject levelObject;
     public Vector2 position;
+    public Vector2 mapCord;
     public float direction;
     public Color butterFlyColor;
 
@@ -33,6 +35,7 @@ public struct FrogData
 {
     public GameObject levelObject;
     public Vector2 position;
+    public Vector2 mapCord;
     public float direction;
     public Color frogColor;
 }

@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5649308766709187511}
+  - component: {fileID: 7541305358230920965}
+  - component: {fileID: 158670272915140072}
   m_Layer: 0
   m_Name: Lily_1
   m_TagString: Untagged
@@ -31,6 +33,50 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7541305358230920965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5649308766709187496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20c24f46319ff5a4aadf8b4e681b730f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderer: {fileID: 6460402419971001205}
+  entityAnimator: {fileID: 158670272915140072}
+  mapCord: {x: 0, y: 0}
+  direction: {x: 0, y: 0}
+  hasData: 0
+  occupingEntity: {fileID: 0}
+  inComingEntity: {fileID: 0}
+  upPlatformEntity: {fileID: 0}
+  rightPlatformEntity: {fileID: 0}
+  downPlatformEntity: {fileID: 0}
+  leftPlatformEntity: {fileID: 0}
+  platformEntitySet: {fileID: 11400000, guid: 6f70dcffdc9b608469ad7f2588c357ef, type: 2}
+  occupyingEntitySet: {fileID: 11400000, guid: 316d0d77841efbd42a96b7992bc2f891, type: 2}
+--- !u!95 &158670272915140072
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5649308766709187496}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &5649308766920808433
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -91,5 +137,10 @@ PrefabInstance:
 --- !u!4 &5326871161079722010 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4f59ccbfc2f212c41a2db736b469f933, type: 3}
+  m_PrefabInstance: {fileID: 5649308766920808433}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &6460402419971001205 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 4f59ccbfc2f212c41a2db736b469f933, type: 3}
   m_PrefabInstance: {fileID: 5649308766920808433}
   m_PrefabAsset: {fileID: 0}
