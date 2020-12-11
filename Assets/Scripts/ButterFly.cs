@@ -15,7 +15,6 @@ public class ButterFly : OccupyingEntity
         materialPropertyBlock.SetColor(ColorShaderID, color);
         renderer.SetPropertyBlock(materialPropertyBlock, 0); // Don't care about the 2nd material of wings.
     }
-
     public Color GetColor()
     {
         return color;

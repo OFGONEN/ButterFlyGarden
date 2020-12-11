@@ -56,6 +56,7 @@ public class LevelManager : MonoBehaviour
              _frogData.position.y * creationSettings.verticalDistance);
 
             _frog.transform.rotation = Quaternion.Euler(0, _frogData.direction, 0);
+            _frog.GetComponent<Frog>().color = _frogData.frogColor;
         }
 
         parentTransform.position = new Vector3(-creationSettings.horizontalDistance * (levelData.size.x - 1) / 2,
