@@ -83,15 +83,19 @@ public class ButterFly : OccupyingEntity
             platformEntity.inComingEntity = null;
             var _mergedButterFly = platformEntity.occupingEntity as MergedButterFly;
 
-            _mergedButterFly.inputButterFlies.Add(this);
-            _mergedButterFly.Merge();
 
             gameObject.SetActive(false);
+
+            _mergedButterFly.inputButterFlies.Add(this);
+            _mergedButterFly.Merge();
         }
         else if (platformEntity.occupingEntity is ButterFly)
         {
             platformEntity.inComingEntity = null;
             var _occupyingButterFly = platformEntity.occupingEntity as ButterFly;
+
+            _occupyingButterFly.gameObject.SetActive(false);
+            gameObject.SetActive(false);
 
             //create merged butterfly
             var _mergedButterFly = GameObject.Instantiate(mergedButterFly, transform.position, transform.rotation, transform.parent);
@@ -106,9 +110,6 @@ public class ButterFly : OccupyingEntity
             _mergedButterFlyComponent.Merge();
 
             platformEntity.occupingEntity = _mergedButterFlyComponent;
-
-            _occupyingButterFly.gameObject.SetActive(false);
-            gameObject.SetActive(false);
         }
     }
     public Color GetColor()

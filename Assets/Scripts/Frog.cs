@@ -36,7 +36,13 @@ public class Frog : OccupyingEntity
 
     public void Eat()
     {
+        var _platform = platformEntity.GetNeighborPlatform(direction);
 
+        if (_platform != null && _platform.occupingEntity != null && _platform.occupingEntity is ButterFly)
+        {
+            Destroy(_platform.occupingEntity.gameObject);
+            _platform.occupingEntity = null;
+        }
     }
 
     public override void SetData()

@@ -36,6 +36,11 @@ public class GameLoopManager : MonoBehaviour
             var _moved = butterFlySet.itemList[i].MoveToPlatform(_swipeInputEvent.swipeDirection);
             if (_moved) butterFlySet.itemList[i].Encounter();
         }
+
+        for (int i = frogSet.itemList.Count - 1; i >= 0; i--)
+        {
+            frogSet.itemList[i].Eat();
+        }
     }
 
 }

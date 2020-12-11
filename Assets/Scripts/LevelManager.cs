@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FFStudio;
 
 public class LevelManager : MonoBehaviour
 {
@@ -32,6 +33,7 @@ public class LevelManager : MonoBehaviour
 
             var _lilyComponent = _lily.GetComponent<Lily>();
             _lilyComponent.mapCord = _lilyData.mapCord;
+            _lilyComponent.direction = _lilyData.direction.ReturnV2FromUnSignedAngle();
             _lilyComponent.SetData();
 
         }
@@ -52,6 +54,7 @@ public class LevelManager : MonoBehaviour
             var _butterflyComponent = _butterFly.GetComponent<ButterFly>();
             _butterflyComponent.color = _butterFlyData.butterFlyColor;
             _butterflyComponent.mapCord = _butterFlyData.mapCord;
+            _butterflyComponent.direction = _butterFlyData.direction.ReturnV2FromUnSignedAngle();
             _butterflyComponent.SetData();
         }
 
@@ -71,7 +74,9 @@ public class LevelManager : MonoBehaviour
             var _frogComponent = _frog.GetComponent<Frog>();
             _frogComponent.color = _frogData.frogColor;
             _frogComponent.mapCord = _frogData.mapCord;
+            _frogComponent.direction = _frogData.direction.ReturnV2FromUnSignedAngle();
             _frogComponent.SetData();
+            Debug.Log(_frogComponent.direction + "  " + _frogData.direction);
         }
 
         parentTransform.position = new Vector3(-creationSettings.horizontalDistance * (levelData.size.x - 1) / 2,
@@ -82,7 +87,6 @@ public class LevelManager : MonoBehaviour
         _cameraPos.y = levelData.size.x * 3;
         mainCamera.transform.position = _cameraPos;
     }
-
     public void SetUpLevel()
     {
         for (int i = 0; i < platformEntitySet.itemList.Count; i++)
