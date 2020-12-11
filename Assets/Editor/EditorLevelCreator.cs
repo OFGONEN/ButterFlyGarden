@@ -135,7 +135,8 @@ public static class EditorLevelCreator
         _levelData.leftDown = _leftDown;
         _levelData.size = _rightUp + Vector2.one - _leftDown;
 
-        var _levelDataFileName = "LevelData" + _fileName.Substring(_fileName.Length - 2) + ".asset";
+        var _startIndex = _fileName.IndexOf('_');
+        var _levelDataFileName = "LevelData" + _fileName.Substring(_startIndex) + ".asset";
         AssetDatabase.CreateAsset(_levelData, EditorAssetLibraryUtility.levelDataSavePath + _levelDataFileName);
     }
 
