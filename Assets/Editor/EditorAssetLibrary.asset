@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0aa05385bac57ee408c185bc2b6ec578, type: 3}
   m_Name: EditorAssetLibrary
   m_EditorClassIdentifier: 
-  trackedAssets: []
-  trackedAssetCount: 0
+  trackedAssets:
+  - {fileID: 5649308766709187496, guid: b360c0488b5d672448e3ea8dbbab6cdb, type: 3}
+  - {fileID: 2418258055063634259, guid: 2dcc9cd08bbad2f4cb53529e2d139c3f, type: 3}
+  trackedAssetCount: 2

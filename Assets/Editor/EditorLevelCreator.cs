@@ -19,6 +19,12 @@ public static class EditorLevelCreator
     {
         ClearLog();
 
+        if (EditorAssetLibraryUtility.assetLibrary.trackedAssets.Count < 1)
+        {
+            Debug.LogError("There is no tracked Asset");
+            return;
+        }
+
         var _selection = Selection.assetGUIDs;
 
         foreach (var guid in _selection)
@@ -30,10 +36,17 @@ public static class EditorLevelCreator
             CreateLevelData(_path);
         }
     }
-    [MenuItem("FFStudios/Asset/Create All LevelData Asset %&d")]
+    [MenuItem("FFStudios/Asset/Create All LevelData Asset %&a")]
     static void CreateAllLevelData()
     {
         ClearLog();
+
+        if (EditorAssetLibraryUtility.assetLibrary.trackedAssets.Count < 1)
+        {
+            Debug.LogError("There is no tracked Asset");
+            return;
+        }
+
         var _guids = AssetDatabase.FindAssets("t:texture2D", new string[] { "Assets/LevelData" });
 
         foreach (var _guid in _guids)
