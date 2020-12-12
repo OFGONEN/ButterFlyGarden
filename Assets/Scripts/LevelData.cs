@@ -9,7 +9,7 @@ public class LevelData : ScriptableObject
     public Vector2 size;
     public List<LilyData> lilyDatas = new List<LilyData>();
     public List<ButterFlyData> butterFlyDatas = new List<ButterFlyData>();
-    public List<FrogData> _frogDatas = new List<FrogData>();
+    public List<FrogData> frogDatas = new List<FrogData>();
 }
 
 [System.Serializable]

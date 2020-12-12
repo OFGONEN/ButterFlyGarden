@@ -58,9 +58,9 @@ public class LevelManager : MonoBehaviour
             _butterflyComponent.SetData();
         }
 
-        for (int i = 0; i < levelData._frogDatas.Count; i++)
+        for (int i = 0; i < levelData.frogDatas.Count; i++)
         {
-            var _frogData = levelData._frogDatas[i];
+            var _frogData = levelData.frogDatas[i];
 
             var _frog = GameObject.Instantiate(_frogData.levelObject);
             _frog.transform.SetParent(parentTransform);
