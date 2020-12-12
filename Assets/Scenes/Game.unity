@@ -186,7 +186,10 @@ MonoBehaviour:
     gameEvent: {fileID: 11400000, guid: a243713d15ad18045b2567d2d12ff3e8, type: 2}
   platformEntitySet: {fileID: 11400000, guid: 6f70dcffdc9b608469ad7f2588c357ef, type: 2}
   butterFlySet: {fileID: 11400000, guid: de4ec2b8f28f980478ed1d13bd17459b, type: 2}
+  mergedButterFlySet: {fileID: 11400000, guid: e76987198a0c782439d5b5a835191f3c, type: 2}
   frogSet: {fileID: 11400000, guid: 8dd3065ee0d11bd4a989da9ae0e61fd0, type: 2}
+  levelData: {fileID: 11400000, guid: 4910534008f12df4a979bcf70f0945dc, type: 2}
+  acquiredTargets: 
 --- !u!4 &884813172
 Transform:
   m_ObjectHideFlags: 0

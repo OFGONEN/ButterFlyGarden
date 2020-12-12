@@ -18,6 +18,30 @@ namespace FFStudio
                 default: return Vector2.zero;
             }
         }
+
+        public static bool FindSameColor(this List<Color> colors, Color color)
+        {
+            bool _hasColor = false;
+
+            for (int i = 0; i < colors.Count; i++)
+            {
+                _hasColor |= colors[i].CompareColor(color);
+            }
+
+            return _hasColor;
+        }
+
+        public static bool CompareColor(this Color colorOne, Color colorTwo)
+        {
+            bool _sameColor = true;
+
+            _sameColor &= colorOne.r - colorTwo.r <= 0.001f;
+            _sameColor &= colorOne.g - colorTwo.g <= 0.001f;
+            _sameColor &= colorOne.b - colorTwo.b <= 0.001f;
+            _sameColor &= colorOne.a - colorTwo.a <= 0.001f;
+
+            return _sameColor;
+        }
     }
 }
 

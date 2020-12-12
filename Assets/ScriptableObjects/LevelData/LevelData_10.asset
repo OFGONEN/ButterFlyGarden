@@ -80,9 +80,17 @@ MonoBehaviour:
     mapCord: {x: 2, y: 2}
     direction: 0
     butterFlyColor: {r: 1, g: 0, b: 0.8352337, a: 0}
-  _frogDatas:
-  - levelObject: {fileID: 2535748549582999888, guid: bba1eeb7aba8be442abe13526dccb215, type: 3}
-    position: {x: 2, y: 3}
-    mapCord: {x: 2, y: 3}
-    direction: 180.00002
-    frogColor: {r: 0, g: 1, b: 0.05725074, a: 0}
+  frogDatas: []
+  targetButterFlyDatas:
+  - butterFlyColors:
+    - {r: 0.06666667, g: 0, b: 1, a: 0}
+    - {r: 0.98039216, g: 1, b: 0, a: 0}
+    butterFlyPatterns:
+    - {fileID: 2800000, guid: 672a2e6a05b87e54cbf7ac19411f15f0, type: 3}
+    finalPattern: {fileID: 2800000, guid: 672a2e6a05b87e54cbf7ac19411f15f0, type: 3}
+  - butterFlyColors:
+    - {r: 1, g: 0, b: 0, a: 0}
+    - {r: 1, g: 0, b: 0.8352941, a: 0}
+    butterFlyPatterns:
+    - {fileID: 2800000, guid: 672a2e6a05b87e54cbf7ac19411f15f0, type: 3}
+    finalPattern: {fileID: 2800000, guid: 672a2e6a05b87e54cbf7ac19411f15f0, type: 3}

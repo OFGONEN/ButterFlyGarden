@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class MergedButterFly : ButterFly
 {
+    public MergedButterFlySet mergedButterFlySet;
     public Texture2D patternTexture;
 
     public List<ButterFly> inputButterFlies;
@@ -30,6 +31,9 @@ public class MergedButterFly : ButterFly
 
         butterFlySet.itemDictionary.Add(mapCord, this);
         butterFlySet.itemList.Add(this);
+
+        mergedButterFlySet.itemDictionary.Add(mapCord, this);
+        mergedButterFlySet.itemList.Add(this);
     }
     private void OnDisable()
     {
@@ -38,6 +42,14 @@ public class MergedButterFly : ButterFly
 
         butterFlySet.itemList.Remove(this);
         butterFlySet.itemDictionary.Remove(mapCord);
+
+        mergedButterFlySet.itemList.Remove(this);
+        mergedButterFlySet.itemDictionary.Remove(mapCord);
+    }
+    public override void SetData()
+    {
+        hasData = true;
+        OnEnable();
     }
     public override void Encounter()
     {

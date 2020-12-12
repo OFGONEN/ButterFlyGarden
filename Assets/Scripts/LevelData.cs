@@ -10,6 +10,7 @@ public class LevelData : ScriptableObject
     public List<LilyData> lilyDatas = new List<LilyData>();
     public List<ButterFlyData> butterFlyDatas = new List<ButterFlyData>();
     public List<FrogData> frogDatas = new List<FrogData>();
+    public List<TargetButterFlyData> targetButterFlyDatas;
 }
 
 [System.Serializable]
@@ -38,6 +39,13 @@ public struct FrogData
     public Vector2 mapCord;
     public float direction;
     public Color frogColor;
+}
+[System.Serializable]
+public struct TargetButterFlyData
+{
+    public List<Color> butterFlyColors;
+    public List<Texture2D> butterFlyPatterns;
+    public Texture2D finalPattern;
 }
 
 
