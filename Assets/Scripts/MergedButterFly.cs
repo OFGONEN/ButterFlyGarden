@@ -58,7 +58,7 @@ public class MergedButterFly : ButterFly
             platformEntity.inComingEntity = null;
             platformEntity.occupingEntity = this;
         }
-        else if (platformEntity.occupingEntity is MergedButterFly)
+        else if (platformEntity.occupingEntity is MergedButterFly && platformEntity.occupingEntity != this)
         {
             platformEntity.inComingEntity = null;
             var _mergedButterFly = platformEntity.occupingEntity as MergedButterFly;
@@ -70,9 +70,10 @@ public class MergedButterFly : ButterFly
 
             _mergedButterFly.Merge();
 
+            Debug.Log("what ? ");
             gameObject.SetActive(false);
         }
-        else if (platformEntity.occupingEntity is ButterFly)
+        else if (platformEntity.occupingEntity is ButterFly && platformEntity.occupingEntity != this)
         {
             var _butterFly = platformEntity.occupingEntity as ButterFly;
 

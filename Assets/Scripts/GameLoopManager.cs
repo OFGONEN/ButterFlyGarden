@@ -37,13 +37,22 @@ public class GameLoopManager : MonoBehaviour
 
         for (int i = butterFlySet.itemList.Count - 1; i >= 0; i--)
         {
-            var _moved = butterFlySet.itemList[i].MoveToPlatform(_swipeInputEvent.swipeDirection);
-            if (_moved) butterFlySet.itemList[i].Encounter();
+            butterFlySet.itemList[i].MoveToPlatform(_swipeInputEvent.swipeDirection);
+        }
+
+        for (int i = butterFlySet.itemList.Count - 1; i >= 0; i--)
+        {
+            butterFlySet.itemList[i].Encounter();
         }
 
         for (int i = frogSet.itemList.Count - 1; i >= 0; i--)
         {
             frogSet.itemList[i].Eat();
+        }
+
+        for (int i = butterFlySet.itemList.Count - 1; i >= 0; i--)
+        {
+            butterFlySet.itemList[i].Encounter();
         }
 
         for (int i = 0; i < mergedButterFlySet.itemList.Count; i++)

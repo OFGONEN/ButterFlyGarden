@@ -89,7 +89,7 @@ public class ButterFly : OccupyingEntity
             _mergedButterFly.inputButterFlies.Add(this);
             _mergedButterFly.Merge();
         }
-        else if (platformEntity.occupingEntity is ButterFly)
+        else if (platformEntity.occupingEntity is ButterFly && platformEntity.occupingEntity != this)
         {
             platformEntity.inComingEntity = null;
             var _occupyingButterFly = platformEntity.occupingEntity as ButterFly;
