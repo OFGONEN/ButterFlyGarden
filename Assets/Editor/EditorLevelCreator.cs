@@ -227,7 +227,6 @@ public static class EditorLevelCreator
 
         }
 
-        newData.targetButterFlyDatas = oldData.targetButterFlyDatas;
 
         // for (int i = 0; i < newData.rhinoDatas.Count && i < oldData.rhinoDatas.Count; i++)
         // {
@@ -243,6 +242,8 @@ public static class EditorLevelCreator
         //         }
         //     }
         // }
+
+        newData.targetButterFlyDatas.AddRange(oldData.targetButterFlyDatas);
     }
 
     private static void ClearLog()
