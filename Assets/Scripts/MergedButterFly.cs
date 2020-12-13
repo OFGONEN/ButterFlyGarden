@@ -117,42 +117,54 @@ public class MergedButterFly : ButterFly
 
         var _canMerge = FindTarGetButterFly(_targetButterFlies, out _targetButterFlyDataIndex);
 
+        TargetButterFlyData _targetButterFlyData;
 
         if (_canMerge)
         {
+            _targetButterFlyData = _targetButterFlies[_targetButterFlyDataIndex];
+            RearrangeInputButterFlies(_targetButterFlyData);
+        }
+        else
+            _targetButterFlyData = currentLevelData.levelData.wrongTargetData;
 
-            var _targetButterFlyData = _targetButterFlies[_targetButterFlyDataIndex];
 
-            if (inputButterFlies.Count <= _targetButterFlyData.butterFlyPatterns.Count)
-            {
-                patternTexture = _targetButterFlyData.butterFlyPatterns[inputButterFlies.Count - 2];
-            }
-            else
-            {
-                patternTexture = _targetButterFlyData.finalPattern;
-            }
-
-            Merge();
+        if (inputButterFlies.Count <= _targetButterFlyData.butterFlyPatterns.Count)
+        {
+            patternTexture = _targetButterFlyData.butterFlyPatterns[inputButterFlies.Count - 2];
         }
         else
         {
-            var _targetButterFlyData = currentLevelData.levelData.wrongTargetData;
-
-            if (inputButterFlies.Count <= _targetButterFlyData.butterFlyPatterns.Count)
-            {
-                patternTexture = _targetButterFlyData.butterFlyPatterns[inputButterFlies.Count - 2];
-            }
-            else
-            {
-                patternTexture = _targetButterFlyData.finalPattern;
-            }
-
-            Merge();
+            patternTexture = _targetButterFlyData.finalPattern;
         }
+
+        Merge();
     }
 
 
-    public bool FindTarGetButterFly(List<TargetButterFlyData> targetButterFlies, out int dataIndex)
+    void RearrangeInputButterFlies(TargetButterFlyData targetButterFlyData)
+    {
+        List<ButterFly> temp = new List<ButterFly>(inputButterFlies.Count);
+        List<Color> colors = new List<Color>(inputButterFlies.Count);
+
+        for (int i = 0; i < inputButterFlies.Count; i++)
+        {
+            colors.Add(inputButterFlies[i].color);
+        }
+
+
+        for (int i = 0; i < targetButterFlyData.butterFlyColors.Count; i++)
+        {
+            int _index;
+            var _find = colors.FindSameColor(targetButterFlyData.butterFlyColors[i], out _index);
+
+            if (_find) temp.Add(inputButterFlies[_index]);
+
+        }
+
+        inputButterFlies.Clear();
+        inputButterFlies.AddRange(temp);
+    }
+    bool FindTarGetButterFly(List<TargetButterFlyData> targetButterFlies, out int dataIndex)
     {
         for (int i = 0; i < targetButterFlies.Count; i++)
         {

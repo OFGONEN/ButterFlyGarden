@@ -31,6 +31,21 @@ namespace FFStudio
             return _hasColor;
         }
 
+        public static bool FindSameColor(this List<Color> colors, Color color, out int index)
+        {
+            bool _hasColor = false;
+            index = -1;
+
+            for (int i = 0; i < colors.Count; i++)
+            {
+                _hasColor |= colors[i].CompareColor(color);
+
+                if (_hasColor && index == -1) index = i;
+            }
+
+            return _hasColor;
+        }
+
         public static bool CompareColor(this Color colorOne, Color colorTwo)
         {
             bool _sameColor = true;
