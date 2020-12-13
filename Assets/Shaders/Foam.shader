@@ -2,14 +2,15 @@
 {
     Properties
     {
-        _Color            ( "Color", Color )               = ( 1, 1, 1, 1 )
-        _MainTex          ( "Texture", 2D )                = "white" {}
-        _NoiseTex         ( "Noise Texture", 2D )          = "cyan" {}
-        _Intensity        ( "Intensity", Float )           = 1.0
-        _FoamRadius       ( "Foam Radius", Float )         = 0.1
-        _RippleInnerRadius( "Ripple Inner Radius", Float ) = 0.1
-        _RippleOuterRadius( "Ripple Outer Radius", Float ) = 1.0
-        _WaveOffset       ( "Wave Offset", Float )         = 1.0
+        _FoamColor         ( "Foam Color", Color )          = ( 1, 1, 1, 1 )
+        _RippleColor       ( "Ripple Color", Color )        = ( 0, 1, 0, 1 )
+        _MainTex           ( "Texture", 2D )                = "white" {}
+        _NoiseTex          ( "Noise Texture", 2D )          = "cyan" {}
+        _Intensity         ( "Intensity", Float )           = 1.0
+        _FoamRadius        ( "Foam Radius", Float )         = 0.1
+        _RippleInnerRadius ( "Ripple Inner Radius", Float ) = 0.1
+        _RippleOuterRadius ( "Ripple Outer Radius", Float ) = 1.0
+        _WaveOffset        ( "Wave Offset", Float )         = 1.0
     }
     SubShader
     {
@@ -45,7 +46,8 @@
             float4    _MainTex_ST;
             float4    _NoiseTex_ST;
             
-            float4    _Color;
+            float4    _FoamColor;
+            float4    _RippleColor;
             float     _FoamRadius;
             float     _RippleInnerRadius;
             float     _RippleOuterRadius;
@@ -64,20 +66,28 @@
 
             fixed4 Fragment( VertexToFragment fragIn ) : SV_Target
             {
-                fixed4 color          = tex2D(  _MainTex, fragIn.uv ) * _Color;
-                float  rippleTexAlpha = tex2D( _NoiseTex, fragIn.uv );
-
                 float distanceToCenter = length( fragIn.uv - float2( 0.5, 0.5 ) );
+
+                float pixelIsInTheFoamArea         = step( distanceToCenter, _FoamRadius );
+                float pixelIsOutsideTheFoamArea    = step( _FoamRadius, distanceToCenter );
+                float pixelIsOutsideTheInnerRadius = step( _RippleInnerRadius, distanceToCenter - _WaveOffset );
+                float pixelIsInsideTheOuterRadius  = step( distanceToCenter - _WaveOffset, _RippleOuterRadius );
+                
+                fixed4 color = tex2D(  _MainTex, fragIn.uv ) 
+                             * ( pixelIsInTheFoamArea * _FoamColor 
+                               + pixelIsOutsideTheFoamArea * _RippleColor );
+
+                float rippleTexAlpha = tex2D( _NoiseTex, fragIn.uv );
 
                 color.a = 
                     /* Handle foam area: */
-                      step( distanceToCenter, _FoamRadius )                      // Make sure pixel is inside the foam area.
+                      pixelIsInTheFoamArea
                     * _Intensity
                     /* Handle rings: */
-                    + step( _FoamRadius, distanceToCenter )                      // Make sure pixel is outside the foam area.
-                    * step( _RippleInnerRadius, distanceToCenter - _WaveOffset ) // Make sure pixel is outside the inner ring radius.
-                    * step( distanceToCenter - _WaveOffset, _RippleOuterRadius ) // Make sure pixel is inside  the outer ring radius. 
-                    * _Intensity * rippleTexAlpha;                               // Don't forget to incorporate ripple texture in rings.
+                    + pixelIsOutsideTheFoamArea
+                    * pixelIsOutsideTheInnerRadius
+                    * pixelIsInsideTheOuterRadius
+                    * _Intensity * rippleTexAlpha; // Don't forget to incorporate ripple texture in rings.
                 
                 return color;
             }
