@@ -1,14 +1,11 @@
 fileFormatVersion: 2
-guid: ad9666c10fb65f84fb9e897746c49d78
+guid: e30ed09bafbdf074da1a8ba49cbaebcc
 ModelImporter:
   serializedVersion: 20101
-  internalIDToNameTable:
-  - first:
-      74: -4838913725373802470
-    second: fishh.005|fishh.005Action
+  internalIDToNameTable: []
   externalObjects: {}
   materials:
-    materialImportMode: 1
+    materialImportMode: 0
     materialName: 0
     materialSearch: 1
     materialLocation: 1
