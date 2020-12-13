@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using NaughtyAttributes;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "GameEvent", menuName = "FF/Event/GameEvent")]
@@ -9,6 +10,7 @@ public class GameEvent : ScriptableObject
     private readonly List<EventListener> eventListeners =
         new List<EventListener>();
 
+    [Button]
     public void Raise()
     {
 

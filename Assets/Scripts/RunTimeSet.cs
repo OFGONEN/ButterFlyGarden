@@ -15,8 +15,7 @@ public abstract class RuntimeSet<TKey, TValue> : ScriptableObject
     }
     public void RemoveList(TValue value)
     {
-        if (itemList.Contains(value))
-            itemList.Remove(value);
+        itemList.Remove(value);
     }
 
     public void AddDictionary(TKey key, TValue value)
@@ -27,11 +26,16 @@ public abstract class RuntimeSet<TKey, TValue> : ScriptableObject
         {
             itemDictionary.Add(key, value);
         }
-
     }
     public void RemoveDictionary(TKey key)
     {
         itemDictionary.Remove(key);
+    }
+
+    public void ClearSet()
+    {
+        itemList.Clear();
+        itemDictionary.Clear();
     }
 }
 

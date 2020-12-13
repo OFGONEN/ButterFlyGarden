@@ -9,7 +9,8 @@ public class LevelData : ScriptableObject
     public Vector2 size;
     public List<LilyData> lilyDatas = new List<LilyData>();
     public List<ButterFlyData> butterFlyDatas = new List<ButterFlyData>();
-    public List<FrogData> _frogDatas = new List<FrogData>();
+    public List<FrogData> frogDatas = new List<FrogData>();
+    public List<TargetButterFlyData> targetButterFlyDatas = new List<TargetButterFlyData>();
 }
 
 [System.Serializable]
@@ -17,6 +18,7 @@ public struct LilyData
 {
     public GameObject levelObject;
     public Vector2 position;
+    public Vector2 mapCord;
     public float direction;
 }
 [System.Serializable]
@@ -24,6 +26,7 @@ public struct ButterFlyData
 {
     public GameObject levelObject;
     public Vector2 position;
+    public Vector2 mapCord;
     public float direction;
     public Color butterFlyColor;
 
@@ -33,8 +36,16 @@ public struct FrogData
 {
     public GameObject levelObject;
     public Vector2 position;
+    public Vector2 mapCord;
     public float direction;
     public Color frogColor;
+}
+[System.Serializable]
+public struct TargetButterFlyData
+{
+    public List<Color> butterFlyColors;
+    public List<Texture2D> butterFlyPatterns;
+    public Texture2D finalPattern;
 }
 
 

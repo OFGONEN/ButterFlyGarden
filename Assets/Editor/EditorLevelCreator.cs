@@ -33,7 +33,29 @@ public static class EditorLevelCreator
 
             if (!_path.Contains(".png")) continue;
 
-            CreateLevelData(_path);
+            CreateLevelData(_path, false);
+        }
+    }
+    [MenuItem("FFStudios/Asset/Update LevelData Asset")]
+    static void UpdateLevelData()
+    {
+        ClearLog();
+
+        if (EditorAssetLibraryUtility.assetLibrary.trackedAssets.Count < 1)
+        {
+            Debug.LogError("There is no tracked Asset");
+            return;
+        }
+
+        var _selection = Selection.assetGUIDs;
+
+        foreach (var guid in _selection)
+        {
+            var _path = AssetDatabase.GUIDToAssetPath(guid);
+
+            if (!_path.Contains(".png")) continue;
+
+            CreateLevelData(_path, true);
         }
     }
     [MenuItem("FFStudios/Asset/Create All LevelData Asset %&a")]
@@ -52,11 +74,11 @@ public static class EditorLevelCreator
         foreach (var _guid in _guids)
         {
             var _path = AssetDatabase.GUIDToAssetPath(_guid);
-            CreateLevelData(_path);
+            CreateLevelData(_path, false);
         }
     }
 
-    static void CreateLevelData(string path)
+    static void CreateLevelData(string path, bool respectOldData)
     {
         var _fileName = Path.GetFileNameWithoutExtension(path);
         var _texture = AssetDatabase.LoadAssetAtPath(path, typeof(Texture2D)) as Texture2D;
@@ -103,12 +125,13 @@ public static class EditorLevelCreator
                 int _assetIndex = _pixelRed / 40;
 
                 // Add lily for every object
-                var _worldPosition = new Vector2(x, y) - _leftDown;
-                _worldPosition = new Vector2(_worldPosition.x, _worldPosition.y);
+                var _mapPosition = new Vector2(x, y) - _leftDown;
+                var _worldPosition = new Vector2(_mapPosition.x, _mapPosition.y);
                 float _worldDirection = _pixel.b * 255 * 90;
 
                 _levelData.lilyDatas.Add(new LilyData()
                 {
+                    mapCord = _mapPosition,
                     levelObject = _assetLib.trackedAssets[0],
                     position = _worldPosition,
                     direction = _worldDirection
@@ -122,6 +145,7 @@ public static class EditorLevelCreator
                     {
                         _levelData.butterFlyDatas.Add(new ButterFlyData()
                         {
+                            mapCord = _mapPosition,
                             levelObject = _levelObject,
                             position = _worldPosition,
                             direction = _worldDirection
@@ -129,13 +153,24 @@ public static class EditorLevelCreator
                     }
                     else if (_levelObject.name.ToLower().Contains("frog"))
                     {
-                        _levelData._frogDatas.Add(new FrogData()
+                        _levelData.frogDatas.Add(new FrogData()
                         {
+                            mapCord = _mapPosition,
                             levelObject = _levelObject,
                             position = _worldPosition,
-                            direction = _worldDirection
+                            direction = _worldDirection,
                         });
                     }
+                    // else if (_levelObject.name.ToLower().Contains("rhino"))
+                    // {
+                    //     _levelData.rhinoDatas.Add(new RhinoData()
+                    //     {
+                    //         mapCord = _mapPosition,
+                    //         levelObject = _levelObject,
+                    //         position = _worldPosition,
+                    //         direction = _worldDirection
+                    //     });
+                    // }
                 }
             }
         }
@@ -145,7 +180,69 @@ public static class EditorLevelCreator
 
         var _startIndex = _fileName.IndexOf('_');
         var _levelDataFileName = "LevelData" + _fileName.Substring(_startIndex) + ".asset";
-        AssetDatabase.CreateAsset(_levelData, EditorAssetLibraryUtility.levelDataSavePath + _levelDataFileName);
+        var _createPath = EditorAssetLibraryUtility.levelDataSavePath + _levelDataFileName;
+
+        if (respectOldData)
+        {
+            var _oldAsset = AssetDatabase.LoadAssetAtPath<LevelData>(_createPath);
+
+            if (_oldAsset != null)
+            {
+                RetrieveDataFromOldData(_levelData, _oldAsset);
+            }
+        }
+
+        AssetDatabase.CreateAsset(_levelData, _createPath);
+    }
+
+    private static void RetrieveDataFromOldData(LevelData newData, LevelData oldData)
+    {
+        for (int i = 0; i < newData.butterFlyDatas.Count; i++)
+        {
+            for (int x = 0; x < oldData.butterFlyDatas.Count; x++)
+            {
+                if (newData.butterFlyDatas[i].mapCord == oldData.butterFlyDatas[x].mapCord)
+                {
+                    var _newData = newData.butterFlyDatas[i];
+                    _newData.butterFlyColor = oldData.butterFlyDatas[x].butterFlyColor;
+
+                    newData.butterFlyDatas[i] = _newData;
+                }
+            }
+
+        }
+
+        for (int i = 0; i < newData.frogDatas.Count && i < oldData.frogDatas.Count; i++)
+        {
+            for (int x = 0; x < oldData.frogDatas.Count; x++)
+            {
+                if (newData.frogDatas[i].mapCord == oldData.frogDatas[x].mapCord)
+                {
+                    var _newData = newData.frogDatas[i];
+                    _newData.frogColor = oldData.frogDatas[x].frogColor;
+
+                    newData.frogDatas[i] = _newData;
+                }
+            }
+
+        }
+
+        newData.targetButterFlyDatas = oldData.targetButterFlyDatas;
+
+        // for (int i = 0; i < newData.rhinoDatas.Count && i < oldData.rhinoDatas.Count; i++)
+        // {
+
+        //     for (int x = 0; x < oldData.rhinoDatas.Count; x++)
+        //     {
+        //         if (newData.rhinoDatas[i].mapCord == oldData.rhinoDatas[x].mapCord)
+        //         {
+        //             var _newData = newData.rhinoDatas[i];
+        //             _newData.rhinoColor = oldData.rhinoDatas[x].rhinoColor;
+
+        //             newData.rhinoDatas[i] = _newData;
+        //         }
+        //     }
+        // }
     }
 
     private static void ClearLog()

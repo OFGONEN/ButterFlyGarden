@@ -433,7 +433,7 @@ PrefabInstance:
     - target: {fileID: 695111339851340322, guid: 4ded5cb0368763645990004df8fdc2d6, type: 3}
       propertyPath: levelData
       value: 
-      objectReference: {fileID: 11400000, guid: e0e442feda58ebc49b1a171df6364316, type: 2}
+      objectReference: {fileID: 11400000, guid: 4910534008f12df4a979bcf70f0945dc, type: 2}
     - target: {fileID: 695111339851340322, guid: 4ded5cb0368763645990004df8fdc2d6, type: 3}
       propertyPath: mainCamera
       value: 
@@ -446,6 +446,10 @@ PrefabInstance:
       propertyPath: creationSettings
       value: 
       objectReference: {fileID: 11400000, guid: 9ce2f8cf8f3f7804ebb5162fc2382187, type: 2}
+    - target: {fileID: 695111339851340322, guid: 4ded5cb0368763645990004df8fdc2d6, type: 3}
+      propertyPath: platformEntitySet
+      value: 
+      objectReference: {fileID: 11400000, guid: 6f70dcffdc9b608469ad7f2588c357ef, type: 2}
     - target: {fileID: 695111339851340323, guid: 4ded5cb0368763645990004df8fdc2d6, type: 3}
       propertyPath: m_RootOrder
       value: 2
