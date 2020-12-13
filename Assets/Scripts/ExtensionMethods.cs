@@ -35,10 +35,10 @@ namespace FFStudio
         {
             bool _sameColor = true;
 
-            _sameColor &= colorOne.r - colorTwo.r <= 0.001f;
-            _sameColor &= colorOne.g - colorTwo.g <= 0.001f;
-            _sameColor &= colorOne.b - colorTwo.b <= 0.001f;
-            _sameColor &= colorOne.a - colorTwo.a <= 0.001f;
+            _sameColor &= Mathf.Abs(colorOne.r - colorTwo.r) <= 0.001f;
+            _sameColor &= Mathf.Abs(colorOne.g - colorTwo.g) <= 0.001f;
+            _sameColor &= Mathf.Abs(colorOne.b - colorTwo.b) <= 0.001f;
+            _sameColor &= Mathf.Abs(colorOne.a - colorTwo.a) <= 0.001f;
 
             return _sameColor;
         }

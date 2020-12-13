@@ -42,6 +42,7 @@ public class GameLoopManager : MonoBehaviour
 
         newCreatedObjects.itemList.Clear();
         newCreatedObjects.itemDictionary.Clear();
+        acquiredTargets.Clear();
 
         restartLevelEvent.Raise();
     }

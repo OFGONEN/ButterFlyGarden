@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using FFStudio;
 
 public class MergedButterFly : ButterFly
 {
+    public CurrentLevelData currentLevelData;
     public MergedButterFlySet mergedButterFlySet;
     public NewCreatedObjectsSet newCreatedObjectSet;
     public Texture2D patternTexture;
-
     public List<ButterFly> inputButterFlies;
 
     private static readonly int inputButterflyColorsShaderID = Shader.PropertyToID("inputButterflyColors");
@@ -16,6 +17,9 @@ public class MergedButterFly : ButterFly
 
     private void OnEnable()
     {
+
+        if (!hasData) return;
+
         materialPropertyBlock = new MaterialPropertyBlock();
 
         renderer.GetPropertyBlock(materialPropertyBlock, 0); // Don't care about the 2nd material of wings.
@@ -25,7 +29,6 @@ public class MergedButterFly : ButterFly
         materialPropertyBlock.SetFloatArray(inputButterflyColorsShaderID, new float[3 * 10]);
         renderer.SetPropertyBlock(materialPropertyBlock, 0); // Don't care about the 2nd material of wings.
 
-        if (!hasData) return;
 
         occupyingEntitySet.AddDictionary(mapCord, this);
         occupyingEntitySet.AddList(this);
@@ -77,7 +80,7 @@ public class MergedButterFly : ButterFly
                 _mergedButterFly.inputButterFlies.Add(_butterFly);
             }
 
-            _mergedButterFly.Merge();
+            _mergedButterFly.TryMerge();
 
             gameObject.SetActive(false);
         }
@@ -89,7 +92,7 @@ public class MergedButterFly : ButterFly
             platformEntity.occupingEntity = this;
 
             inputButterFlies.Add(_butterFly);
-            Merge();
+            TryMerge();
 
             _butterFly.gameObject.SetActive(false);
         }
@@ -97,6 +100,7 @@ public class MergedButterFly : ButterFly
     public void Merge()
     {
         renderer.GetPropertyBlock(materialPropertyBlock, 0); // Don't care about the 2nd material of wings.
+        materialPropertyBlock.SetTexture("_MainTex", patternTexture);
         materialPropertyBlock.SetFloatArray(inputButterflyColorsShaderID,
                                                   inputButterFlies.Select(bfGraphics => bfGraphics.GetColor())
                                                                   .SelectMany(color => new[] { color.r, color.g, color.b })
@@ -104,4 +108,61 @@ public class MergedButterFly : ButterFly
         materialPropertyBlock.SetInt(numberOfInputButterfliesShaderID, inputButterFlies.Count);
         renderer.SetPropertyBlock(materialPropertyBlock, 0); // Don't care about the 2nd material of wings.
     }
+
+    public void TryMerge()
+    {
+        var _targetButterFlies = currentLevelData.levelData.targetButterFlyDatas;
+
+        int _targetButterFlyDataIndex;
+
+        var _canMerge = FindTarGetButterFly(_targetButterFlies, out _targetButterFlyDataIndex);
+
+
+        if (_canMerge)
+        {
+
+            var _targetButterFlyData = _targetButterFlies[_targetButterFlyDataIndex];
+
+            if (inputButterFlies.Count <= _targetButterFlyData.butterFlyPatterns.Count)
+            {
+                patternTexture = _targetButterFlyData.butterFlyPatterns[inputButterFlies.Count - 2];
+            }
+            else
+            {
+                patternTexture = _targetButterFlyData.finalPattern;
+            }
+
+            Merge();
+        }
+        else
+        {
+            Debug.Log("False merge");
+        }
+    }
+
+
+    public bool FindTarGetButterFly(List<TargetButterFlyData> targetButterFlies, out int dataIndex)
+    {
+        for (int i = 0; i < targetButterFlies.Count; i++)
+        {
+            var _find = true;
+
+            var _targetButterFlyData = targetButterFlies[i];
+
+            for (int x = 0; x < inputButterFlies.Count; x++)
+            {
+                _find &= _targetButterFlyData.butterFlyColors.FindSameColor(inputButterFlies[x].color);
+            }
+
+            if (_find)
+            {
+                dataIndex = i;
+                return true;
+            }
+        }
+
+        dataIndex = -1;
+        return false;
+    }
+
 }

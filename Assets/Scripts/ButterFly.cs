@@ -93,7 +93,7 @@ public class ButterFly : OccupyingEntity
             gameObject.SetActive(false);
 
             _mergedButterFly.inputButterFlies.Add(this);
-            _mergedButterFly.Merge();
+            _mergedButterFly.TryMerge();
         }
         else if (platformEntity.occupingEntity is ButterFly && platformEntity.occupingEntity != this)
         {
@@ -113,7 +113,7 @@ public class ButterFly : OccupyingEntity
 
             _mergedButterFlyComponent.inputButterFlies.Add(_occupyingButterFly);
             _mergedButterFlyComponent.inputButterFlies.Add(this);
-            _mergedButterFlyComponent.Merge();
+            _mergedButterFlyComponent.TryMerge();
 
             platformEntity.occupingEntity = _mergedButterFlyComponent;
         }
