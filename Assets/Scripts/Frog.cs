@@ -9,17 +9,18 @@ public class Frog : OccupyingEntity
     public OccupyingEntitySet occupyingEntitySet;
     public FrogSet frogSet;
 
+    [HideInInspector]
+    public FrogData frogData;
     private void OnEnable()
     {
         if (!hasData) return;
 
-        occupyingEntitySet.itemDictionary.Add(mapCord, this);
-        occupyingEntitySet.itemList.Add(this);
+        occupyingEntitySet.AddDictionary(mapCord, this);
+        occupyingEntitySet.AddList(this);
 
-        frogSet.itemDictionary.Add(mapCord, this);
-        frogSet.itemList.Add(this);
+        frogSet.AddDictionary(mapCord, this);
+        frogSet.AddList(this);
     }
-
 
     private void Start()
     {
@@ -27,11 +28,11 @@ public class Frog : OccupyingEntity
     }
     private void OnDisable()
     {
-        occupyingEntitySet.itemList.Remove(this);
-        occupyingEntitySet.itemDictionary.Remove(mapCord);
+        occupyingEntitySet.RemoveList(this);
+        occupyingEntitySet.RemoveDictionary(mapCord);
 
-        frogSet.itemList.Remove(this);
-        frogSet.itemDictionary.Remove(mapCord);
+        frogSet.RemoveList(this);
+        frogSet.RemoveDictionary(mapCord);
     }
 
     public void Eat()
@@ -40,7 +41,7 @@ public class Frog : OccupyingEntity
 
         if (_platform != null && _platform.occupingEntity != null && _platform.occupingEntity is ButterFly)
         {
-            Destroy(_platform.occupingEntity.gameObject);
+            _platform.occupingEntity.gameObject.SetActive(false);
             _platform.occupingEntity = null;
         }
     }
@@ -49,5 +50,10 @@ public class Frog : OccupyingEntity
     {
         hasData = true;
         OnEnable();
+    }
+
+    public override void ResetToDefault()
+    {
+        // has a cooldown etc.
     }
 }

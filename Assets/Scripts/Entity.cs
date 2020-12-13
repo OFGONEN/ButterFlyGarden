@@ -15,6 +15,6 @@ public abstract class Entity : MonoBehaviour
     [HideInInspector]
     public bool hasData = false;
 
-
     public abstract void SetData();
+    public abstract void ResetToDefault();
 }

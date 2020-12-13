@@ -18,7 +18,11 @@ public class Lily : PlatformEntity
 
         OnEnable();
     }
-
+    public override void ResetToDefault()
+    {
+        inComingEntity = null;
+        occupingEntity = null;
+    }
     private void OnDisable()
     {
         platformEntitySet.RemoveList(this);

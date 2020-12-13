@@ -10,7 +10,7 @@ public class LevelData : ScriptableObject
     public List<LilyData> lilyDatas = new List<LilyData>();
     public List<ButterFlyData> butterFlyDatas = new List<ButterFlyData>();
     public List<FrogData> frogDatas = new List<FrogData>();
-    public List<TargetButterFlyData> targetButterFlyDatas;
+    public List<TargetButterFlyData> targetButterFlyDatas = new List<TargetButterFlyData>();
 }
 
 [System.Serializable]

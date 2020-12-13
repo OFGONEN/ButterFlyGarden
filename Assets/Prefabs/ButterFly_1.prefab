@@ -56,6 +56,7 @@ MonoBehaviour:
   color: {r: 0, g: 0, b: 0, a: 0}
   occupyingEntitySet: {fileID: 11400000, guid: 316d0d77841efbd42a96b7992bc2f891, type: 2}
   butterFlySet: {fileID: 11400000, guid: de4ec2b8f28f980478ed1d13bd17459b, type: 2}
+  newCreatedObjectSet: {fileID: 11400000, guid: 6049f85d3d4a80341ac3f35e96d33614, type: 2}
   creationSettings: {fileID: 11400000, guid: 9ce2f8cf8f3f7804ebb5162fc2382187, type: 2}
   mergedButterFly: {fileID: 2418258055063634259, guid: ee7cbbe5f8c169c48ab70bd80dbf4880, type: 3}
 --- !u!95 &814473926080416299

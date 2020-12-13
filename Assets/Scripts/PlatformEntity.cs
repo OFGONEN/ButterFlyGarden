@@ -4,12 +4,18 @@ using UnityEngine;
 
 public abstract class PlatformEntity : Entity
 {
+    [HideInInspector]
     public OccupyingEntity occupingEntity;
+    [HideInInspector]
     public OccupyingEntity inComingEntity;
 
+    [HideInInspector]
     public PlatformEntity upPlatformEntity;
+    [HideInInspector]
     public PlatformEntity rightPlatformEntity;
+    [HideInInspector]
     public PlatformEntity downPlatformEntity;
+    [HideInInspector]
     public PlatformEntity leftPlatformEntity;
 
     public PlatformEntitySet platformEntitySet;
@@ -48,6 +54,7 @@ public abstract class PlatformEntity : Entity
     }
     public void FindOccupyingEntity()
     {
+
         occupyingEntitySet.itemDictionary.TryGetValue(mapCord, out occupingEntity);
 
         if (occupingEntity != null)

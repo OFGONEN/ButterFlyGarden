@@ -6,28 +6,45 @@ using UnityEngine;
 public class GameLoopManager : MonoBehaviour
 {
     public EventListenerDelegateResponse swipeInputEventListener;
+    public EventListenerDelegateResponse replayUIEventListener;
+    public GameEvent restartLevelEvent;
     public PlatformEntitySet platformEntitySet;
     public ButterFlySet butterFlySet;
     public MergedButterFlySet mergedButterFlySet;
     public FrogSet frogSet;
+    public NewCreatedObjectsSet newCreatedObjects;
     public LevelData levelData;
 
     public List<int> acquiredTargets;
     private void OnEnable()
     {
         swipeInputEventListener.OnEnable();
+        replayUIEventListener.OnEnable();
     }
 
     private void OnDisable()
     {
         swipeInputEventListener.OnDisable();
+        replayUIEventListener.OnDisable();
     }
     private void Start()
     {
         swipeInputEventListener.response = SwipeInputResponse;
+        replayUIEventListener.response = ReplayUIResponse;
         acquiredTargets = new List<int>(levelData.targetButterFlyDatas.Count);
     }
+    private void ReplayUIResponse()
+    {
+        for (int i = newCreatedObjects.itemList.Count - 1; i >= 0; i--)
+        {
+            Destroy(newCreatedObjects.itemList[i].gameObject);
+        }
 
+        newCreatedObjects.itemList.Clear();
+        newCreatedObjects.itemDictionary.Clear();
+
+        restartLevelEvent.Raise();
+    }
     private void SwipeInputResponse()
     {
         var _swipeInputEvent = swipeInputEventListener.gameEvent as SwipeInputEvent;

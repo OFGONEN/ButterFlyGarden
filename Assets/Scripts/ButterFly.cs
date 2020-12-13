@@ -7,22 +7,24 @@ public class ButterFly : OccupyingEntity
     public Color color;
 
     private static int ColorShaderID = Shader.PropertyToID("_Color");
-
     public OccupyingEntitySet occupyingEntitySet;
     public ButterFlySet butterFlySet;
     public LevelCreationSettings creationSettings;
     public GameObject mergedButterFly;
+
+    [HideInInspector]
+    public ButterFlyData butterFlyData;
 
     private void OnEnable()
     {
         if (!hasData) return;
 
 
-        occupyingEntitySet.itemDictionary.Add(mapCord, this);
-        occupyingEntitySet.itemList.Add(this);
+        occupyingEntitySet.AddDictionary(mapCord, this);
+        occupyingEntitySet.AddList(this);
 
-        butterFlySet.itemDictionary.Add(mapCord, this);
-        butterFlySet.itemList.Add(this);
+        butterFlySet.AddDictionary(mapCord, this);
+        butterFlySet.AddList(this);
     }
     private void Start()
     {
@@ -40,11 +42,15 @@ public class ButterFly : OccupyingEntity
         butterFlySet.itemList.Remove(this);
         butterFlySet.itemDictionary.Remove(mapCord);
     }
-
     public override void SetData()
     {
         hasData = true;
         OnEnable();
+    }
+
+    public override void ResetToDefault()
+    {
+        // if has a protection vs. 
     }
     public bool MoveToPlatform(Vector2 additiveCord)
     {

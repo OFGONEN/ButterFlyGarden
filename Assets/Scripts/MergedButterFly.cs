@@ -6,6 +6,7 @@ using UnityEngine;
 public class MergedButterFly : ButterFly
 {
     public MergedButterFlySet mergedButterFlySet;
+    public NewCreatedObjectsSet newCreatedObjectSet;
     public Texture2D patternTexture;
 
     public List<ButterFly> inputButterFlies;
@@ -26,25 +27,33 @@ public class MergedButterFly : ButterFly
 
         if (!hasData) return;
 
-        occupyingEntitySet.itemDictionary.Add(mapCord, this);
-        occupyingEntitySet.itemList.Add(this);
+        occupyingEntitySet.AddDictionary(mapCord, this);
+        occupyingEntitySet.AddList(this);
 
-        butterFlySet.itemDictionary.Add(mapCord, this);
-        butterFlySet.itemList.Add(this);
+        butterFlySet.AddDictionary(mapCord, this);
+        butterFlySet.AddList(this);
 
-        mergedButterFlySet.itemDictionary.Add(mapCord, this);
-        mergedButterFlySet.itemList.Add(this);
+        mergedButterFlySet.AddDictionary(mapCord, this);
+        mergedButterFlySet.AddList(this);
+
+        newCreatedObjectSet.AddDictionary(mapCord, gameObject);
+        newCreatedObjectSet.AddList(gameObject);
     }
     private void OnDisable()
     {
-        occupyingEntitySet.itemList.Remove(this);
-        occupyingEntitySet.itemDictionary.Remove(mapCord);
+        occupyingEntitySet.RemoveList(this);
+        occupyingEntitySet.RemoveDictionary(mapCord);
 
-        butterFlySet.itemList.Remove(this);
-        butterFlySet.itemDictionary.Remove(mapCord);
+        butterFlySet.RemoveList(this);
+        butterFlySet.RemoveDictionary(mapCord);
 
-        mergedButterFlySet.itemList.Remove(this);
-        mergedButterFlySet.itemDictionary.Remove(mapCord);
+        mergedButterFlySet.RemoveList(this);
+        mergedButterFlySet.RemoveDictionary(mapCord);
+    }
+    private void OnDestroy()
+    {
+        newCreatedObjectSet.RemoveDictionary(mapCord);
+        newCreatedObjectSet.RemoveList(gameObject);
     }
     public override void SetData()
     {
@@ -70,7 +79,6 @@ public class MergedButterFly : ButterFly
 
             _mergedButterFly.Merge();
 
-            Debug.Log("what ? ");
             gameObject.SetActive(false);
         }
         else if (platformEntity.occupingEntity is ButterFly && platformEntity.occupingEntity != this)
