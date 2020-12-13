@@ -136,7 +136,18 @@ public class MergedButterFly : ButterFly
         }
         else
         {
-            Debug.Log("False merge");
+            var _targetButterFlyData = currentLevelData.levelData.wrongTargetData;
+
+            if (inputButterFlies.Count <= _targetButterFlyData.butterFlyPatterns.Count)
+            {
+                patternTexture = _targetButterFlyData.butterFlyPatterns[inputButterFlies.Count - 2];
+            }
+            else
+            {
+                patternTexture = _targetButterFlyData.finalPattern;
+            }
+
+            Merge();
         }
     }
 

@@ -36,7 +36,7 @@ public static class EditorLevelCreator
             CreateLevelData(_path, false);
         }
     }
-    [MenuItem("FFStudios/Asset/Update LevelData Asset")]
+    [MenuItem("FFStudios/Asset/Update LevelData Asset %&u")]
     static void UpdateLevelData()
     {
         ClearLog();
@@ -244,6 +244,7 @@ public static class EditorLevelCreator
         // }
 
         newData.targetButterFlyDatas.AddRange(oldData.targetButterFlyDatas);
+        newData.wrongTargetData = oldData.wrongTargetData;
     }
 
     private static void ClearLog()

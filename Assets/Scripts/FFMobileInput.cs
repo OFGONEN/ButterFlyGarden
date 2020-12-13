@@ -28,32 +28,25 @@ public class FFMobileInput : MonoBehaviour
     {
         if (unsignedAngle >= 150)
         {
-            Debug.Log("Left Swipe");
             return Vector2.left;
         }
         else if (60 <= unsignedAngle && unsignedAngle <= 120)
         {
             if (delta.y >= 0)
             {
-                Debug.Log("Up Swipe");
-
                 return Vector2.up;
             }
             else
             {
-                Debug.Log("Down Swipe");
-
                 return Vector2.down;
             }
         }
         else if (unsignedAngle <= 30)
         {
-            Debug.Log("Right Swipe");
             return Vector2.right;
         }
         else
         {
-            Debug.Log("Zero Swipe");
             return Vector2.zero;
         }
     }

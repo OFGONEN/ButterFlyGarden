@@ -11,6 +11,7 @@ public class LevelData : ScriptableObject
     public List<ButterFlyData> butterFlyDatas = new List<ButterFlyData>();
     public List<FrogData> frogDatas = new List<FrogData>();
     public List<TargetButterFlyData> targetButterFlyDatas = new List<TargetButterFlyData>();
+    public TargetButterFlyData wrongTargetData;
 }
 
 [System.Serializable]
