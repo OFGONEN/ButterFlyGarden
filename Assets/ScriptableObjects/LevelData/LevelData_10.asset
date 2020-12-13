@@ -86,7 +86,4 @@ MonoBehaviour:
     mapCord: {x: 2, y: 3}
     direction: 180.00002
     frogColor: {r: 0.15265143, g: 1, b: 0, a: 0}
-  targetButterFlyDatas:
-  - butterFlyColors: []
-    butterFlyPatterns: []
-    finalPattern: {fileID: 0}
+  targetButterFlyDatas: []

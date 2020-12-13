@@ -8,7 +8,7 @@ public class LevelManager : MonoBehaviour
     public Camera mainCamera;
     public EventListenerDelegateResponse restartLevelEventListener;
     public LevelCreationSettings creationSettings;
-    public LevelData levelData;
+    public CurrentLevelData currentLevelData;
     public PlatformEntitySet platformEntitySet;
 
     public OccupyingEntitySet occupyingEntitySet;
@@ -36,9 +36,11 @@ public class LevelManager : MonoBehaviour
 
     public void CreateLevel()
     {
-        for (int i = 0; i < levelData.lilyDatas.Count; i++)
+        var _levelData = currentLevelData.levelData;
+
+        for (int i = 0; i < _levelData.lilyDatas.Count; i++)
         {
-            var _lilyData = levelData.lilyDatas[i];
+            var _lilyData = _levelData.lilyDatas[i];
 
             var _lily = GameObject.Instantiate(_lilyData.levelObject);
             _lily.transform.SetParent(parentTransform);
@@ -56,9 +58,9 @@ public class LevelManager : MonoBehaviour
 
         }
 
-        for (int i = 0; i < levelData.butterFlyDatas.Count; i++)
+        for (int i = 0; i < _levelData.butterFlyDatas.Count; i++)
         {
-            var _butterFlyData = levelData.butterFlyDatas[i];
+            var _butterFlyData = _levelData.butterFlyDatas[i];
 
             var _butterFly = GameObject.Instantiate(_butterFlyData.levelObject);
             _butterFly.transform.SetParent(parentTransform);
@@ -77,9 +79,9 @@ public class LevelManager : MonoBehaviour
             _butterflyComponent.SetData();
         }
 
-        for (int i = 0; i < levelData.frogDatas.Count; i++)
+        for (int i = 0; i < _levelData.frogDatas.Count; i++)
         {
-            var _frogData = levelData.frogDatas[i];
+            var _frogData = _levelData.frogDatas[i];
 
             var _frog = GameObject.Instantiate(_frogData.levelObject);
             _frog.transform.SetParent(parentTransform);
@@ -98,12 +100,12 @@ public class LevelManager : MonoBehaviour
             _frogComponent.SetData();
         }
 
-        parentTransform.position = new Vector3(-creationSettings.horizontalDistance * (levelData.size.x - 1) / 2,
+        parentTransform.position = new Vector3(-creationSettings.horizontalDistance * (_levelData.size.x - 1) / 2,
         0,
-        -creationSettings.verticalDistance * (levelData.size.y - 1) / 2);
+        -creationSettings.verticalDistance * (_levelData.size.y - 1) / 2);
 
         var _cameraPos = mainCamera.transform.position;
-        _cameraPos.y = levelData.size.x * 3;
+        _cameraPos.y = _levelData.size.x * 3;
         mainCamera.transform.position = _cameraPos;
     }
     public void SetUpLevel()

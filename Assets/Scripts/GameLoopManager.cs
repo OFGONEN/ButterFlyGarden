@@ -13,7 +13,7 @@ public class GameLoopManager : MonoBehaviour
     public MergedButterFlySet mergedButterFlySet;
     public FrogSet frogSet;
     public NewCreatedObjectsSet newCreatedObjects;
-    public LevelData levelData;
+    public CurrentLevelData currentLevelData;
 
     public List<int> acquiredTargets;
     private void OnEnable()
@@ -31,7 +31,7 @@ public class GameLoopManager : MonoBehaviour
     {
         swipeInputEventListener.response = SwipeInputResponse;
         replayUIEventListener.response = ReplayUIResponse;
-        acquiredTargets = new List<int>(levelData.targetButterFlyDatas.Count);
+        acquiredTargets = new List<int>(currentLevelData.levelData.targetButterFlyDatas.Count);
     }
     private void ReplayUIResponse()
     {
@@ -77,7 +77,7 @@ public class GameLoopManager : MonoBehaviour
             AcquireTarget(mergedButterFlySet.itemList[i]);
         }
 
-        if (acquiredTargets.Count == levelData.targetButterFlyDatas.Count)
+        if (acquiredTargets.Count == currentLevelData.levelData.targetButterFlyDatas.Count)
         {
             Debug.LogWarning("You won");
         }
@@ -85,12 +85,13 @@ public class GameLoopManager : MonoBehaviour
     public void AcquireTarget(MergedButterFly mergedButterFly)
     {
         var _instanceId = mergedButterFly.patternTexture.GetInstanceID();
+        var _levelData = currentLevelData.levelData;
 
-        for (int i = 0; i < levelData.targetButterFlyDatas.Count; i++)
+        for (int i = 0; i < _levelData.targetButterFlyDatas.Count; i++)
         {
-            var _finalPatternInstanceId = levelData.targetButterFlyDatas[i].finalPattern.GetInstanceID();
+            var _finalPatternInstanceId = _levelData.targetButterFlyDatas[i].finalPattern.GetInstanceID();
             var _samePattern = _instanceId == _finalPatternInstanceId;
-            var _matchColors = MatchColors(levelData.targetButterFlyDatas[i], mergedButterFly);
+            var _matchColors = MatchColors(_levelData.targetButterFlyDatas[i], mergedButterFly);
 
             if (_samePattern && _matchColors && !acquiredTargets.Contains(i))
             {
