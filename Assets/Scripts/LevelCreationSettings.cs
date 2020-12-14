@@ -11,5 +11,8 @@ public class LevelCreationSettings : ScriptableObject
     public float butterFlyDistanceToLily = 0.2f;
     public float frogFlyDistanceToLily = 0.1f;
 
+    public float butterFlyIdleAnimRepeatMin = 6f;
+    public float butterFlyIdleAnimRepeatMax = 10f;
+
 }
 

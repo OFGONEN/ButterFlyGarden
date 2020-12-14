@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using NaughtyAttributes;
 using UnityEngine;
 
 public class ButterFly : OccupyingEntity
@@ -14,6 +15,9 @@ public class ButterFly : OccupyingEntity
 
     [HideInInspector]
     public ButterFlyData butterFlyData;
+
+    private WaitForSeconds waitForNewIdle;
+    private Coroutine randomIdleCoroutine;
 
     private void OnEnable()
     {
@@ -33,6 +37,10 @@ public class ButterFly : OccupyingEntity
         renderer.GetPropertyBlock(materialPropertyBlock, 0); // Don't care about the 2nd material of wings.
         materialPropertyBlock.SetColor(ColorShaderID, color);
         renderer.SetPropertyBlock(materialPropertyBlock, 0); // Don't care about the 2nd material of wings.
+
+        waitForNewIdle = new WaitForSeconds(Random.Range(creationSettings.butterFlyIdleAnimRepeatMin, creationSettings.butterFlyIdleAnimRepeatMax));
+        RandomIdle();
+        randomIdleCoroutine = StartCoroutine(RandomIdleCoroutine());
     }
     private void OnDisable()
     {
@@ -66,7 +74,6 @@ public class ButterFly : OccupyingEntity
 
 
         OccupyPlatform(_newCord, _platform);
-
         return true;
     }
     public void OccupyPlatform(Vector2 newMapCord, PlatformEntity platform)
@@ -116,6 +123,25 @@ public class ButterFly : OccupyingEntity
             _mergedButterFlyComponent.TryMerge();
 
             platformEntity.occupingEntity = _mergedButterFlyComponent;
+        }
+    }
+
+    public void RandomIdle()
+    {
+        var _random = Random.Range(0, 3);
+
+        entityAnimator.SetFloat("IdleBlend", _random);
+        entityAnimator.SetTrigger("Idle");
+    }
+
+    public IEnumerator RandomIdleCoroutine()
+    {
+        while (true)
+        {
+            yield return waitForNewIdle;
+
+            Debug.Log("From coroutine");
+            RandomIdle();
         }
     }
     public Color GetColor()
