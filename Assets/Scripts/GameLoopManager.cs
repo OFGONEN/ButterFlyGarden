@@ -17,6 +17,8 @@ public class GameLoopManager : MonoBehaviour
     public NewCreatedObjectsSet newCreatedObjects;
     public CurrentLevelData currentLevelData;
 
+    public bool gameLoopStarted = false;
+
     public List<int> acquiredTargets;
     private void OnEnable()
     {
@@ -56,8 +58,9 @@ public class GameLoopManager : MonoBehaviour
     {
         var _swipeInputEvent = swipeInputEventListener.gameEvent as SwipeInputEvent;
 
-        if (_swipeInputEvent.swipeDirection == Vector2.zero) return;
+        if (gameLoopStarted || _swipeInputEvent.swipeDirection == Vector2.zero) return;
 
+        gameLoopStarted = true;
         entryPhase.Execute();
 
         // for (int i = butterFlySet.itemList.Count - 1; i >= 0; i--)
@@ -79,12 +82,12 @@ public class GameLoopManager : MonoBehaviour
         // {
         //     butterFlySet.itemList[i].Encounter();
         // }
-
     }
 
     public void EndLoopCheck()
     {
-        Debug.Log("EndLoopCheck");
+        gameLoopStarted = false;
+
         for (int i = 0; i < mergedButterFlySet.itemList.Count; i++)
         {
             AcquireTarget(mergedButterFlySet.itemList[i]);
