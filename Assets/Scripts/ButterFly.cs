@@ -1,7 +1,6 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
-using NaughtyAttributes;
 using UnityEngine;
+using DG.Tweening;
 
 public class ButterFly : OccupyingEntity
 {
@@ -16,6 +15,7 @@ public class ButterFly : OccupyingEntity
     [HideInInspector]
     public ButterFlyData butterFlyData;
 
+    private bool forcedIdle = false;
     private WaitForSeconds waitForNewIdle;
     private Coroutine randomIdleCoroutine;
 
@@ -39,7 +39,7 @@ public class ButterFly : OccupyingEntity
         renderer.SetPropertyBlock(materialPropertyBlock, 0); // Don't care about the 2nd material of wings.
 
         waitForNewIdle = new WaitForSeconds(Random.Range(creationSettings.butterFlyIdleAnimRepeatMin, creationSettings.butterFlyIdleAnimRepeatMax));
-        RandomIdle();
+        RandomIdle(); // Move this to levelmanager
         randomIdleCoroutine = StartCoroutine(RandomIdleCoroutine());
     }
     private void OnDisable()
@@ -59,6 +59,8 @@ public class ButterFly : OccupyingEntity
     public override void ResetToDefault()
     {
         // if has a protection vs. 
+        entityAnimator.enabled = false;
+        entityAnimator.enabled = true;
     }
     public bool MoveToPlatform(Vector2 additiveCord)
     {
@@ -70,14 +72,25 @@ public class ButterFly : OccupyingEntity
 
         var _targetPosition = _platform.transform.position;
         _targetPosition.y = creationSettings.butterFlyDistanceToLily;
-        transform.position = _targetPosition;
 
+        // transform.rotation = Quaternion.Euler(0, Vector2.SignedAngle(additiveCord, Vector2.right) + 90, 0);
+        transform.DORotate(new Vector3(0, Vector2.SignedAngle(additiveCord, Vector2.right) + 90, 0), creationSettings.butterFlyFlyDuration / 2);
 
-        OccupyPlatform(_newCord, _platform);
+        transform.DOMoveX(_targetPosition.x, creationSettings.butterFlyFlyDuration).OnComplete(() => OccupyPlatform(_newCord, _platform));
+        transform.DOMoveZ(_targetPosition.z, creationSettings.butterFlyFlyDuration);
+        transform.DOMoveY(_targetPosition.y + 0.75f, creationSettings.butterFlyFlyDuration / 2).SetLoops(2, LoopType.Yoyo);
+
+        entityAnimator.SetTrigger("Fly");
+
         return true;
     }
     public void OccupyPlatform(Vector2 newMapCord, PlatformEntity platform)
     {
+
+        entityAnimator.SetFloat("IdleBlend", 1);
+        entityAnimator.SetTrigger("Idle");
+        forcedIdle = true;
+
         platformEntity.occupingEntity = null;
 
         mapCord = newMapCord;
@@ -140,8 +153,10 @@ public class ButterFly : OccupyingEntity
         {
             yield return waitForNewIdle;
 
-            Debug.Log("From coroutine");
-            RandomIdle();
+            if (forcedIdle)
+                forcedIdle = false;
+            else
+                RandomIdle();
         }
     }
     public Color GetColor()

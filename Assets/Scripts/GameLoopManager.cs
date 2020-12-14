@@ -63,10 +63,10 @@ public class GameLoopManager : MonoBehaviour
             butterFlySet.itemList[i].Encounter();
         }
 
-        for (int i = frogSet.itemList.Count - 1; i >= 0; i--)
-        {
-            frogSet.itemList[i].Eat();
-        }
+        // for (int i = frogSet.itemList.Count - 1; i >= 0; i--)
+        // {
+        //     frogSet.itemList[i].Eat();
+        // }
 
         for (int i = butterFlySet.itemList.Count - 1; i >= 0; i--)
         {
