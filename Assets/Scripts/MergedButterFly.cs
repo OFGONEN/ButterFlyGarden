@@ -6,6 +6,8 @@ using FFStudio;
 
 public class MergedButterFly : ButterFly
 {
+    public ParticleSystem particleSystem;
+    public GamePhase encounterPhase;
     public CurrentLevelData currentLevelData;
     public MergedButterFlySet mergedButterFlySet;
     public NewCreatedObjectsSet newCreatedObjectSet;
@@ -14,6 +16,12 @@ public class MergedButterFly : ButterFly
 
     private static readonly int inputButterflyColorsShaderID = Shader.PropertyToID("inputButterflyColors");
     private static readonly int numberOfInputButterfliesShaderID = Shader.PropertyToID("numberOfInputButterflies");
+
+    private void Awake()
+    {
+        particleSystem.Play();
+        encounterPhase.AddWait();
+    }
 
     private void OnEnable()
     {
@@ -41,6 +49,11 @@ public class MergedButterFly : ButterFly
 
         newCreatedObjectSet.AddDictionary(mapCord, gameObject);
         newCreatedObjectSet.AddList(gameObject);
+    }
+
+    private void OnParticleSystemStopped()
+    {
+        encounterPhase.RemoveWait();
     }
     private void OnDisable()
     {

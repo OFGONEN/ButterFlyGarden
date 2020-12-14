@@ -10,8 +10,29 @@ public abstract class GamePhase : ScriptableObject
     public int wait = 0;
 
     public abstract void Execute();
-    public abstract void ChangeNext();
-    public abstract void AddWait();
-    public abstract void RemoveWait();
-    public abstract void Reset();
+    public void ChangeNext()
+    {
+        if (phaseEnded != null)
+            phaseEnded.Raise();
+
+        if (nextPhase != null)
+            nextPhase.Execute();
+    }
+    public void AddWait()
+    {
+        wait++;
+    }
+    public void RemoveWait()
+    {
+        wait--;
+        if (wait <= 0)
+        {
+            wait = 0;
+            ChangeNext();
+        }
+    }
+    public void Reset()
+    {
+        wait = 0;
+    }
 }
