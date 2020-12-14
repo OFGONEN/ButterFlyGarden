@@ -4,9 +4,12 @@ using DG.Tweening;
 
 public class ButterFly : OccupyingEntity
 {
+    [HideInInspector]
     public Color color;
+    public GamePhase movementPhase;
 
     private static int ColorShaderID = Shader.PropertyToID("_Color");
+
     public OccupyingEntitySet occupyingEntitySet;
     public ButterFlySet butterFlySet;
     public LevelCreationSettings creationSettings;
@@ -70,6 +73,8 @@ public class ButterFly : OccupyingEntity
 
         if (_platform == null || _platform.occupingEntity is Frog) return false;
 
+        movementPhase.AddWait();
+
         var _targetPosition = _platform.transform.position;
         _targetPosition.y = creationSettings.butterFlyDistanceToLily;
 
@@ -96,6 +101,8 @@ public class ButterFly : OccupyingEntity
         mapCord = newMapCord;
         platform.inComingEntity = this;
         platformEntity = platform;
+
+        movementPhase.RemoveWait();
     }
     public virtual void Encounter()
     {

@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a9ad006c7e9fe6408f6161d33096872, type: 3}
+  m_Name: MovementPhase
+  m_EditorClassIdentifier: 
+  nextPhase: {fileID: 0}
+  phaseEnded: {fileID: 11400000, guid: a4a0ae58a544def4f9afd890c8dea4d7, type: 2}
+  wait: 0
+  butterFlySet: {fileID: 11400000, guid: de4ec2b8f28f980478ed1d13bd17459b, type: 2}
+  swipeInputEvent: {fileID: 11400000, guid: a243713d15ad18045b2567d2d12ff3e8, type: 2}

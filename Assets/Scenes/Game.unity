@@ -894,6 +894,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3525164218278667692, guid: 722573fdabf01d24789a6a186230d7f4, type: 3}
+      propertyPath: entryPhase
+      value: 
+      objectReference: {fileID: 11400000, guid: 410e6b4d763120e42baadd67efe6353b, type: 2}
+    - target: {fileID: 3525164218278667692, guid: 722573fdabf01d24789a6a186230d7f4, type: 3}
+      propertyPath: endPhaseEventListener.gameEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: a4a0ae58a544def4f9afd890c8dea4d7, type: 2}
     - target: {fileID: 3525164218278667693, guid: 722573fdabf01d24789a6a186230d7f4, type: 3}
       propertyPath: m_Name
       value: GameManager
