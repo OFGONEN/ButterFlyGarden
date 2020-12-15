@@ -14,6 +14,8 @@ public class Frog : OccupyingEntity
 
     [HideInInspector]
     public FrogData frogData;
+
+    public bool chewing = false;
     private void OnEnable()
     {
         if (!hasData) return;
@@ -42,17 +44,32 @@ public class Frog : OccupyingEntity
     {
         var _platform = platformEntity.GetNeighborPlatform(direction);
 
+
         if (_platform != null && _platform.occupingEntity != null && _platform.occupingEntity is ButterFly)
         {
+            var _butterFly = _platform.occupingEntity as ButterFly;
+
+            if (_butterFly.attachedEntity != null && _butterFly.attachedEntity is Bubble)
+            {
+                chewing = false;
+
+                var _bubble = _butterFly.attachedEntity as Bubble;
+                _bubble.Pop();
+            }
+            else
+            {
+                chewing = true;
+
+                var _targetTransform = _platform.occupingEntity.transform;
+
+                _targetTransform.DOMove(transform.position, levelCreationSettings.butterFlyFlyDuration).OnComplete(() => Eat(_platform));
+                _targetTransform.DOScale(new Vector3(0.1f, 0.1f, 0.1f), levelCreationSettings.butterFlyFlyDuration);
+
+            }
+
             eatPhase.AddWait();
-
             entityAnimator.SetTrigger("Attack");
-
-            var _targetTransform = _platform.occupingEntity.transform;
-
-            _targetTransform.DOMove(transform.position, levelCreationSettings.butterFlyFlyDuration).OnComplete(() => Eat(_platform));
-            _targetTransform.DOScale(new Vector3(0.1f, 0.1f, 0.1f), levelCreationSettings.butterFlyFlyDuration);
-
+            entityAnimator.SetBool("Chew", chewing);
         }
     }
     void Eat(PlatformEntity platform)
@@ -61,6 +78,12 @@ public class Frog : OccupyingEntity
         platformEntity.entityAnimator.SetTrigger("Ripple");
         platform.occupingEntity.gameObject.SetActive(false);
         platform.occupingEntity = null;
+    }
+
+    void EndAttack()
+    {
+        if (!chewing)
+            eatPhase.RemoveWait();
     }
     void EndChew()
     {

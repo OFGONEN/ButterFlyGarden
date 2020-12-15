@@ -4,7 +4,6 @@ using UnityEngine;
 
 public abstract class PlatformEntity : Entity
 {
-    [HideInInspector]
     public OccupyingEntity occupingEntity;
     [HideInInspector]
     public OccupyingEntity inComingEntity;

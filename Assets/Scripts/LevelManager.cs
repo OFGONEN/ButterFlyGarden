@@ -198,6 +198,7 @@ public class LevelManager : MonoBehaviour
             var _bubbleData = _bubble.bubbleData;
 
             _bubbles.Add(_bubble);
+            _bubble.transform.SetParent(parentTransform);
 
             _bubble.transform.localPosition = new Vector3(_bubbleData.position.x * creationSettings.horizontalDistance,
              creationSettings.frogFlyDistanceToLily, // Stands on top of lily
@@ -205,7 +206,6 @@ public class LevelManager : MonoBehaviour
 
             _bubble.transform.rotation = Quaternion.Euler(0, _bubbleData.direction, 0);
 
-            _bubble.transform.SetParent(parentTransform);
 
             _bubble.color = _bubbleData.bubbleColor;
             _bubble.mapCord = _bubbleData.mapCord;

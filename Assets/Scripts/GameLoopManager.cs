@@ -89,7 +89,6 @@ public class GameLoopManager : MonoBehaviour
 
     public void EndLoopCheck()
     {
-        Debug.Log("End Loop Check");
         gameLoopStarted = false;
 
         for (int i = 0; i < mergedButterFlySet.itemList.Count; i++)

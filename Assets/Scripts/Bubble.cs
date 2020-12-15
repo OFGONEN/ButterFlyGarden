@@ -34,6 +34,10 @@ public class Bubble : OccupyingEntity
         bubbleSet.RemoveList(this);
         bubbleSet.RemoveDictionary(mapCord);
     }
+    private void OnParticleSystemStopped()
+    {
+        // gameObject.SetActive(false);
+    }
     private void Start()
     {
         materialPropertyBlock = new MaterialPropertyBlock();
@@ -50,12 +54,15 @@ public class Bubble : OccupyingEntity
     }
     public void Pop()
     {
+        attachedEntity.attachedEntity = null;
+        attachedEntity = null;
         transform.GetChild(0).gameObject.SetActive(false);
         particles.Play();
     }
 
     public void Attach(OccupyingEntity occupyingEntity)
     {
+        attachedEntity = occupyingEntity;
         transform.SetParent(occupyingEntity.transform);
     }
     public override void SetData()

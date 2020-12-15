@@ -21,7 +21,6 @@ public class FFMobileInput : MonoBehaviour
         tapInputEvent.tapCount = count;
 
         tapInputEvent.Raise();
-        Debug.Log("Tapped: " + count);
     }
 
     Vector2 DecideDirection(float unsignedAngle, Vector2 delta)

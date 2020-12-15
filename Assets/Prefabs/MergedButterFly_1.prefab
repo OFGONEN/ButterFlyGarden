@@ -70,7 +70,7 @@ MonoBehaviour:
     mapCord: {x: 0, y: 0}
     direction: 0
     butterFlyColor: {r: 0, g: 0, b: 0, a: 0}
-  particles: {fileID: 0}
+  particles: {fileID: 8373289865928911372}
   encounterPhase: {fileID: 11400000, guid: ee667069fd21a3f43b0324bd251935ad, type: 2}
   currentLevelData: {fileID: 11400000, guid: 7a8bf9dea00590b4abe352811f59e3e8, type: 2}
   mergedButterFlySet: {fileID: 11400000, guid: e76987198a0c782439d5b5a835191f3c, type: 2}

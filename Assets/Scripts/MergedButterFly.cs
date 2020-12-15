@@ -124,6 +124,7 @@ public class MergedButterFly : ButterFly
 
     public void TryMerge()
     {
+        Debug.Log("Try Merge");
         var _targetButterFlies = currentLevelData.levelData.targetButterFlyDatas;
 
         int _targetButterFlyDataIndex;
@@ -136,9 +137,13 @@ public class MergedButterFly : ButterFly
         {
             _targetButterFlyData = _targetButterFlies[_targetButterFlyDataIndex];
             RearrangeInputButterFlies(_targetButterFlyData);
+            Debug.Log("correct");
         }
         else
+        {
             _targetButterFlyData = currentLevelData.levelData.wrongTargetData;
+            Debug.Log("false");
+        }
 
 
         if (inputButterFlies.Count <= _targetButterFlyData.butterFlyPatterns.Count)

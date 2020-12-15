@@ -111,6 +111,17 @@ public class ButterFly : OccupyingEntity
             platformEntity.inComingEntity = null;
             platformEntity.occupingEntity = this;
         }
+        else if (platformEntity.occupingEntity is Bubble)
+        {
+            platformEntity.inComingEntity = null;
+
+            var _bubble = platformEntity.occupingEntity as Bubble;
+
+            attachedEntity = _bubble;
+            _bubble.Attach(this);
+
+            platformEntity.occupingEntity = this;
+        }
         else if (platformEntity.occupingEntity is MergedButterFly)
         {
             platformEntity.inComingEntity = null;
