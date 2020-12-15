@@ -59,7 +59,6 @@ public class Frog : OccupyingEntity
     }
     void Eat(PlatformEntity platform)
     {
-        Debug.Log("Play particle");
         particleSystem.Play();
         platform.occupingEntity.gameObject.SetActive(false);
         platform.occupingEntity = null;
