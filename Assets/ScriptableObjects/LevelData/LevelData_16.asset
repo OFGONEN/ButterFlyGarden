@@ -1,0 +1,122 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca933057095f7584186e51865125b045, type: 3}
+  m_Name: LevelData_16
+  m_EditorClassIdentifier: 
+  leftDown: {x: 1, y: 1}
+  size: {x: 3, y: 6}
+  lilyDatas:
+  - levelObject: {fileID: 5649308766709187496, guid: b360c0488b5d672448e3ea8dbbab6cdb, type: 3}
+    position: {x: 0, y: 0}
+    mapCord: {x: 0, y: 0}
+    direction: 0
+  - levelObject: {fileID: 5649308766709187496, guid: b360c0488b5d672448e3ea8dbbab6cdb, type: 3}
+    position: {x: 0, y: 1}
+    mapCord: {x: 0, y: 1}
+    direction: 0
+  - levelObject: {fileID: 5649308766709187496, guid: b360c0488b5d672448e3ea8dbbab6cdb, type: 3}
+    position: {x: 0, y: 4}
+    mapCord: {x: 0, y: 4}
+    direction: 0
+  - levelObject: {fileID: 5649308766709187496, guid: b360c0488b5d672448e3ea8dbbab6cdb, type: 3}
+    position: {x: 0, y: 5}
+    mapCord: {x: 0, y: 5}
+    direction: 0
+  - levelObject: {fileID: 5649308766709187496, guid: b360c0488b5d672448e3ea8dbbab6cdb, type: 3}
+    position: {x: 1, y: 0}
+    mapCord: {x: 1, y: 0}
+    direction: 0
+  - levelObject: {fileID: 5649308766709187496, guid: b360c0488b5d672448e3ea8dbbab6cdb, type: 3}
+    position: {x: 1, y: 1}
+    mapCord: {x: 1, y: 1}
+    direction: 0
+  - levelObject: {fileID: 5649308766709187496, guid: b360c0488b5d672448e3ea8dbbab6cdb, type: 3}
+    position: {x: 1, y: 2}
+    mapCord: {x: 1, y: 2}
+    direction: 0
+  - levelObject: {fileID: 5649308766709187496, guid: b360c0488b5d672448e3ea8dbbab6cdb, type: 3}
+    position: {x: 1, y: 3}
+    mapCord: {x: 1, y: 3}
+    direction: 0
+  - levelObject: {fileID: 5649308766709187496, guid: b360c0488b5d672448e3ea8dbbab6cdb, type: 3}
+    position: {x: 1, y: 4}
+    mapCord: {x: 1, y: 4}
+    direction: 0
+  - levelObject: {fileID: 5649308766709187496, guid: b360c0488b5d672448e3ea8dbbab6cdb, type: 3}
+    position: {x: 1, y: 5}
+    mapCord: {x: 1, y: 5}
+    direction: 0
+  - levelObject: {fileID: 5649308766709187496, guid: b360c0488b5d672448e3ea8dbbab6cdb, type: 3}
+    position: {x: 2, y: 1}
+    mapCord: {x: 2, y: 1}
+    direction: 270
+  - levelObject: {fileID: 5649308766709187496, guid: b360c0488b5d672448e3ea8dbbab6cdb, type: 3}
+    position: {x: 2, y: 2}
+    mapCord: {x: 2, y: 2}
+    direction: 0
+  - levelObject: {fileID: 5649308766709187496, guid: b360c0488b5d672448e3ea8dbbab6cdb, type: 3}
+    position: {x: 2, y: 3}
+    mapCord: {x: 2, y: 3}
+    direction: 0
+  - levelObject: {fileID: 5649308766709187496, guid: b360c0488b5d672448e3ea8dbbab6cdb, type: 3}
+    position: {x: 2, y: 4}
+    mapCord: {x: 2, y: 4}
+    direction: 270
+  butterFlyDatas:
+  - levelObject: {fileID: 2418258055063634259, guid: 2dcc9cd08bbad2f4cb53529e2d139c3f, type: 3}
+    position: {x: 0, y: 1}
+    mapCord: {x: 0, y: 1}
+    direction: 0
+    butterFlyColor: {r: 0, g: 0, b: 0, a: 0}
+  - levelObject: {fileID: 2418258055063634259, guid: 2dcc9cd08bbad2f4cb53529e2d139c3f, type: 3}
+    position: {x: 0, y: 4}
+    mapCord: {x: 0, y: 4}
+    direction: 0
+    butterFlyColor: {r: 0, g: 0, b: 0, a: 0}
+  - levelObject: {fileID: 2418258055063634259, guid: 2dcc9cd08bbad2f4cb53529e2d139c3f, type: 3}
+    position: {x: 1, y: 0}
+    mapCord: {x: 1, y: 0}
+    direction: 0
+    butterFlyColor: {r: 0, g: 0, b: 0, a: 0}
+  - levelObject: {fileID: 2418258055063634259, guid: 2dcc9cd08bbad2f4cb53529e2d139c3f, type: 3}
+    position: {x: 1, y: 5}
+    mapCord: {x: 1, y: 5}
+    direction: 0
+    butterFlyColor: {r: 0, g: 0, b: 0, a: 0}
+  frogDatas:
+  - levelObject: {fileID: 2535748549582999888, guid: bba1eeb7aba8be442abe13526dccb215, type: 3}
+    position: {x: 2, y: 1}
+    mapCord: {x: 2, y: 1}
+    direction: 270
+    frogColor: {r: 0, g: 0, b: 0, a: 0}
+  - levelObject: {fileID: 2535748549582999888, guid: bba1eeb7aba8be442abe13526dccb215, type: 3}
+    position: {x: 2, y: 4}
+    mapCord: {x: 2, y: 4}
+    direction: 270
+    frogColor: {r: 0, g: 0, b: 0, a: 0}
+  bubbleDatas:
+  - levelObject: {fileID: 4021181948566295943, guid: df651b0c0b66e5f4d847912ba5d85b43, type: 3}
+    position: {x: 1, y: 1}
+    mapCord: {x: 1, y: 1}
+    direction: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+  - levelObject: {fileID: 4021181948566295943, guid: df651b0c0b66e5f4d847912ba5d85b43, type: 3}
+    position: {x: 1, y: 4}
+    mapCord: {x: 1, y: 4}
+    direction: 0
+    bubbleColor: {r: 0, g: 0, b: 0, a: 0}
+  targetButterFlyDatas: []
+  wrongTargetData:
+    butterFlyObject: {fileID: 0}
+    butterFlyColors: []
+    butterFlyPatterns: []
+    finalPattern: {fileID: 0}
