@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Frog : OccupyingEntity
 {
-    public ParticleSystem particleSystem;
+    public ParticleSystem particles;
     public Color color;
 
     public EatPhase eatPhase;
@@ -59,7 +59,7 @@ public class Frog : OccupyingEntity
     }
     void Eat(PlatformEntity platform)
     {
-        particleSystem.Play();
+        particles.Play();
         platformEntity.entityAnimator.SetTrigger("Ripple");
         platform.occupingEntity.gameObject.SetActive(false);
         platform.occupingEntity = null;

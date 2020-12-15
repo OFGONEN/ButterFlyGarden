@@ -77,7 +77,7 @@ Material:
     - _OcclusionStrength: 1
     - _OuterRadius: 0.55
     - _Parallax: 0.02
-    - _RippleInnerRadius: 0.37
+    - _RippleInnerRadius: 0.31
     - _RippleOuterRadius: 0.4
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1

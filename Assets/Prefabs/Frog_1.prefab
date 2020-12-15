@@ -53,7 +53,7 @@ MonoBehaviour:
   direction: {x: 0, y: 0}
   hasData: 0
   platformEntity: {fileID: 0}
-  particleSystem: {fileID: 9084837325451494333}
+  particles: {fileID: 9084837325451494333}
   color: {r: 0, g: 0, b: 0, a: 0}
   eatPhase: {fileID: 11400000, guid: db1587f0ea15a0d4d91e83db81eb45cf, type: 2}
   occupyingEntitySet: {fileID: 11400000, guid: 316d0d77841efbd42a96b7992bc2f891, type: 2}
