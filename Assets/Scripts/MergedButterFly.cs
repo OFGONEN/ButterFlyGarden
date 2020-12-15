@@ -83,6 +83,24 @@ public class MergedButterFly : ButterFly
             platformEntity.inComingEntity = null;
             platformEntity.occupingEntity = this;
         }
+        else if (attachedEntity is Bubble && platformEntity.occupingEntity is Bubble) // ButterFly already has a bubble 
+        {
+            (platformEntity.occupingEntity as Bubble).Pop();
+            (attachedEntity as Bubble).Pop();
+
+            platformEntity.inComingEntity = null;
+            platformEntity.occupingEntity = this;
+        }
+        else if (platformEntity.occupingEntity is Bubble)
+        {
+            platformEntity.inComingEntity = null;
+
+            var _bubble = platformEntity.occupingEntity as Bubble;
+
+            _bubble.Attach(this);
+
+            platformEntity.occupingEntity = this;
+        }
         else if (platformEntity.occupingEntity is MergedButterFly && platformEntity.occupingEntity != this)
         {
             platformEntity.inComingEntity = null;
@@ -95,6 +113,11 @@ public class MergedButterFly : ButterFly
 
             _mergedButterFly.TryMerge();
 
+            if (_mergedButterFly.attachedEntity == null && attachedEntity is Bubble)
+            {
+                (attachedEntity as Bubble).Attach(_mergedButterFly);
+            }
+
             gameObject.SetActive(false);
         }
         else if (platformEntity.occupingEntity is ButterFly && platformEntity.occupingEntity != this)
@@ -105,6 +128,12 @@ public class MergedButterFly : ButterFly
             platformEntity.occupingEntity = this;
 
             inputButterFlies.Add(_butterFly);
+
+            if (attachedEntity == null && _butterFly.attachedEntity is Bubble)
+            {
+                (attachedEntity as Bubble).Attach(this);
+            }
+
             TryMerge();
 
             _butterFly.gameObject.SetActive(false);
@@ -124,7 +153,6 @@ public class MergedButterFly : ButterFly
 
     public void TryMerge()
     {
-        Debug.Log("Try Merge");
         var _targetButterFlies = currentLevelData.levelData.targetButterFlyDatas;
 
         int _targetButterFlyDataIndex;
@@ -137,12 +165,10 @@ public class MergedButterFly : ButterFly
         {
             _targetButterFlyData = _targetButterFlies[_targetButterFlyDataIndex];
             RearrangeInputButterFlies(_targetButterFlyData);
-            Debug.Log("correct");
         }
         else
         {
             _targetButterFlyData = currentLevelData.levelData.wrongTargetData;
-            Debug.Log("false");
         }
 
 

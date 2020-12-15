@@ -111,13 +111,20 @@ public class ButterFly : OccupyingEntity
             platformEntity.inComingEntity = null;
             platformEntity.occupingEntity = this;
         }
+        else if (attachedEntity is Bubble && platformEntity.occupingEntity is Bubble) // ButterFly already has a bubble 
+        {
+            (platformEntity.occupingEntity as Bubble).Pop();
+            (attachedEntity as Bubble).Pop();
+
+            platformEntity.inComingEntity = null;
+            platformEntity.occupingEntity = this;
+        }
         else if (platformEntity.occupingEntity is Bubble)
         {
             platformEntity.inComingEntity = null;
 
             var _bubble = platformEntity.occupingEntity as Bubble;
 
-            attachedEntity = _bubble;
             _bubble.Attach(this);
 
             platformEntity.occupingEntity = this;
@@ -129,6 +136,11 @@ public class ButterFly : OccupyingEntity
 
 
             gameObject.SetActive(false);
+
+            if (_mergedButterFly.attachedEntity == null && attachedEntity is Bubble)
+            {
+                (attachedEntity as Bubble).Attach(_mergedButterFly);
+            }
 
             _mergedButterFly.inputButterFlies.Add(this);
             _mergedButterFly.TryMerge();
@@ -148,6 +160,15 @@ public class ButterFly : OccupyingEntity
             _mergedButterFlyComponent.mapCord = mapCord;
             _mergedButterFlyComponent.platformEntity = platformEntity;
             _mergedButterFlyComponent.SetData();
+
+            if (attachedEntity is Bubble)
+            {
+                (attachedEntity as Bubble).Attach(_mergedButterFlyComponent);
+            }
+            else if (_occupyingButterFly.attachedEntity is Bubble)
+            {
+                (_occupyingButterFly.attachedEntity as Bubble).Attach(_mergedButterFlyComponent);
+            }
 
             _mergedButterFlyComponent.inputButterFlies.Add(_occupyingButterFly);
             _mergedButterFlyComponent.inputButterFlies.Add(this);

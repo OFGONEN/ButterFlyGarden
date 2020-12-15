@@ -54,7 +54,9 @@ public class Bubble : OccupyingEntity
     }
     public void Pop()
     {
-        attachedEntity.attachedEntity = null;
+        if (attachedEntity != null)
+            attachedEntity.attachedEntity = null;
+
         attachedEntity = null;
         transform.GetChild(0).gameObject.SetActive(false);
         particles.Play();
@@ -62,7 +64,11 @@ public class Bubble : OccupyingEntity
 
     public void Attach(OccupyingEntity occupyingEntity)
     {
+        if (attachedEntity != null)
+            attachedEntity.attachedEntity = null;
+
         attachedEntity = occupyingEntity;
+        attachedEntity.attachedEntity = this;
         transform.SetParent(occupyingEntity.transform);
     }
     public override void SetData()
