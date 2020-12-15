@@ -23,11 +23,25 @@ public class SoundManager : MonoBehaviour
             audioSources.Add(_audioEvent.GetInstanceID(), _audioComponent);
         }
     }
-    private void Start()
+    private void OnEnable()
     {
         for (int i = 0; i < soundEventListeners.Length; i++)
         {
-            soundEventListeners[i].response = () => PlaySound(soundEventListeners[i].gameEvent.GetInstanceID());
+            soundEventListeners[i].OnEnable();
+        }
+    }
+    private void OnDisable()
+    {
+        for (int i = 0; i < soundEventListeners.Length; i++)
+        {
+            soundEventListeners[i].OnDisable();
+        }
+    }
+    private void Start()
+    {
+        foreach (var soundEventListener in soundEventListeners)
+        {
+            soundEventListener.response = (() => PlaySound(soundEventListener.gameEvent.GetInstanceID()));
         }
     }
     void PlaySound(int instanceId)
@@ -35,7 +49,9 @@ public class SoundManager : MonoBehaviour
         AudioSource _source;
         audioSources.TryGetValue(instanceId, out _source);
 
-        if (_source)
+        if (_source != null && !_source.isPlaying)
+        {
             _source.Play();
+        }
     }
 }

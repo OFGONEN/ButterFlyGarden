@@ -11,6 +11,8 @@ public class MergedButterFly : ButterFly
     public CurrentLevelData currentLevelData;
     public MergedButterFlySet mergedButterFlySet;
     public NewCreatedObjectsSet newCreatedObjectSet;
+    public SoundEvent sound_merge_correct;
+    public SoundEvent sound_merge_wrong;
     public Texture2D patternTexture;
     public List<ButterFly> inputButterFlies;
 
@@ -165,10 +167,12 @@ public class MergedButterFly : ButterFly
         {
             _targetButterFlyData = _targetButterFlies[_targetButterFlyDataIndex];
             RearrangeInputButterFlies(_targetButterFlyData);
+            sound_merge_correct.Raise();
         }
         else
         {
             _targetButterFlyData = currentLevelData.levelData.wrongTargetData;
+            sound_merge_wrong.Raise();
         }
 
 

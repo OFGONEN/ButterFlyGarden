@@ -167,10 +167,10 @@ MonoBehaviour:
   attachedEntity: {fileID: 0}
   color: {r: 0, g: 0, b: 0, a: 0}
   rotateBy: {x: 0, y: 30, z: 0}
-  attachedEntity: {fileID: 0}
   particles: {fileID: 481492307176190915}
   occupyingEntitySet: {fileID: 11400000, guid: 316d0d77841efbd42a96b7992bc2f891, type: 2}
   bubbleSet: {fileID: 11400000, guid: a1a5a0f78886a054b856843fe295d022, type: 2}
+  bubblePopSound: {fileID: 11400000, guid: 2c5436e0145b6724d998165ed33d9f38, type: 2}
   bubbleData:
     levelObject: {fileID: 0}
     position: {x: 0, y: 0}

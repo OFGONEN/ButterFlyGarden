@@ -12,6 +12,7 @@ public class ButterFly : OccupyingEntity
 
     public OccupyingEntitySet occupyingEntitySet;
     public ButterFlySet butterFlySet;
+    public SoundEvent sound_butterfly_movement;
     public LevelCreationSettings creationSettings;
     public GameObject mergedButterFly;
 
@@ -74,6 +75,7 @@ public class ButterFly : OccupyingEntity
         if (_platform == null || _platform.occupingEntity is Frog) return false;
 
         movementPhase.AddWait();
+        sound_butterfly_movement.Raise();
 
         var _targetPosition = _platform.transform.position;
         _targetPosition.y = creationSettings.butterFlyDistanceToLily;

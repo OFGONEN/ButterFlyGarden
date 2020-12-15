@@ -10,6 +10,7 @@ public class Bubble : OccupyingEntity
     public ParticleSystem particles;
     public OccupyingEntitySet occupyingEntitySet;
     public BubbleSet bubbleSet;
+    public SoundEvent bubblePopSound;
 
     [HideInInspector]
     public BubbleData bubbleData;
@@ -60,6 +61,7 @@ public class Bubble : OccupyingEntity
         attachedEntity = null;
         transform.GetChild(0).gameObject.SetActive(false);
         particles.Play();
+        bubblePopSound.Raise();
     }
 
     public void Attach(OccupyingEntity occupyingEntity)
