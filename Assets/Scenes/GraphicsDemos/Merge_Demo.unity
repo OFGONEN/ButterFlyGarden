@@ -181,7 +181,7 @@ PrefabInstance:
     - target: {fileID: 7108595964223062081, guid: 920d740d8299f30429704b417f457c5b, type: 3}
       propertyPath: patternImage
       value: 
-      objectReference: {fileID: 2800000, guid: 0d966aad0ef66464e8254ae80255c64e, type: 3}
+      objectReference: {fileID: 2800000, guid: 7510171b5d0e6174784a858de1ea6fad, type: 3}
     - target: {fileID: 7108595964223062081, guid: 920d740d8299f30429704b417f457c5b, type: 3}
       propertyPath: inputButterflies.Array.size
       value: 3
@@ -1074,8 +1074,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 180edb81958608d418c6fddf70ac1fca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  relativeToParent: 0
-  maxSpeed: {x: 1, y: 0, z: 1}
 --- !u!114 &1261786879 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7108595964223062081, guid: 920d740d8299f30429704b417f457c5b, type: 3}
