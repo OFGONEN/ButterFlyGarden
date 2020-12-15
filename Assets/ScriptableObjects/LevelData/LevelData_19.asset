@@ -80,7 +80,7 @@ MonoBehaviour:
     position: {x: 0, y: 0}
     mapCord: {x: 0, y: 0}
     direction: 0
-    butterFlyColor: {r: 0, g: 0, b: 0, a: 0}
+    butterFlyColor: {r: 1, g: 0.28627452, b: 0.07450981, a: 0}
   - levelObject: {fileID: 2418258055063634259, guid: 2dcc9cd08bbad2f4cb53529e2d139c3f, type: 3}
     position: {x: 0, y: 4}
     mapCord: {x: 0, y: 4}
@@ -90,23 +90,23 @@ MonoBehaviour:
     position: {x: 0, y: 5}
     mapCord: {x: 0, y: 5}
     direction: 0
-    butterFlyColor: {r: 0, g: 0, b: 0, a: 0}
+    butterFlyColor: {r: 0.15432537, g: 0.32483092, b: 0.6415094, a: 0}
   - levelObject: {fileID: 2418258055063634259, guid: 2dcc9cd08bbad2f4cb53529e2d139c3f, type: 3}
     position: {x: 2, y: 5}
     mapCord: {x: 2, y: 5}
     direction: 0
-    butterFlyColor: {r: 0, g: 0, b: 0, a: 0}
+    butterFlyColor: {r: 0.53295296, g: 0.20216268, b: 0.5566038, a: 0}
   frogDatas:
   - levelObject: {fileID: 2535748549582999888, guid: bba1eeb7aba8be442abe13526dccb215, type: 3}
     position: {x: 1, y: 0}
     mapCord: {x: 1, y: 0}
     direction: 0
-    frogColor: {r: 0, g: 0, b: 0, a: 0}
+    frogColor: {r: 0.8784314, g: 0.69411767, b: 0, a: 0}
   - levelObject: {fileID: 2535748549582999888, guid: bba1eeb7aba8be442abe13526dccb215, type: 3}
     position: {x: 1, y: 4}
     mapCord: {x: 1, y: 4}
     direction: 0
-    frogColor: {r: 0, g: 0, b: 0, a: 0}
+    frogColor: {r: 0.8784314, g: 0.69411767, b: 0, a: 0}
   bubbleDatas:
   - levelObject: {fileID: 4021181948566295943, guid: df651b0c0b66e5f4d847912ba5d85b43, type: 3}
     position: {x: 1, y: 5}

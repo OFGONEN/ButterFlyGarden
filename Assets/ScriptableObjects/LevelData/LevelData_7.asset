@@ -60,22 +60,22 @@ MonoBehaviour:
     position: {x: 0, y: 2}
     mapCord: {x: 0, y: 2}
     direction: 0
-    butterFlyColor: {r: 0, g: 0, b: 0, a: 0}
+    butterFlyColor: {r: 0.972549, g: 0.5372549, b: 0.011764706, a: 0}
   - levelObject: {fileID: 2418258055063634259, guid: 2dcc9cd08bbad2f4cb53529e2d139c3f, type: 3}
     position: {x: 1, y: 0}
     mapCord: {x: 1, y: 0}
     direction: 0
-    butterFlyColor: {r: 0, g: 0, b: 0, a: 0}
+    butterFlyColor: {r: 0.96862745, g: 0.8666667, b: 0.28235295, a: 0}
   - levelObject: {fileID: 2418258055063634259, guid: 2dcc9cd08bbad2f4cb53529e2d139c3f, type: 3}
     position: {x: 2, y: 2}
     mapCord: {x: 2, y: 2}
     direction: 0
-    butterFlyColor: {r: 0, g: 0, b: 0, a: 0}
+    butterFlyColor: {r: 0.11213954, g: 0.14612366, b: 0.6792453, a: 0}
   - levelObject: {fileID: 2418258055063634259, guid: 2dcc9cd08bbad2f4cb53529e2d139c3f, type: 3}
     position: {x: 2, y: 4}
     mapCord: {x: 2, y: 4}
     direction: 0
-    butterFlyColor: {r: 0, g: 0, b: 0, a: 0}
+    butterFlyColor: {r: 0.5849056, g: 0, b: 0, a: 0}
   frogDatas: []
   bubbleDatas: []
   targetButterFlyDatas: []
