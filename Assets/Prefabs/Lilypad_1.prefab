@@ -79,7 +79,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   renderer: {fileID: 6460402419971001205}
-  entityAnimator: {fileID: 0}
+  entityAnimator: {fileID: 1021003599}
   mapCord: {x: 0, y: 0}
   direction: {x: 0, y: 0}
   hasData: 0
@@ -101,7 +101,7 @@ Animator:
   m_GameObject: {fileID: 5649308766709187496}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f08557858bf562e4c8281c13c41695b7, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -137,7 +137,6 @@ GameObject:
   - component: {fileID: 4421692688252376509}
   - component: {fileID: 2993756708342744779}
   - component: {fileID: 949857503390427704}
-  - component: {fileID: 1223895002}
   m_Layer: 0
   m_Name: Foam
   m_TagString: Untagged
@@ -208,23 +207,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!111 &1223895002
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8768123701286535757}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 4c329bfc910d2de47afaaf735227b229, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: 4c329bfc910d2de47afaaf735227b229, type: 2}
-  - {fileID: 7400000, guid: c86af67e675927d49820382df8be65fe, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!1001 &5649308766920808433
 PrefabInstance:
   m_ObjectHideFlags: 0

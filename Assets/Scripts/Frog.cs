@@ -60,6 +60,7 @@ public class Frog : OccupyingEntity
     void Eat(PlatformEntity platform)
     {
         particleSystem.Play();
+        platformEntity.entityAnimator.SetTrigger("Ripple");
         platform.occupingEntity.gameObject.SetActive(false);
         platform.occupingEntity = null;
     }
