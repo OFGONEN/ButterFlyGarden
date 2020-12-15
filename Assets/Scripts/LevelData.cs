@@ -55,6 +55,7 @@ public struct BubbleData
 [System.Serializable]
 public struct TargetButterFlyData
 {
+    public GameObject butterFlyObject;
     public List<Color> butterFlyColors;
     public List<Texture2D> butterFlyPatterns;
     public Texture2D finalPattern;

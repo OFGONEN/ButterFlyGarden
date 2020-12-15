@@ -7,6 +7,7 @@ public class ButterFly : OccupyingEntity
     [HideInInspector]
     public Color color;
     public GamePhase movementPhase;
+    public CurrentLevelData currentLevelData;
 
     private static int ColorShaderID = Shader.PropertyToID("_Color");
 
@@ -14,7 +15,6 @@ public class ButterFly : OccupyingEntity
     public ButterFlySet butterFlySet;
     public SoundEvent sound_butterfly_movement;
     public LevelCreationSettings creationSettings;
-    public GameObject mergedButterFly;
 
     [HideInInspector]
     public ButterFlyData butterFlyData;
@@ -156,7 +156,24 @@ public class ButterFly : OccupyingEntity
             gameObject.SetActive(false);
 
             //create merged butterfly
-            var _mergedButterFly = GameObject.Instantiate(mergedButterFly, transform.position, transform.rotation, transform.parent);
+            int _dataIndex;
+
+            var _canMerge = currentLevelData.FindTarGetButterFly(_occupyingButterFly.color,
+            color,
+            out _dataIndex);
+
+            GameObject _mergedObject;
+            if (_canMerge)
+                _mergedObject = currentLevelData.levelData.targetButterFlyDatas[_dataIndex].butterFlyObject;
+            else
+                _mergedObject = currentLevelData.levelData.wrongTargetData.butterFlyObject;
+
+
+            var _mergedButterFly = GameObject.Instantiate(_mergedObject,
+            transform.position,
+            transform.rotation,
+            transform.parent);
+
             var _mergedButterFlyComponent = _mergedButterFly.GetComponent<MergedButterFly>();
 
             _mergedButterFlyComponent.mapCord = mapCord;
@@ -174,7 +191,7 @@ public class ButterFly : OccupyingEntity
 
             _mergedButterFlyComponent.inputButterFlies.Add(_occupyingButterFly);
             _mergedButterFlyComponent.inputButterFlies.Add(this);
-            _mergedButterFlyComponent.TryMerge();
+            _mergedButterFlyComponent.Merge(_dataIndex, _canMerge);
 
             platformEntity.occupingEntity = _mergedButterFlyComponent;
         }

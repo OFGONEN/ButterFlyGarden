@@ -8,7 +8,6 @@ public class MergedButterFly : ButterFly
 {
     public ParticleSystem particles;
     public GamePhase encounterPhase;
-    public CurrentLevelData currentLevelData;
     public MergedButterFlySet mergedButterFlySet;
     public NewCreatedObjectsSet newCreatedObjectSet;
     public SoundEvent sound_merge_correct;
@@ -151,6 +150,35 @@ public class MergedButterFly : ButterFly
                                                                   .ToArray());
         materialPropertyBlock.SetInt(numberOfInputButterfliesShaderID, inputButterFlies.Count);
         renderer.SetPropertyBlock(materialPropertyBlock, 0); // Don't care about the 2nd material of wings.
+    }
+
+    public void Merge(int dataIndex, bool canMerge)
+    {
+        TargetButterFlyData _targetButterFlyData;
+
+        if (canMerge)
+        {
+            _targetButterFlyData = currentLevelData.levelData.targetButterFlyDatas[dataIndex];
+            RearrangeInputButterFlies(_targetButterFlyData);
+            sound_merge_correct.Raise();
+        }
+        else
+        {
+            _targetButterFlyData = currentLevelData.levelData.wrongTargetData;
+            sound_merge_wrong.Raise();
+        }
+
+
+        if (inputButterFlies.Count <= _targetButterFlyData.butterFlyPatterns.Count)
+        {
+            patternTexture = _targetButterFlyData.butterFlyPatterns[inputButterFlies.Count - 2];
+        }
+        else
+        {
+            patternTexture = _targetButterFlyData.finalPattern;
+        }
+
+        Merge();
     }
 
     public void TryMerge()
