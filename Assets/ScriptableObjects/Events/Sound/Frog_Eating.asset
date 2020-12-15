@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bb11fabd10cfa54b9b15b82a410912c, type: 3}
   m_Name: Frog_Eating
   m_EditorClassIdentifier: 
-  audioClip: {fileID: 0}
+  audioClip: {fileID: 8300000, guid: 61ca9d28bdc39b441ab92167db21af2d, type: 3}
