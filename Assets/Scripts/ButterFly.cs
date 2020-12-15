@@ -47,11 +47,11 @@ public class ButterFly : OccupyingEntity
     }
     private void OnDisable()
     {
-        occupyingEntitySet.itemList.Remove(this);
-        occupyingEntitySet.itemDictionary.Remove(mapCord);
+        occupyingEntitySet.RemoveList(this);
+        occupyingEntitySet.RemoveDictionary(mapCord);
 
-        butterFlySet.itemList.Remove(this);
-        butterFlySet.itemDictionary.Remove(mapCord);
+        butterFlySet.RemoveList(this);
+        butterFlySet.RemoveDictionary(mapCord);
     }
     public override void SetData()
     {

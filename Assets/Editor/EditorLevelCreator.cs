@@ -161,6 +161,16 @@ public static class EditorLevelCreator
                             direction = _worldDirection,
                         });
                     }
+                    else if (_levelObject.name.ToLower().Contains("bubble"))
+                    {
+                        _levelData.bubbleDatas.Add(new BubbleData()
+                        {
+                            mapCord = _mapPosition,
+                            levelObject = _levelObject,
+                            position = _worldPosition,
+                            direction = _worldDirection,
+                        });
+                    }
                     // else if (_levelObject.name.ToLower().Contains("rhino"))
                     // {
                     //     _levelData.rhinoDatas.Add(new RhinoData()

@@ -52,4 +52,5 @@ MonoBehaviour:
   occupyingEntitySet: {fileID: 11400000, guid: 316d0d77841efbd42a96b7992bc2f891, type: 2}
   butterFlySet: {fileID: 11400000, guid: de4ec2b8f28f980478ed1d13bd17459b, type: 2}
   frogSet: {fileID: 11400000, guid: 8dd3065ee0d11bd4a989da9ae0e61fd0, type: 2}
+  bubbleSet: {fileID: 11400000, guid: a1a5a0f78886a054b856843fe295d022, type: 2}
   parentTransform: {fileID: 0}

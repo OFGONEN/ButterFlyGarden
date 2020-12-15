@@ -14,6 +14,7 @@ public class LevelManager : MonoBehaviour
     public OccupyingEntitySet occupyingEntitySet;
     public ButterFlySet butterFlySet;
     public FrogSet frogSet;
+    public BubbleSet bubbleSet;
 
     public Transform parentTransform;
 
@@ -101,6 +102,27 @@ public class LevelManager : MonoBehaviour
             _frogComponent.SetData();
         }
 
+        for (int i = 0; i < _levelData.bubbleDatas.Count; i++)
+        {
+            var _bubbleData = _levelData.bubbleDatas[i];
+
+            var _bubble = GameObject.Instantiate(_bubbleData.levelObject);
+            _bubble.transform.SetParent(parentTransform);
+
+            _bubble.transform.position = new Vector3(_bubbleData.position.x * creationSettings.horizontalDistance,
+             creationSettings.frogFlyDistanceToLily, // Stands on top of lily
+             _bubbleData.position.y * creationSettings.verticalDistance);
+
+            _bubble.transform.rotation = Quaternion.Euler(0, _bubbleData.direction, 0);
+
+            var _bubbleComponent = _bubble.GetComponent<Bubble>();
+            _bubbleComponent.bubbleData = _bubbleData;
+            _bubbleComponent.color = _bubbleData.bubbleColor;
+            _bubbleComponent.mapCord = _bubbleData.mapCord;
+            _bubbleComponent.direction = _bubbleData.direction.ReturnV2FromUnSignedAngle();
+            _bubbleComponent.SetData();
+        }
+
         parentTransform.position = new Vector3(-creationSettings.horizontalDistance * (_levelData.size.x - 1) / 2,
         0,
         -creationSettings.verticalDistance * (_levelData.size.y - 1) / 2);
@@ -168,9 +190,32 @@ public class LevelManager : MonoBehaviour
             _frog.direction = _frogData.direction.ReturnV2FromUnSignedAngle();
         }
 
+        List<Bubble> _bubbles = new List<Bubble>(bubbleSet.itemList.Count);
+
+        for (int i = 0; i < bubbleSet.itemList.Count; i++)
+        {
+            var _bubble = bubbleSet.itemList[i];
+            var _bubbleData = _bubble.bubbleData;
+
+            _bubbles.Add(_bubble);
+
+            _bubble.transform.localPosition = new Vector3(_bubbleData.position.x * creationSettings.horizontalDistance,
+             creationSettings.frogFlyDistanceToLily, // Stands on top of lily
+             _bubbleData.position.y * creationSettings.verticalDistance);
+
+            _bubble.transform.rotation = Quaternion.Euler(0, _bubbleData.direction, 0);
+
+            _bubble.transform.SetParent(parentTransform);
+
+            _bubble.color = _bubbleData.bubbleColor;
+            _bubble.mapCord = _bubbleData.mapCord;
+            _bubble.direction = _bubbleData.direction.ReturnV2FromUnSignedAngle();
+        }
+
         butterFlySet.ClearSet();
         frogSet.ClearSet();
         occupyingEntitySet.ClearSet();
+        bubbleSet.ClearSet();
 
         foreach (var butterFly in _butterFlies)
         {
@@ -181,6 +226,12 @@ public class LevelManager : MonoBehaviour
         {
             frog.ResetToDefault();
             frog.SetData();
+        }
+
+        foreach (var bubble in _bubbles)
+        {
+            bubble.ResetToDefault();
+            bubble.SetData();
         }
 
         SetUpLevel();
