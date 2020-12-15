@@ -17,6 +17,7 @@ public class GameLoopManager : MonoBehaviour
     public NewCreatedObjectsSet newCreatedObjects;
     public CurrentLevelData currentLevelData;
 
+    [HideInInspector]
     public bool gameLoopStarted = false;
 
     public List<int> acquiredTargets;
@@ -43,6 +44,8 @@ public class GameLoopManager : MonoBehaviour
     }
     private void ReplayUIResponse()
     {
+        if (gameLoopStarted) return;
+
         for (int i = newCreatedObjects.itemList.Count - 1; i >= 0; i--)
         {
             Destroy(newCreatedObjects.itemList[i].gameObject);
@@ -86,6 +89,7 @@ public class GameLoopManager : MonoBehaviour
 
     public void EndLoopCheck()
     {
+        Debug.Log("End Loop Check");
         gameLoopStarted = false;
 
         for (int i = 0; i < mergedButterFlySet.itemList.Count; i++)

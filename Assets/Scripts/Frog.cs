@@ -1,13 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class Frog : OccupyingEntity
 {
+    public ParticleSystem particleSystem;
     public Color color;
 
+    public EatPhase eatPhase;
     public OccupyingEntitySet occupyingEntitySet;
     public FrogSet frogSet;
+    public LevelCreationSettings levelCreationSettings;
 
     [HideInInspector]
     public FrogData frogData;
@@ -35,17 +39,35 @@ public class Frog : OccupyingEntity
         frogSet.RemoveDictionary(mapCord);
     }
 
-    public void Eat()
+    public void TryEat()
     {
         var _platform = platformEntity.GetNeighborPlatform(direction);
 
         if (_platform != null && _platform.occupingEntity != null && _platform.occupingEntity is ButterFly)
         {
-            _platform.occupingEntity.gameObject.SetActive(false);
-            _platform.occupingEntity = null;
+            eatPhase.AddWait();
+
+            entityAnimator.SetTrigger("Attack");
+            // entityAnimator.SetBool("Chew", true);
+
+            var _targetTransform = _platform.occupingEntity.transform;
+
+            _targetTransform.DOMove(transform.position, levelCreationSettings.butterFlyFlyDuration).OnComplete(() => Eat(_platform));
+            _targetTransform.DOScale(new Vector3(0.1f, 0.1f, 0.1f), levelCreationSettings.butterFlyFlyDuration);
+
         }
     }
-
+    void Eat(PlatformEntity platform)
+    {
+        Debug.Log("Play particle");
+        particleSystem.Play();
+        platform.occupingEntity.gameObject.SetActive(false);
+        platform.occupingEntity = null;
+    }
+    void EndChew()
+    {
+        eatPhase.RemoveWait();
+    }
     public override void SetData()
     {
         hasData = true;

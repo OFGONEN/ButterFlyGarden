@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bef29a2dc91eb147a1fab916e7d747c, type: 3}
+  m_Name: EatPhase
+  m_EditorClassIdentifier: 
+  nextPhase: {fileID: 0}
+  phaseEnded: {fileID: 11400000, guid: ac70b40acf614eb49bc2476a0e3ab72f, type: 2}
+  wait: 0
+  frogSet: {fileID: 11400000, guid: 8dd3065ee0d11bd4a989da9ae0e61fd0, type: 2}

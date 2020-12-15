@@ -6,7 +6,6 @@ public abstract class GamePhase : ScriptableObject
 {
     public GamePhase nextPhase;
     public GameEvent phaseEnded;
-    [HideInInspector]
     public int wait = 0;
 
     public abstract void Execute();

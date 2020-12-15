@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d04993e6fedaad44eb6d1386daabf0c0, type: 3}
-  m_Name: EncounterPhase
+  m_Name: Default_EncounterPhase
   m_EditorClassIdentifier: 
   nextPhase: {fileID: 11400000, guid: db1587f0ea15a0d4d91e83db81eb45cf, type: 2}
   phaseEnded: {fileID: 11400000, guid: 6c10dfe33f7505f4c83db475d470428d, type: 2}

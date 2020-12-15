@@ -77,6 +77,7 @@ public class LevelManager : MonoBehaviour
             _butterflyComponent.mapCord = _butterFlyData.mapCord;
             _butterflyComponent.direction = _butterFlyData.direction.ReturnV2FromUnSignedAngle();
             _butterflyComponent.SetData();
+            // _butterflyComponent.
         }
 
         for (int i = 0; i < _levelData.frogDatas.Count; i++)
@@ -139,6 +140,7 @@ public class LevelManager : MonoBehaviour
              _butterFlyData.position.y * creationSettings.verticalDistance);
 
             _butterFly.transform.rotation = Quaternion.Euler(0, _butterFlyData.direction, 0);
+            _butterFly.transform.localScale = Vector3.one;
 
             _butterFly.color = _butterFlyData.butterFlyColor;
             _butterFly.mapCord = _butterFlyData.mapCord;

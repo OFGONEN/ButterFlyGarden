@@ -43,8 +43,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69bd4c97bc5c6bc4fa4738dc67c26c8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  entryPhase: {fileID: 11400000, guid: 410e6b4d763120e42baadd67efe6353b, type: 2}
   swipeInputEventListener:
     gameEvent: {fileID: 11400000, guid: a243713d15ad18045b2567d2d12ff3e8, type: 2}
+  endPhaseEventListener:
+    gameEvent: {fileID: 11400000, guid: ac70b40acf614eb49bc2476a0e3ab72f, type: 2}
   replayUIEventListener:
     gameEvent: {fileID: 11400000, guid: 2f74e50961731914bbca197426d6e67e, type: 2}
   restartLevelEvent: {fileID: 11400000, guid: 1a0154134c8268e43be1271ffeb08b4e, type: 2}
@@ -54,4 +57,5 @@ MonoBehaviour:
   frogSet: {fileID: 11400000, guid: 8dd3065ee0d11bd4a989da9ae0e61fd0, type: 2}
   newCreatedObjects: {fileID: 11400000, guid: 6049f85d3d4a80341ac3f35e96d33614, type: 2}
   currentLevelData: {fileID: 11400000, guid: 7a8bf9dea00590b4abe352811f59e3e8, type: 2}
+  gameLoopStarted: 0
   acquiredTargets: 
