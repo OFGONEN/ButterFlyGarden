@@ -79,12 +79,12 @@ MonoBehaviour:
     position: {x: 0, y: 2}
     mapCord: {x: 0, y: 2}
     direction: 90.00001
-    frogColor: {r: 0, g: 0, b: 0, a: 0}
+    frogColor: {r: 0.31719476, g: 0.8301887, b: 0.3369842, a: 0}
   - levelObject: {fileID: 2535748549582999888, guid: bba1eeb7aba8be442abe13526dccb215, type: 3}
     position: {x: 0, y: 3}
     mapCord: {x: 0, y: 3}
     direction: 90.00001
-    frogColor: {r: 0, g: 0, b: 0, a: 0}
+    frogColor: {r: 0.7830189, g: 0.54086477, b: 0.14404595, a: 0}
   bubbleDatas:
   - levelObject: {fileID: 4021181948566295943, guid: df651b0c0b66e5f4d847912ba5d85b43, type: 3}
     position: {x: 1, y: 0}
