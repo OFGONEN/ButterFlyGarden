@@ -7,7 +7,6 @@ public class Frog : OccupyingEntity
 {
     public ParticleSystem particles;
     public Color color;
-
     public EatPhase eatPhase;
     public OccupyingEntitySet occupyingEntitySet;
     public FrogSet frogSet;
@@ -48,7 +47,6 @@ public class Frog : OccupyingEntity
             eatPhase.AddWait();
 
             entityAnimator.SetTrigger("Attack");
-            // entityAnimator.SetBool("Chew", true);
 
             var _targetTransform = _platform.occupingEntity.transform;
 
@@ -59,7 +57,7 @@ public class Frog : OccupyingEntity
     }
     void Eat(PlatformEntity platform)
     {
-        particles.Play();
+        // particles.Play();
         platformEntity.entityAnimator.SetTrigger("Ripple");
         platform.occupingEntity.gameObject.SetActive(false);
         platform.occupingEntity = null;

@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -6,7 +6,7 @@ using FFStudio;
 
 public class MergedButterFly : ButterFly
 {
-    public ParticleSystem particleSystem;
+    public ParticleSystem particles;
     public GamePhase encounterPhase;
     public CurrentLevelData currentLevelData;
     public MergedButterFlySet mergedButterFlySet;
@@ -19,7 +19,7 @@ public class MergedButterFly : ButterFly
 
     private void Awake()
     {
-        particleSystem.Play();
+        particles.Play();
         encounterPhase.AddWait();
     }
 
