@@ -72,6 +72,10 @@ public class Frog : OccupyingEntity
             entityAnimator.SetBool("Chew", chewing);
         }
     }
+    void PlaySound(SoundEvent soundEvent)
+    {
+        soundEvent.Raise();
+    }
     void Eat(PlatformEntity platform)
     {
         // particles.Play();
@@ -79,7 +83,6 @@ public class Frog : OccupyingEntity
         platform.occupingEntity.gameObject.SetActive(false);
         platform.occupingEntity = null;
     }
-
     void EndAttack()
     {
         if (!chewing)
