@@ -113,7 +113,7 @@ public class ButterFly : OccupyingEntity
         platform.inComingEntity = this;
         platformEntity = platform;
 
-        graphicTransform.SetParent(platformEntity.transform.GetChild(0));
+        graphicTransform.SetParent(platformEntity.graphicTransform);
         movementPhase.RemoveWait();
     }
     public virtual void Encounter()

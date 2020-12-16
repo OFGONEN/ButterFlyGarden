@@ -47,11 +47,11 @@ public class Bubble : OccupyingEntity
         materialPropertyBlock.SetColor("_Color", color);
         renderer.SetPropertyBlock(materialPropertyBlock, 0); // Don't care about the 2nd material of wings.
 
-        // graphicTransform.DORotate(rotateBy, 1).SetRelative().SetLoops(-1, LoopType.Incremental).SetEase(Ease.Linear);
+        graphicTransform.DORotate(rotateBy, 1).SetRelative().SetLoops(-1, LoopType.Incremental).SetEase(Ease.Linear);
     }
     public override void ResetToDefault()
     {
-        transform.GetChild(0).gameObject.SetActive(true);
+        graphicTransform.gameObject.SetActive(true);
 
         if (attachedEntity != null)
             attachedEntity.attachedEntity = null;

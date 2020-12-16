@@ -107,5 +107,6 @@ public class Frog : OccupyingEntity
     public override void ResetToDefault()
     {
         // has a cooldown etc.
+        graphicTransform.SetParent(transform);
     }
 }
