@@ -11,6 +11,7 @@ public class GameLoopManager : MonoBehaviour
     public EventListenerDelegateResponse replayUIEventListener;
     public EventListenerDelegateResponse levelLoadedEventListener;
     public GameEvent restartLevelEvent;
+    public GameEvent createLevelEvent;
     public PlatformEntitySet platformEntitySet;
     public ButterFlySet butterFlySet;
     public MergedButterFlySet mergedButterFlySet;
@@ -72,7 +73,15 @@ public class GameLoopManager : MonoBehaviour
         gameLoopStarted = true;
         entryPhase.Execute();
     }
+    public IEnumerator LoadNewLevel()
+    {
+        yield return new WaitForSeconds(2);
 
+        currentLevelData.currentLevel++;
+        currentLevelData.LoadCurrentLevelData();
+
+        createLevelEvent.Raise();
+    }
     public void EndLoopCheck()
     {
         gameLoopStarted = false;
@@ -84,7 +93,7 @@ public class GameLoopManager : MonoBehaviour
 
         if (acquiredTargets.Count == currentLevelData.levelData.targetButterFlyDatas.Count)
         {
-            Debug.LogWarning("You won");
+            StartCoroutine(LoadNewLevel());
         }
     }
     public void AcquireTarget(MergedButterFly mergedButterFly)

@@ -53,6 +53,7 @@ MonoBehaviour:
   levelLoadedEventListener:
     gameEvent: {fileID: 11400000, guid: 33ebe9cd4264f9c44bcc7e232beea05e, type: 2}
   restartLevelEvent: {fileID: 11400000, guid: 1a0154134c8268e43be1271ffeb08b4e, type: 2}
+  createLevelEvent: {fileID: 11400000, guid: 0042cb7450e6b9148946c0a5053a2f5f, type: 2}
   platformEntitySet: {fileID: 11400000, guid: 6f70dcffdc9b608469ad7f2588c357ef, type: 2}
   butterFlySet: {fileID: 11400000, guid: de4ec2b8f28f980478ed1d13bd17459b, type: 2}
   mergedButterFlySet: {fileID: 11400000, guid: e76987198a0c782439d5b5a835191f3c, type: 2}

@@ -13,7 +13,6 @@ public class CurrentLevelData : ScriptableObject
     public void LoadCurrentLevelData()
     {
         levelData = Resources.Load<LevelData>("LevelData_" + currentLevel);
-        Resources.UnloadUnusedAssets();
     }
     public bool FindTarGetButterFly(Color colorOne, Color colorTwo, out int dataIndex)
     {

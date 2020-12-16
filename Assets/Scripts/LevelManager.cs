@@ -8,6 +8,7 @@ public class LevelManager : MonoBehaviour
 {
     public Camera mainCamera;
     public EventListenerDelegateResponse restartLevelEventListener;
+    public EventListenerDelegateResponse createLevelEventListener;
     public LevelCreationSettings creationSettings;
     public CurrentLevelData currentLevelData;
     public PlatformEntitySet platformEntitySet;
@@ -29,20 +30,24 @@ public class LevelManager : MonoBehaviour
     private void OnEnable()
     {
         restartLevelEventListener.OnEnable();
+        createLevelEventListener.OnEnable();
     }
     private void Start()
     {
         restartLevelEventListener.response = RestartLevel;
-        CreateLevel();
+        createLevelEventListener.response = CreateLevel;
+
+        InstanceLevelObjects();
+        SetUpLevel();
     }
     private void OnDisable()
     {
         restartLevelEventListener.OnDisable();
+        createLevelEventListener.OnDisable();
     }
-
-    [Button]
     void CreateLevel()
     {
+        Destroy(parentTransform.gameObject);
         InstanceLevelObjects();
         SetUpLevel();
     }

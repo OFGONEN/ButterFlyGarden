@@ -46,6 +46,8 @@ MonoBehaviour:
   mainCamera: {fileID: 0}
   restartLevelEventListener:
     gameEvent: {fileID: 11400000, guid: 1a0154134c8268e43be1271ffeb08b4e, type: 2}
+  createLevelEventListener:
+    gameEvent: {fileID: 11400000, guid: 0042cb7450e6b9148946c0a5053a2f5f, type: 2}
   creationSettings: {fileID: 11400000, guid: 9ce2f8cf8f3f7804ebb5162fc2382187, type: 2}
   currentLevelData: {fileID: 11400000, guid: 7a8bf9dea00590b4abe352811f59e3e8, type: 2}
   platformEntitySet: {fileID: 11400000, guid: 6f70dcffdc9b608469ad7f2588c357ef, type: 2}
