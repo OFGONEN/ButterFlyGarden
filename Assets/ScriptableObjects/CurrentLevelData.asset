@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentLevel: 0
   levelData: {fileID: 11400000, guid: cd2d012c5a1bd1e48889aa785a861c56, type: 2}
+  levelLoadedEvent: {fileID: 11400000, guid: 33ebe9cd4264f9c44bcc7e232beea05e, type: 2}

@@ -18,12 +18,6 @@ public class MergedButterFly : ButterFly
     private static readonly int inputButterflyColorsShaderID = Shader.PropertyToID("inputButterflyColors");
     private static readonly int numberOfInputButterfliesShaderID = Shader.PropertyToID("numberOfInputButterflies");
 
-    private void Awake()
-    {
-        particles.Play();
-        encounterPhase.AddWait();
-    }
-
     private void OnEnable()
     {
 
@@ -160,7 +154,10 @@ public class MergedButterFly : ButterFly
         {
             _targetButterFlyData = currentLevelData.levelData.targetButterFlyDatas[dataIndex];
             RearrangeInputButterFlies(_targetButterFlyData);
+
             sound_merge_correct.Raise();
+            particles.Play();
+            encounterPhase.AddWait();
         }
         else
         {
@@ -196,13 +193,13 @@ public class MergedButterFly : ButterFly
             _targetButterFlyData = _targetButterFlies[_targetButterFlyDataIndex];
             RearrangeInputButterFlies(_targetButterFlyData);
             sound_merge_correct.Raise();
+            particles.Play();
         }
         else
         {
             _targetButterFlyData = currentLevelData.levelData.wrongTargetData;
             sound_merge_wrong.Raise();
         }
-
 
         if (inputButterFlies.Count <= _targetButterFlyData.butterFlyPatterns.Count)
         {
@@ -226,7 +223,6 @@ public class MergedButterFly : ButterFly
         {
             colors.Add(inputButterFlies[i].color);
         }
-
 
         for (int i = 0; i < targetButterFlyData.butterFlyColors.Count; i++)
         {

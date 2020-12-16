@@ -29,7 +29,12 @@ public class Frog : OccupyingEntity
 
     private void Start()
     {
-        renderer.material.color = color;
+        materialPropertyBlock = new MaterialPropertyBlock();
+
+        renderer.GetPropertyBlock(materialPropertyBlock, 0); // Don't care about the 2nd material of wings.
+        materialPropertyBlock.SetColor("_Color", color);
+        renderer.SetPropertyBlock(materialPropertyBlock, 0); // Don't care about the 2nd material of wings.
+
     }
     private void OnDisable()
     {

@@ -52,6 +52,12 @@ public class Bubble : OccupyingEntity
     public override void ResetToDefault()
     {
         transform.GetChild(0).gameObject.SetActive(true);
+
+        if (attachedEntity != null)
+            attachedEntity.attachedEntity = null;
+
+        attachedEntity = null;
+
     }
     public void Pop()
     {

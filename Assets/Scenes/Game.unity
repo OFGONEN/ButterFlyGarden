@@ -756,21 +756,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 695111339851340322, guid: 4ded5cb0368763645990004df8fdc2d6, type: 3}
-      propertyPath: entryPhase
-      value: 
-      objectReference: {fileID: 11400000, guid: 410e6b4d763120e42baadd67efe6353b, type: 2}
-    - target: {fileID: 695111339851340322, guid: 4ded5cb0368763645990004df8fdc2d6, type: 3}
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 1964423413}
-    - target: {fileID: 695111339851340322, guid: 4ded5cb0368763645990004df8fdc2d6, type: 3}
-      propertyPath: parentTransform
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 695111339851340322, guid: 4ded5cb0368763645990004df8fdc2d6, type: 3}
-      propertyPath: levelParentObject
-      value: 
-      objectReference: {fileID: 3888210087572687710, guid: 412f6c71c8a52b54091bca69510ea314, type: 3}
     - target: {fileID: 695111339851340323, guid: 4ded5cb0368763645990004df8fdc2d6, type: 3}
       propertyPath: m_RootOrder
       value: 7
