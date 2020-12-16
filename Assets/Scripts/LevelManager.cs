@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using FFStudio;
 using NaughtyAttributes;
+using DG.Tweening;
 
 public class LevelManager : MonoBehaviour
 {
@@ -17,15 +18,8 @@ public class LevelManager : MonoBehaviour
     public FrogSet frogSet;
     public BubbleSet bubbleSet;
     public GamePhase entryPhase;
-
     public GameObject levelParentObject;
     Transform parentTransform;
-
-    [Button]
-    public void Boom()
-    {
-        Destroy(parentTransform.gameObject);
-    }
 
     private void OnEnable()
     {
@@ -47,7 +41,15 @@ public class LevelManager : MonoBehaviour
     }
     void CreateLevel()
     {
+        DOTween.KillAll();
         Destroy(parentTransform.gameObject);
+        InstanceLevelObjects();
+        SetUpLevel();
+    }
+
+    [Button]
+    void Foo()
+    {
         InstanceLevelObjects();
         SetUpLevel();
     }
@@ -250,14 +252,6 @@ public class LevelManager : MonoBehaviour
         {
             bubble.ResetToDefault();
             bubble.SetData();
-        }
-
-        GamePhase _gamePhase = entryPhase; ;
-
-        while (_gamePhase.nextPhase != null)
-        {
-            _gamePhase.Reset();
-            _gamePhase = _gamePhase.nextPhase;
         }
 
         SetUpLevel();

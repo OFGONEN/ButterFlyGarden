@@ -23,4 +23,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 410e6b4d763120e42baadd67efe6353b, type: 2}
   - {fileID: 11400000, guid: 6049f85d3d4a80341ac3f35e96d33614, type: 2}
   - {fileID: 11400000, guid: a1a5a0f78886a054b856843fe295d022, type: 2}
-  trackedSOCount: 10
+  - {fileID: 11400000, guid: 7a8bf9dea00590b4abe352811f59e3e8, type: 2}
+  trackedSOCount: 11

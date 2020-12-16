@@ -9,7 +9,6 @@ public class GameLoopManager : MonoBehaviour
     public EventListenerDelegateResponse swipeInputEventListener;
     public EventListenerDelegateResponse endPhaseEventListener;
     public EventListenerDelegateResponse replayUIEventListener;
-    public EventListenerDelegateResponse levelLoadedEventListener;
     public GameEvent restartLevelEvent;
     public GameEvent createLevelEvent;
     public PlatformEntitySet platformEntitySet;
@@ -27,7 +26,6 @@ public class GameLoopManager : MonoBehaviour
         swipeInputEventListener.OnEnable();
         replayUIEventListener.OnEnable();
         endPhaseEventListener.OnEnable();
-        levelLoadedEventListener.OnEnable();
     }
 
     private void OnDisable()
@@ -35,7 +33,6 @@ public class GameLoopManager : MonoBehaviour
         swipeInputEventListener.OnDisable();
         replayUIEventListener.OnDisable();
         endPhaseEventListener.OnDisable();
-        levelLoadedEventListener.OnDisable();
     }
     private void Start()
     {
@@ -44,23 +41,11 @@ public class GameLoopManager : MonoBehaviour
         endPhaseEventListener.response = EndLoopCheck;
 
     }
-    private void LevelLoadedResponse()
-    {
-        acquiredTargets.Clear();
-    }
     private void ReplayUIResponse()
     {
         if (gameLoopStarted) return;
 
-        for (int i = newCreatedObjects.itemList.Count - 1; i >= 0; i--)
-        {
-            newCreatedObjects.itemList[i].graphicTransform.SetParent(newCreatedObjects.itemList[i].transform);
-            Destroy(newCreatedObjects.itemList[i].gameObject);
-        }
-
-        newCreatedObjects.itemList.Clear();
-        newCreatedObjects.itemDictionary.Clear();
-        acquiredTargets.Clear();
+        ClearLevel();
 
         restartLevelEvent.Raise();
     }
@@ -73,12 +58,34 @@ public class GameLoopManager : MonoBehaviour
         gameLoopStarted = true;
         entryPhase.Execute();
     }
+    public void ClearLevel()
+    {
+        GamePhase _gamePhase = entryPhase;
+
+        while (_gamePhase.nextPhase != null)
+        {
+            _gamePhase.Reset();
+            _gamePhase = _gamePhase.nextPhase;
+        }
+
+        for (int i = newCreatedObjects.itemList.Count - 1; i >= 0; i--)
+        {
+            newCreatedObjects.itemList[i].graphicTransform.SetParent(newCreatedObjects.itemList[i].transform);
+            Destroy(newCreatedObjects.itemList[i].gameObject);
+        }
+
+        newCreatedObjects.itemList.Clear();
+        newCreatedObjects.itemDictionary.Clear();
+        acquiredTargets.Clear();
+    }
     public IEnumerator LoadNewLevel()
     {
         yield return new WaitForSeconds(2);
 
         currentLevelData.currentLevel++;
         currentLevelData.LoadCurrentLevelData();
+
+        ClearLevel();
 
         createLevelEvent.Raise();
     }
@@ -93,6 +100,7 @@ public class GameLoopManager : MonoBehaviour
 
         if (acquiredTargets.Count == currentLevelData.levelData.targetButterFlyDatas.Count)
         {
+            Debug.Log("Win Load New");
             StartCoroutine(LoadNewLevel());
         }
     }

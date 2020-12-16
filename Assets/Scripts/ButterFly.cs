@@ -27,7 +27,6 @@ public class ButterFly : OccupyingEntity
     {
         if (!hasData) return;
 
-
         occupyingEntitySet.AddDictionary(mapCord, this);
         occupyingEntitySet.AddList(this);
 
@@ -149,7 +148,7 @@ public class ButterFly : OccupyingEntity
             platformEntity.inComingEntity = null;
             var _mergedButterFly = platformEntity.occupingEntity as MergedButterFly;
 
-            graphicTransform.SetParent(platformEntity.transform.GetChild(0));
+            graphicTransform.SetParent(transform);
             gameObject.SetActive(false);
 
             if (_mergedButterFly.attachedEntity == null && attachedEntity is Bubble)
