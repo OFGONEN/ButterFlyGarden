@@ -87,7 +87,7 @@ MonoBehaviour:
     position: {x: 2, y: 1}
     mapCord: {x: 2, y: 1}
     direction: 0
-    butterFlyColor: {r: 0.71422946, g: 0.7169812, b: 0.26041296, a: 0}
+    butterFlyColor: {r: 0.7176471, g: 0.3393096, b: 0.2588235, a: 0}
   frogDatas:
   - levelObject: {fileID: 2535748549582999888, guid: bba1eeb7aba8be442abe13526dccb215, type: 3}
     position: {x: 0, y: 2}

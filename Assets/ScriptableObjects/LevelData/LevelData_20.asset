@@ -94,12 +94,12 @@ MonoBehaviour:
     position: {x: 2, y: 0}
     mapCord: {x: 2, y: 0}
     direction: 0
-    butterFlyColor: {r: 0, g: 0, b: 0, a: 0}
+    butterFlyColor: {r: 0.15294118, g: 0.3254902, b: 0.6431373, a: 0}
   - levelObject: {fileID: 2418258055063634259, guid: 2dcc9cd08bbad2f4cb53529e2d139c3f, type: 3}
     position: {x: 2, y: 5}
     mapCord: {x: 2, y: 5}
     direction: 0
-    butterFlyColor: {r: 0, g: 0, b: 0, a: 0}
+    butterFlyColor: {r: 0.53333336, g: 0.20392157, b: 0.5568628, a: 0}
   frogDatas:
   - levelObject: {fileID: 2535748549582999888, guid: bba1eeb7aba8be442abe13526dccb215, type: 3}
     position: {x: 0, y: 0}
@@ -118,12 +118,13 @@ MonoBehaviour:
     direction: 0
     bubbleColor: {r: 0.45490196, g: 0.85882354, b: 0.8862745, a: 0.29411766}
   targetButterFlyDatas:
-  - butterFlyObject: {fileID: 2414149456744886741, guid: 70bce77869f817843bc161424596e024, type: 3}
+  - butterFlyObject: {fileID: 5805206459488839686, guid: b4b3a8ec23f1bcc4e88e7dcf20f75f7a, type: 3}
     butterFlyColors:
     - {r: 1, g: 0.28627452, b: 0.07450981, a: 0}
     - {r: 0, g: 0, b: 0, a: 0}
-    butterFlyPatterns: []
-    finalPattern: {fileID: 0}
+    butterFlyPatterns:
+    - {fileID: 2800000, guid: de57aebf82faf7e4c882d66cd7db83cb, type: 3}
+    finalPattern: {fileID: 2800000, guid: de57aebf82faf7e4c882d66cd7db83cb, type: 3}
   wrongTargetData:
     butterFlyObject: {fileID: 4717035510698555668, guid: ffa5c60ada59ca942bbdf28ce7c99f0a, type: 3}
     butterFlyColors: []
