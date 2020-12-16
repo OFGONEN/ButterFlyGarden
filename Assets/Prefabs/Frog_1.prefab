@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   renderer: {fileID: 6803123740723245648}
+  graphicTransform: {fileID: 869228222362831883}
   entityAnimator: {fileID: 6651790999499762085}
   mapCord: {x: 0, y: 0}
   direction: {x: 0, y: 0}
@@ -59,8 +60,6 @@ MonoBehaviour:
   eatPhase: {fileID: 11400000, guid: db1587f0ea15a0d4d91e83db81eb45cf, type: 2}
   occupyingEntitySet: {fileID: 11400000, guid: 316d0d77841efbd42a96b7992bc2f891, type: 2}
   frogSet: {fileID: 11400000, guid: 8dd3065ee0d11bd4a989da9ae0e61fd0, type: 2}
-  sound_frog_attack: {fileID: 11400000, guid: d35a35c0cf49a9b459e62d84886eaa86, type: 2}
-  sound_frog_chew: {fileID: 0}
   levelCreationSettings: {fileID: 11400000, guid: 9ce2f8cf8f3f7804ebb5162fc2382187, type: 2}
   frogData:
     levelObject: {fileID: 0}

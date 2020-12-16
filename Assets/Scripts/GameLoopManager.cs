@@ -9,7 +9,7 @@ public class GameLoopManager : MonoBehaviour
     public EventListenerDelegateResponse swipeInputEventListener;
     public EventListenerDelegateResponse endPhaseEventListener;
     public EventListenerDelegateResponse replayUIEventListener;
-    public EventListenerDelegateResponse levelLoadedEventListener;
+    public GameEvent targetButterflyAcquired;
     public GameEvent restartLevelEvent;
     public PlatformEntitySet platformEntitySet;
     public ButterFlySet butterFlySet;
@@ -26,7 +26,6 @@ public class GameLoopManager : MonoBehaviour
         swipeInputEventListener.OnEnable();
         replayUIEventListener.OnEnable();
         endPhaseEventListener.OnEnable();
-        levelLoadedEventListener.OnEnable();
     }
 
     private void OnDisable()
@@ -34,7 +33,6 @@ public class GameLoopManager : MonoBehaviour
         swipeInputEventListener.OnDisable();
         replayUIEventListener.OnDisable();
         endPhaseEventListener.OnDisable();
-        levelLoadedEventListener.OnDisable();
     }
     private void Start()
     {
@@ -84,7 +82,8 @@ public class GameLoopManager : MonoBehaviour
 
         if (acquiredTargets.Count == currentLevelData.levelData.targetButterFlyDatas.Count)
         {
-            Debug.LogWarning("You won");
+            gameLoopStarted = true;
+            targetButterflyAcquired.Raise();
         }
     }
     public void AcquireTarget(MergedButterFly mergedButterFly)

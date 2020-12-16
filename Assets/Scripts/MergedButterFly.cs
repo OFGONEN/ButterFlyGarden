@@ -44,13 +44,6 @@ public class MergedButterFly : ButterFly
 
         newCreatedObjectSet.AddDictionary(mapCord, this);
         newCreatedObjectSet.AddList(this);
-
-        graphicTransform = transform.GetChild(0);
-    }
-
-    private void Start()
-    {
-        graphicTransform.SetParent(platformEntity.transform.GetChild(0));
     }
 
     private void OnParticleSystemStopped()
@@ -60,17 +53,17 @@ public class MergedButterFly : ButterFly
     private void OnDisable()
     {
         occupyingEntitySet.RemoveList(this);
-        occupyingEntitySet.RemoveDictionary(mapCord);
+        occupyingEntitySet.RemoveDictionary(butterFlyData.mapCord);
 
         butterFlySet.RemoveList(this);
-        butterFlySet.RemoveDictionary(mapCord);
+        butterFlySet.RemoveDictionary(butterFlyData.mapCord);
 
         mergedButterFlySet.RemoveList(this);
-        mergedButterFlySet.RemoveDictionary(mapCord);
+        mergedButterFlySet.RemoveDictionary(butterFlyData.mapCord);
     }
     private void OnDestroy()
     {
-        newCreatedObjectSet.RemoveDictionary(mapCord);
+        newCreatedObjectSet.RemoveDictionary(butterFlyData.mapCord);
         newCreatedObjectSet.RemoveList(this);
     }
     public override void SetData()

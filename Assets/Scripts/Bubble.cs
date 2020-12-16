@@ -29,11 +29,11 @@ public class Bubble : OccupyingEntity
     }
     private void OnDisable()
     {
-        occupyingEntitySet.RemoveDictionary(mapCord);
+        occupyingEntitySet.RemoveDictionary(bubbleData.mapCord);
         occupyingEntitySet.RemoveList(this);
 
         bubbleSet.RemoveList(this);
-        bubbleSet.RemoveDictionary(mapCord);
+        bubbleSet.RemoveDictionary(bubbleData.mapCord);
     }
     private void OnParticleSystemStopped()
     {
@@ -47,10 +47,7 @@ public class Bubble : OccupyingEntity
         materialPropertyBlock.SetColor("_Color", color);
         renderer.SetPropertyBlock(materialPropertyBlock, 0); // Don't care about the 2nd material of wings.
 
-        graphicTransform = transform.GetChild(0);
-        graphicTransform.SetParent(platformEntity.transform.GetChild(0));
-
-        graphicTransform.DORotate(rotateBy, 1).SetRelative().SetLoops(-1, LoopType.Incremental).SetEase(Ease.Linear);
+        // graphicTransform.DORotate(rotateBy, 1).SetRelative().SetLoops(-1, LoopType.Incremental).SetEase(Ease.Linear);
     }
     public override void ResetToDefault()
     {

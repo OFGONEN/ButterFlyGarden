@@ -24329,6 +24329,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   renderer: {fileID: 2477380287659917332}
+  graphicTransform: {fileID: 8782864727466811440}
   entityAnimator: {fileID: 8814331581641417598}
   mapCord: {x: 0, y: 0}
   direction: {x: 0, y: 0}

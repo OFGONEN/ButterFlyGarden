@@ -50,8 +50,7 @@ MonoBehaviour:
     gameEvent: {fileID: 11400000, guid: ac70b40acf614eb49bc2476a0e3ab72f, type: 2}
   replayUIEventListener:
     gameEvent: {fileID: 11400000, guid: 2f74e50961731914bbca197426d6e67e, type: 2}
-  levelLoadedEventListener:
-    gameEvent: {fileID: 11400000, guid: 33ebe9cd4264f9c44bcc7e232beea05e, type: 2}
+  targetButterflyAcquired: {fileID: 11400000, guid: 8ba81f9a8a809f34ab24effb71d95828, type: 2}
   restartLevelEvent: {fileID: 11400000, guid: 1a0154134c8268e43be1271ffeb08b4e, type: 2}
   platformEntitySet: {fileID: 11400000, guid: 6f70dcffdc9b608469ad7f2588c357ef, type: 2}
   butterFlySet: {fileID: 11400000, guid: de4ec2b8f28f980478ed1d13bd17459b, type: 2}

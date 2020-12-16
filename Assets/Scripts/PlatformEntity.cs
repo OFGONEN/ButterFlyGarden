@@ -58,7 +58,9 @@ public abstract class PlatformEntity : Entity
 
         if (occupingEntity != null)
         {
+            Debug.Log("Found ButterFly");
             occupingEntity.platformEntity = this;
+            occupingEntity.graphicTransform.SetParent(graphicTransform);
         }
     }
 }

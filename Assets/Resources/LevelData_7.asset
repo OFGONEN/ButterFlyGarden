@@ -1,0 +1,97 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca933057095f7584186e51865125b045, type: 3}
+  m_Name: LevelData_7
+  m_EditorClassIdentifier: 
+  leftDown: {x: 1, y: 1}
+  size: {x: 3, y: 5}
+  lilyDatas:
+  - levelObject: {fileID: 5649308766709187496, guid: b360c0488b5d672448e3ea8dbbab6cdb, type: 3}
+    position: {x: 0, y: 2}
+    mapCord: {x: 0, y: 2}
+    direction: 0
+  - levelObject: {fileID: 5649308766709187496, guid: b360c0488b5d672448e3ea8dbbab6cdb, type: 3}
+    position: {x: 0, y: 3}
+    mapCord: {x: 0, y: 3}
+    direction: 0
+  - levelObject: {fileID: 5649308766709187496, guid: b360c0488b5d672448e3ea8dbbab6cdb, type: 3}
+    position: {x: 1, y: 0}
+    mapCord: {x: 1, y: 0}
+    direction: 0
+  - levelObject: {fileID: 5649308766709187496, guid: b360c0488b5d672448e3ea8dbbab6cdb, type: 3}
+    position: {x: 1, y: 1}
+    mapCord: {x: 1, y: 1}
+    direction: 0
+  - levelObject: {fileID: 5649308766709187496, guid: b360c0488b5d672448e3ea8dbbab6cdb, type: 3}
+    position: {x: 1, y: 2}
+    mapCord: {x: 1, y: 2}
+    direction: 0
+  - levelObject: {fileID: 5649308766709187496, guid: b360c0488b5d672448e3ea8dbbab6cdb, type: 3}
+    position: {x: 1, y: 3}
+    mapCord: {x: 1, y: 3}
+    direction: 0
+  - levelObject: {fileID: 5649308766709187496, guid: b360c0488b5d672448e3ea8dbbab6cdb, type: 3}
+    position: {x: 1, y: 4}
+    mapCord: {x: 1, y: 4}
+    direction: 0
+  - levelObject: {fileID: 5649308766709187496, guid: b360c0488b5d672448e3ea8dbbab6cdb, type: 3}
+    position: {x: 2, y: 1}
+    mapCord: {x: 2, y: 1}
+    direction: 0
+  - levelObject: {fileID: 5649308766709187496, guid: b360c0488b5d672448e3ea8dbbab6cdb, type: 3}
+    position: {x: 2, y: 2}
+    mapCord: {x: 2, y: 2}
+    direction: 0
+  - levelObject: {fileID: 5649308766709187496, guid: b360c0488b5d672448e3ea8dbbab6cdb, type: 3}
+    position: {x: 2, y: 4}
+    mapCord: {x: 2, y: 4}
+    direction: 0
+  butterFlyDatas:
+  - levelObject: {fileID: 2418258055063634259, guid: 2dcc9cd08bbad2f4cb53529e2d139c3f, type: 3}
+    position: {x: 0, y: 2}
+    mapCord: {x: 0, y: 2}
+    direction: 0
+    butterFlyColor: {r: 0.972549, g: 0.5372549, b: 0.011764706, a: 0}
+  - levelObject: {fileID: 2418258055063634259, guid: 2dcc9cd08bbad2f4cb53529e2d139c3f, type: 3}
+    position: {x: 1, y: 0}
+    mapCord: {x: 1, y: 0}
+    direction: 0
+    butterFlyColor: {r: 0.96862745, g: 0.8666667, b: 0.28235295, a: 0}
+  - levelObject: {fileID: 2418258055063634259, guid: 2dcc9cd08bbad2f4cb53529e2d139c3f, type: 3}
+    position: {x: 2, y: 2}
+    mapCord: {x: 2, y: 2}
+    direction: 0
+    butterFlyColor: {r: 0.11213954, g: 0.14612366, b: 0.6792453, a: 0}
+  - levelObject: {fileID: 2418258055063634259, guid: 2dcc9cd08bbad2f4cb53529e2d139c3f, type: 3}
+    position: {x: 2, y: 4}
+    mapCord: {x: 2, y: 4}
+    direction: 0
+    butterFlyColor: {r: 0.5849056, g: 0, b: 0, a: 0}
+  frogDatas: []
+  bubbleDatas: []
+  targetButterFlyDatas:
+  - butterFlyObject: {fileID: 495522695025836666, guid: c3297c6b293407a4c819de30869464ba, type: 3}
+    butterFlyColors:
+    - {r: 0.972549, g: 0.5372549, b: 0.011764706, a: 0}
+    - {r: 0.96862745, g: 0.8666667, b: 0.28235295, a: 0}
+    butterFlyPatterns:
+    - {fileID: 2800000, guid: 688bc1251fb1828429fe3364d62f4768, type: 3}
+    finalPattern: {fileID: 2800000, guid: 688bc1251fb1828429fe3364d62f4768, type: 3}
+  wrongTargetData:
+    butterFlyObject: {fileID: 4717035510698555668, guid: ffa5c60ada59ca942bbdf28ce7c99f0a, type: 3}
+    butterFlyColors: []
+    butterFlyPatterns:
+    - {fileID: 2800000, guid: 4e3eda92f37deda4ea392a8becdeddca, type: 3}
+    - {fileID: 2800000, guid: e4a8893bd9725cc4c83420b81a2bfc32, type: 3}
+    - {fileID: 2800000, guid: abd6f53acb3e38f4aa6a05e3109ff621, type: 3}
+    - {fileID: 2800000, guid: 57d024e2f87a64e48a23e7efade33b59, type: 3}
+    finalPattern: {fileID: 2800000, guid: 57d024e2f87a64e48a23e7efade33b59, type: 3}

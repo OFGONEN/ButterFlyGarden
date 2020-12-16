@@ -24455,6 +24455,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   renderer: {fileID: 3825604588453489984}
+  graphicTransform: {fileID: 1017249846187085266}
   entityAnimator: {fileID: 5324298876662600422}
   mapCord: {x: 0, y: 0}
   direction: {x: 0, y: 0}

@@ -35,16 +35,14 @@ public class Frog : OccupyingEntity
         materialPropertyBlock.SetColor("_Color", color);
         renderer.SetPropertyBlock(materialPropertyBlock, 0); // Don't care about the 2nd material of wings.
 
-        graphicTransform = transform.GetChild(0);
-        graphicTransform.SetParent(platformEntity.transform.GetChild(0));
     }
     private void OnDisable()
     {
         occupyingEntitySet.RemoveList(this);
-        occupyingEntitySet.RemoveDictionary(mapCord);
+        occupyingEntitySet.RemoveDictionary(frogData.mapCord);
 
         frogSet.RemoveList(this);
-        frogSet.RemoveDictionary(mapCord);
+        frogSet.RemoveDictionary(frogData.mapCord);
     }
 
     public void TryEat()

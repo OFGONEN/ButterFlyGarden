@@ -8,12 +8,9 @@ public class CurrentLevelData : ScriptableObject
 {
     public int currentLevel;
     public LevelData levelData;
-    public GameEvent levelLoadedEvent;
-
     public void LoadCurrentLevelData()
     {
         levelData = Resources.Load<LevelData>("LevelData_" + currentLevel);
-        Resources.UnloadUnusedAssets();
     }
     public bool FindTarGetButterFly(Color colorOne, Color colorTwo, out int dataIndex)
     {

@@ -6,6 +6,7 @@ public abstract class Entity : MonoBehaviour
 {
 
     public Renderer renderer;
+    public Transform graphicTransform;
     public MaterialPropertyBlock materialPropertyBlock;
     public Animator entityAnimator;
     public Vector2 mapCord;

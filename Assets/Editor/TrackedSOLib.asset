@@ -13,14 +13,5 @@ MonoBehaviour:
   m_Name: TrackedSOLib
   m_EditorClassIdentifier: 
   trackedSO:
-  - {fileID: 11400000, guid: de4ec2b8f28f980478ed1d13bd17459b, type: 2}
-  - {fileID: 11400000, guid: 8dd3065ee0d11bd4a989da9ae0e61fd0, type: 2}
-  - {fileID: 11400000, guid: 316d0d77841efbd42a96b7992bc2f891, type: 2}
-  - {fileID: 11400000, guid: 6f70dcffdc9b608469ad7f2588c357ef, type: 2}
-  - {fileID: 11400000, guid: e76987198a0c782439d5b5a835191f3c, type: 2}
-  - {fileID: 11400000, guid: db1587f0ea15a0d4d91e83db81eb45cf, type: 2}
-  - {fileID: 11400000, guid: ee667069fd21a3f43b0324bd251935ad, type: 2}
-  - {fileID: 11400000, guid: 410e6b4d763120e42baadd67efe6353b, type: 2}
-  - {fileID: 11400000, guid: 6049f85d3d4a80341ac3f35e96d33614, type: 2}
-  - {fileID: 11400000, guid: a1a5a0f78886a054b856843fe295d022, type: 2}
-  trackedSOCount: 10
+  - {fileID: 11400000, guid: 7a8bf9dea00590b4abe352811f59e3e8, type: 2}
+  trackedSOCount: 1

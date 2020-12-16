@@ -20,12 +20,6 @@ public class LevelManager : MonoBehaviour
     public GameObject levelParentObject;
     Transform parentTransform;
 
-    [Button]
-    public void Boom()
-    {
-        Destroy(parentTransform.gameObject);
-    }
-
     private void OnEnable()
     {
         restartLevelEventListener.OnEnable();
@@ -40,7 +34,6 @@ public class LevelManager : MonoBehaviour
         restartLevelEventListener.OnDisable();
     }
 
-    [Button]
     void CreateLevel()
     {
         InstanceLevelObjects();
@@ -48,9 +41,14 @@ public class LevelManager : MonoBehaviour
     }
     public void InstanceLevelObjects()
     {
+        if (currentLevelData.levelData == null)
+        {
+            currentLevelData.LoadCurrentLevelData();
+        }
+
         var _levelData = currentLevelData.levelData;
 
-        parentTransform = GameObject.Instantiate(levelParentObject, Vector3.zero, Quaternion.identity).transform;
+        parentTransform = GameObject.Instantiate(levelParentObject, Vector3.zero, Quaternion.identity, transform).transform;
 
         for (int i = 0; i < _levelData.lilyDatas.Count; i++)
         {

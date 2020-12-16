@@ -43,17 +43,14 @@ public class ButterFly : OccupyingEntity
         renderer.SetPropertyBlock(materialPropertyBlock, 0); // Don't care about the 2nd material of wings.
 
         waitForNewIdle = new WaitForSeconds(Random.Range(creationSettings.butterFlyIdleAnimRepeatMin, creationSettings.butterFlyIdleAnimRepeatMax));
-
-        graphicTransform = transform.GetChild(0);
-        graphicTransform.SetParent(platformEntity.transform.GetChild(0));
     }
     private void OnDisable()
     {
         occupyingEntitySet.RemoveList(this);
-        occupyingEntitySet.RemoveDictionary(mapCord);
+        occupyingEntitySet.RemoveDictionary(butterFlyData.mapCord);
 
         butterFlySet.RemoveList(this);
-        butterFlySet.RemoveDictionary(mapCord);
+        butterFlySet.RemoveDictionary(butterFlyData.mapCord);
 
         StopCoroutine(randomIdleCoroutine);
     }
@@ -149,7 +146,7 @@ public class ButterFly : OccupyingEntity
             platformEntity.inComingEntity = null;
             var _mergedButterFly = platformEntity.occupingEntity as MergedButterFly;
 
-            graphicTransform.SetParent(platformEntity.transform.GetChild(0));
+            graphicTransform.SetParent(transform);
             gameObject.SetActive(false);
 
             if (_mergedButterFly.attachedEntity == null && attachedEntity is Bubble)
@@ -192,6 +189,7 @@ public class ButterFly : OccupyingEntity
 
             var _mergedButterFlyComponent = _mergedButterFly.GetComponent<MergedButterFly>();
 
+            _mergedButterFlyComponent.butterFlyData.mapCord = mapCord;
             _mergedButterFlyComponent.mapCord = mapCord;
             _mergedButterFlyComponent.platformEntity = platformEntity;
             _mergedButterFlyComponent.SetData();
