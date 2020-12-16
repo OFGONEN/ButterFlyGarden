@@ -74,9 +74,20 @@ MonoBehaviour:
     butterFlyColor: {r: 0.9150943, g: 0, b: 0, a: 0}
   frogDatas: []
   bubbleDatas: []
-  targetButterFlyDatas: []
+  targetButterFlyDatas:
+  - butterFlyObject: {fileID: 495522695025836666, guid: c3297c6b293407a4c819de30869464ba, type: 3}
+    butterFlyColors:
+    - {r: 0.972549, g: 0.5372549, b: 0.011764706, a: 0}
+    - {r: 0.96862745, g: 0.8666667, b: 0.28235295, a: 0}
+    butterFlyPatterns:
+    - {fileID: 2800000, guid: b88af2e94796b004baab99325745423b, type: 3}
+    finalPattern: {fileID: 2800000, guid: b88af2e94796b004baab99325745423b, type: 3}
   wrongTargetData:
-    butterFlyObject: {fileID: 0}
+    butterFlyObject: {fileID: 4717035510698555668, guid: ffa5c60ada59ca942bbdf28ce7c99f0a, type: 3}
     butterFlyColors: []
-    butterFlyPatterns: []
-    finalPattern: {fileID: 0}
+    butterFlyPatterns:
+    - {fileID: 2800000, guid: 4e3eda92f37deda4ea392a8becdeddca, type: 3}
+    - {fileID: 2800000, guid: e4a8893bd9725cc4c83420b81a2bfc32, type: 3}
+    - {fileID: 2800000, guid: abd6f53acb3e38f4aa6a05e3109ff621, type: 3}
+    - {fileID: 2800000, guid: 57d024e2f87a64e48a23e7efade33b59, type: 3}
+    finalPattern: {fileID: 2800000, guid: 57d024e2f87a64e48a23e7efade33b59, type: 3}
