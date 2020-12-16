@@ -35,6 +35,8 @@ public class Frog : OccupyingEntity
         materialPropertyBlock.SetColor("_Color", color);
         renderer.SetPropertyBlock(materialPropertyBlock, 0); // Don't care about the 2nd material of wings.
 
+        graphicTransform = transform.GetChild(0);
+        graphicTransform.SetParent(platformEntity.transform.GetChild(0));
     }
     private void OnDisable()
     {
@@ -66,6 +68,7 @@ public class Frog : OccupyingEntity
                 chewing = true;
 
                 var _targetTransform = _platform.occupingEntity.transform;
+                _platform.occupingEntity.graphicTransform.SetParent(_targetTransform);
 
                 _targetTransform.DOMove(transform.position, levelCreationSettings.butterFlyFlyDuration).OnComplete(() => Eat(_platform));
                 _targetTransform.DOScale(new Vector3(0.1f, 0.1f, 0.1f), levelCreationSettings.butterFlyFlyDuration);

@@ -43,6 +43,9 @@ public class ButterFly : OccupyingEntity
         renderer.SetPropertyBlock(materialPropertyBlock, 0); // Don't care about the 2nd material of wings.
 
         waitForNewIdle = new WaitForSeconds(Random.Range(creationSettings.butterFlyIdleAnimRepeatMin, creationSettings.butterFlyIdleAnimRepeatMax));
+
+        graphicTransform = transform.GetChild(0);
+        graphicTransform.SetParent(platformEntity.transform.GetChild(0));
     }
     private void OnDisable()
     {
@@ -69,6 +72,10 @@ public class ButterFly : OccupyingEntity
         // if has a protection vs. 
         StopCoroutine(randomIdleCoroutine);
         entityAnimator.enabled = false;
+
+        graphicTransform.SetParent(transform);
+        graphicTransform.localPosition = Vector3.zero;
+        graphicTransform.rotation = Quaternion.identity;
     }
     public bool MoveToPlatform(Vector2 additiveCord)
     {
@@ -78,6 +85,7 @@ public class ButterFly : OccupyingEntity
 
         if (_platform == null || _platform.occupingEntity is Frog) return false;
 
+        graphicTransform.SetParent(transform);
         movementPhase.AddWait();
         sound_butterfly_movement.Raise();
 
@@ -108,6 +116,7 @@ public class ButterFly : OccupyingEntity
         platform.inComingEntity = this;
         platformEntity = platform;
 
+        graphicTransform.SetParent(platformEntity.transform.GetChild(0));
         movementPhase.RemoveWait();
     }
     public virtual void Encounter()
@@ -140,7 +149,7 @@ public class ButterFly : OccupyingEntity
             platformEntity.inComingEntity = null;
             var _mergedButterFly = platformEntity.occupingEntity as MergedButterFly;
 
-
+            graphicTransform.SetParent(platformEntity.transform.GetChild(0));
             gameObject.SetActive(false);
 
             if (_mergedButterFly.attachedEntity == null && attachedEntity is Bubble)
@@ -155,6 +164,9 @@ public class ButterFly : OccupyingEntity
         {
             platformEntity.inComingEntity = null;
             var _occupyingButterFly = platformEntity.occupingEntity as ButterFly;
+
+            graphicTransform.SetParent(transform);
+            _occupyingButterFly.graphicTransform.SetParent(_occupyingButterFly.transform);
 
             _occupyingButterFly.gameObject.SetActive(false);
             gameObject.SetActive(false);

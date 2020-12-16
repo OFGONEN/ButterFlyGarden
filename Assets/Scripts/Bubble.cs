@@ -47,7 +47,10 @@ public class Bubble : OccupyingEntity
         materialPropertyBlock.SetColor("_Color", color);
         renderer.SetPropertyBlock(materialPropertyBlock, 0); // Don't care about the 2nd material of wings.
 
-        transform.GetChild(0).DORotate(rotateBy, 1).SetRelative().SetLoops(-1, LoopType.Incremental).SetEase(Ease.Linear);
+        graphicTransform = transform.GetChild(0);
+        graphicTransform.SetParent(platformEntity.transform.GetChild(0));
+
+        graphicTransform.DORotate(rotateBy, 1).SetRelative().SetLoops(-1, LoopType.Incremental).SetEase(Ease.Linear);
     }
     public override void ResetToDefault()
     {
@@ -65,7 +68,8 @@ public class Bubble : OccupyingEntity
             attachedEntity.attachedEntity = null;
 
         attachedEntity = null;
-        transform.GetChild(0).gameObject.SetActive(false);
+        graphicTransform.SetParent(transform);
+        graphicTransform.gameObject.SetActive(false);
         particles.Play();
         bubblePopSound.Raise();
     }
@@ -77,6 +81,7 @@ public class Bubble : OccupyingEntity
 
         attachedEntity = occupyingEntity;
         attachedEntity.attachedEntity = this;
+        graphicTransform.SetParent(transform);
         transform.SetParent(occupyingEntity.transform);
     }
     public override void SetData()

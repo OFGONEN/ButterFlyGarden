@@ -53,6 +53,7 @@ public class GameLoopManager : MonoBehaviour
 
         for (int i = newCreatedObjects.itemList.Count - 1; i >= 0; i--)
         {
+            newCreatedObjects.itemList[i].graphicTransform.SetParent(newCreatedObjects.itemList[i].transform);
             Destroy(newCreatedObjects.itemList[i].gameObject);
         }
 

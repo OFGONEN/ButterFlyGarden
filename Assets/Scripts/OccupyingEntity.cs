@@ -6,4 +6,6 @@ public abstract class OccupyingEntity : Entity
 {
     public PlatformEntity platformEntity;
     public OccupyingEntity attachedEntity;
+
+    public Transform graphicTransform;
 }

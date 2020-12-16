@@ -42,8 +42,15 @@ public class MergedButterFly : ButterFly
         mergedButterFlySet.AddDictionary(mapCord, this);
         mergedButterFlySet.AddList(this);
 
-        newCreatedObjectSet.AddDictionary(mapCord, gameObject);
-        newCreatedObjectSet.AddList(gameObject);
+        newCreatedObjectSet.AddDictionary(mapCord, this);
+        newCreatedObjectSet.AddList(this);
+
+        graphicTransform = transform.GetChild(0);
+    }
+
+    private void Start()
+    {
+        graphicTransform.SetParent(platformEntity.transform.GetChild(0));
     }
 
     private void OnParticleSystemStopped()
@@ -64,7 +71,7 @@ public class MergedButterFly : ButterFly
     private void OnDestroy()
     {
         newCreatedObjectSet.RemoveDictionary(mapCord);
-        newCreatedObjectSet.RemoveList(gameObject);
+        newCreatedObjectSet.RemoveList(this);
     }
     public override void SetData()
     {
@@ -113,6 +120,7 @@ public class MergedButterFly : ButterFly
                 (attachedEntity as Bubble).Attach(_mergedButterFly);
             }
 
+            graphicTransform.SetParent(transform);
             gameObject.SetActive(false);
         }
         else if (platformEntity.occupingEntity is ButterFly && platformEntity.occupingEntity != this)
@@ -131,6 +139,7 @@ public class MergedButterFly : ButterFly
 
             TryMerge();
 
+            _butterFly.graphicTransform.SetParent(_butterFly.transform);
             _butterFly.gameObject.SetActive(false);
         }
     }
