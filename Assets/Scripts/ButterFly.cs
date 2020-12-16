@@ -193,6 +193,7 @@ public class ButterFly : OccupyingEntity
             _mergedButterFlyComponent.mapCord = mapCord;
             _mergedButterFlyComponent.platformEntity = platformEntity;
             _mergedButterFlyComponent.SetData();
+            _mergedButterFlyComponent.graphicTransform.SetParent(platformEntity.graphicTransform);
 
             if (attachedEntity is Bubble)
             {
