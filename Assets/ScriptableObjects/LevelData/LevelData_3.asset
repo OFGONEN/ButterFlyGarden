@@ -71,8 +71,8 @@ MonoBehaviour:
     - {r: 0.87058824, g: 0.16862746, b: 0.14117648, a: 0}
     - {r: 1, g: 1, b: 1, a: 0}
     butterFlyPatterns:
-    - {fileID: 2800000, guid: 2baa7765edb88ae43bbea230d232b840, type: 3}
-    finalPattern: {fileID: 2800000, guid: 2baa7765edb88ae43bbea230d232b840, type: 3}
+    - {fileID: 2800000, guid: 73feb0aadfc583f42b4521703dfde274, type: 3}
+    finalPattern: {fileID: 2800000, guid: 73feb0aadfc583f42b4521703dfde274, type: 3}
   wrongTargetData:
     butterFlyObject: {fileID: 4717035510698555668, guid: ffa5c60ada59ca942bbdf28ce7c99f0a, type: 3}
     butterFlyColors: []
