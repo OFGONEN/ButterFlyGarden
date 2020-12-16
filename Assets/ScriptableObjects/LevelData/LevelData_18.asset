@@ -78,12 +78,12 @@ MonoBehaviour:
     position: {x: 1, y: 3}
     mapCord: {x: 1, y: 3}
     direction: 0
-    butterFlyColor: {r: 0, g: 0, b: 0, a: 0}
+    butterFlyColor: {r: 0.35686275, g: 0.12941177, b: 0.8862745, a: 0}
   - levelObject: {fileID: 2418258055063634259, guid: 2dcc9cd08bbad2f4cb53529e2d139c3f, type: 3}
     position: {x: 2, y: 3}
     mapCord: {x: 2, y: 3}
     direction: 0
-    butterFlyColor: {r: 0.35674867, g: 0.12967247, b: 0.8867924, a: 0}
+    butterFlyColor: {r: 0, g: 0, b: 0, a: 0}
   frogDatas:
   - levelObject: {fileID: 2535748549582999888, guid: bba1eeb7aba8be442abe13526dccb215, type: 3}
     position: {x: 0, y: 4}
