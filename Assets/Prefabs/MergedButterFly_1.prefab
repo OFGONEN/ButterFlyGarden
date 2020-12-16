@@ -61,11 +61,11 @@ MonoBehaviour:
   attachedEntity: {fileID: 0}
   color: {r: 0, g: 0, b: 0, a: 0}
   movementPhase: {fileID: 11400000, guid: 410e6b4d763120e42baadd67efe6353b, type: 2}
+  currentLevelData: {fileID: 11400000, guid: 7a8bf9dea00590b4abe352811f59e3e8, type: 2}
   occupyingEntitySet: {fileID: 11400000, guid: 316d0d77841efbd42a96b7992bc2f891, type: 2}
   butterFlySet: {fileID: 11400000, guid: de4ec2b8f28f980478ed1d13bd17459b, type: 2}
   sound_butterfly_movement: {fileID: 11400000, guid: 30366fa19de41c24192e3b78ec9198ed, type: 2}
   creationSettings: {fileID: 11400000, guid: 9ce2f8cf8f3f7804ebb5162fc2382187, type: 2}
-  mergedButterFly: {fileID: 0}
   butterFlyData:
     levelObject: {fileID: 0}
     position: {x: 0, y: 0}
@@ -74,7 +74,6 @@ MonoBehaviour:
     butterFlyColor: {r: 0, g: 0, b: 0, a: 0}
   particles: {fileID: 8373289865928911372}
   encounterPhase: {fileID: 11400000, guid: ee667069fd21a3f43b0324bd251935ad, type: 2}
-  currentLevelData: {fileID: 11400000, guid: 7a8bf9dea00590b4abe352811f59e3e8, type: 2}
   mergedButterFlySet: {fileID: 11400000, guid: e76987198a0c782439d5b5a835191f3c, type: 2}
   newCreatedObjectSet: {fileID: 11400000, guid: 6049f85d3d4a80341ac3f35e96d33614, type: 2}
   sound_merge_correct: {fileID: 11400000, guid: 2373cc16b50fa6f419604e78e61dd307, type: 2}
@@ -116,7 +115,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 0
@@ -4856,7 +4855,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -9726,7 +9725,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -14533,7 +14532,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -19340,7 +19339,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -24147,7 +24146,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1

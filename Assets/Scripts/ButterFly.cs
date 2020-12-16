@@ -43,8 +43,6 @@ public class ButterFly : OccupyingEntity
         renderer.SetPropertyBlock(materialPropertyBlock, 0); // Don't care about the 2nd material of wings.
 
         waitForNewIdle = new WaitForSeconds(Random.Range(creationSettings.butterFlyIdleAnimRepeatMin, creationSettings.butterFlyIdleAnimRepeatMax));
-        RandomIdle(); // Move this to levelmanager
-        randomIdleCoroutine = StartCoroutine(RandomIdleCoroutine());
     }
     private void OnDisable()
     {
@@ -53,18 +51,24 @@ public class ButterFly : OccupyingEntity
 
         butterFlySet.RemoveList(this);
         butterFlySet.RemoveDictionary(mapCord);
+
+        StopCoroutine(randomIdleCoroutine);
     }
     public override void SetData()
     {
         hasData = true;
+        entityAnimator.enabled = true;
+        RandomIdle(); // Move this to levelmanager
+        randomIdleCoroutine = StartCoroutine(RandomIdleCoroutine());
+
         OnEnable();
     }
 
     public override void ResetToDefault()
     {
         // if has a protection vs. 
+        StopCoroutine(randomIdleCoroutine);
         entityAnimator.enabled = false;
-        entityAnimator.enabled = true;
     }
     public bool MoveToPlatform(Vector2 additiveCord)
     {

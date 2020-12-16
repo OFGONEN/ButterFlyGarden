@@ -9,9 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 121d7419130464a4099afb04190e148d, type: 3}
-  m_Name: CurrentLevelData
+  m_Script: {fileID: 11500000, guid: 2df55bb41d269264fa3fbbbce7083c9e, type: 3}
+  m_Name: LevelLoaded
   m_EditorClassIdentifier: 
-  currentLevel: 0
-  levelData: {fileID: 11400000, guid: cd2d012c5a1bd1e48889aa785a861c56, type: 2}
-  levelLoadedEvent: {fileID: 11400000, guid: 33ebe9cd4264f9c44bcc7e232beea05e, type: 2}
