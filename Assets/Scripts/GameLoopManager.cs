@@ -9,6 +9,7 @@ public class GameLoopManager : MonoBehaviour
     public EventListenerDelegateResponse swipeInputEventListener;
     public EventListenerDelegateResponse endPhaseEventListener;
     public EventListenerDelegateResponse replayUIEventListener;
+    public EventListenerDelegateResponse levelLoadedEventListener;
     public GameEvent restartLevelEvent;
     public PlatformEntitySet platformEntitySet;
     public ButterFlySet butterFlySet;
@@ -19,13 +20,13 @@ public class GameLoopManager : MonoBehaviour
 
     [HideInInspector]
     public bool gameLoopStarted = false;
-
-    public List<int> acquiredTargets;
+    public List<int> acquiredTargets = new List<int>(4);
     private void OnEnable()
     {
         swipeInputEventListener.OnEnable();
         replayUIEventListener.OnEnable();
         endPhaseEventListener.OnEnable();
+        levelLoadedEventListener.OnEnable();
     }
 
     private void OnDisable()
@@ -33,6 +34,7 @@ public class GameLoopManager : MonoBehaviour
         swipeInputEventListener.OnDisable();
         replayUIEventListener.OnDisable();
         endPhaseEventListener.OnDisable();
+        levelLoadedEventListener.OnDisable();
     }
     private void Start()
     {
@@ -40,7 +42,10 @@ public class GameLoopManager : MonoBehaviour
         replayUIEventListener.response = ReplayUIResponse;
         endPhaseEventListener.response = EndLoopCheck;
 
-        acquiredTargets = new List<int>(currentLevelData.levelData.targetButterFlyDatas.Count);
+    }
+    private void LevelLoadedResponse()
+    {
+        acquiredTargets.Clear();
     }
     private void ReplayUIResponse()
     {
@@ -65,26 +70,6 @@ public class GameLoopManager : MonoBehaviour
 
         gameLoopStarted = true;
         entryPhase.Execute();
-
-        // for (int i = butterFlySet.itemList.Count - 1; i >= 0; i--)
-        // {
-        //     butterFlySet.itemList[i].MoveToPlatform(_swipeInputEvent.swipeDirection);
-        // }
-
-        // for (int i = butterFlySet.itemList.Count - 1; i >= 0; i--)
-        // {
-        //     butterFlySet.itemList[i].Encounter();
-        // }
-
-        // for (int i = frogSet.itemList.Count - 1; i >= 0; i--)
-        // {
-        //     frogSet.itemList[i].Eat();
-        // }
-
-        // for (int i = butterFlySet.itemList.Count - 1; i >= 0; i--)
-        // {
-        //     butterFlySet.itemList[i].Encounter();
-        // }
     }
 
     public void EndLoopCheck()

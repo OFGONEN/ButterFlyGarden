@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using FFStudio;
+using NaughtyAttributes;
 
 public class LevelManager : MonoBehaviour
 {
@@ -10,13 +11,20 @@ public class LevelManager : MonoBehaviour
     public LevelCreationSettings creationSettings;
     public CurrentLevelData currentLevelData;
     public PlatformEntitySet platformEntitySet;
-
     public OccupyingEntitySet occupyingEntitySet;
     public ButterFlySet butterFlySet;
     public FrogSet frogSet;
     public BubbleSet bubbleSet;
+    public GamePhase entryPhase;
 
-    public Transform parentTransform;
+    public GameObject levelParentObject;
+    Transform parentTransform;
+
+    [Button]
+    public void Boom()
+    {
+        Destroy(parentTransform.gameObject);
+    }
 
     private void OnEnable()
     {
@@ -25,19 +33,24 @@ public class LevelManager : MonoBehaviour
     private void Start()
     {
         restartLevelEventListener.response = RestartLevel;
-
         CreateLevel();
-        SetUpLevel();
     }
     private void OnDisable()
     {
-
         restartLevelEventListener.OnDisable();
     }
 
-    public void CreateLevel()
+    [Button]
+    void CreateLevel()
+    {
+        InstanceLevelObjects();
+        SetUpLevel();
+    }
+    public void InstanceLevelObjects()
     {
         var _levelData = currentLevelData.levelData;
+
+        parentTransform = GameObject.Instantiate(levelParentObject, Vector3.zero, Quaternion.identity).transform;
 
         for (int i = 0; i < _levelData.lilyDatas.Count; i++)
         {
@@ -232,6 +245,14 @@ public class LevelManager : MonoBehaviour
         {
             bubble.ResetToDefault();
             bubble.SetData();
+        }
+
+        GamePhase _gamePhase = entryPhase; ;
+
+        while (_gamePhase.nextPhase != null)
+        {
+            _gamePhase.Reset();
+            _gamePhase = _gamePhase.nextPhase;
         }
 
         SetUpLevel();
