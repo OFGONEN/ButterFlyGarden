@@ -94,6 +94,7 @@ public class UIManager : MonoBehaviour
     {
         introductionText.uiText.text = currentLevelData.levelData.levelIntroductionData.levelWinText;
         tapToPlayButton.uiText.text = "Next Level";
+        PlayerPrefs.SetInt("Level", currentLevelData.currentLevel + 1);
 
         introductionText.GoDestination();
         targetImage.GoDestination();

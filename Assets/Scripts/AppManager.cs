@@ -19,6 +19,9 @@ public class AppManager : MonoBehaviour
     }
     private void Start()
     {
+        currentLevel.currentLevel = PlayerPrefs.GetInt("Level", 1);
+        currentLevel.LoadCurrentLevelData();
+
         loadNextLevelEventListener.response = LoadLevel;
         SceneManager.LoadSceneAsync(1, LoadSceneMode.Additive);
     }
