@@ -68,10 +68,10 @@ MonoBehaviour:
   levelIntroductionData:
     introduce: 1
     targetButterFlyImage: {fileID: 21300000, guid: b7c6392082e69a644975910d97fb7e61, type: 3}
-    introductionText: 'Merge <color=#000000>Black</color> and <color=#407058>Green</color>
-      Butterflies
+    introductionText: 'Merge <color=#000000><font="Helvetica-Bold">Black</font></color>
+      and <color=#407058><font="Helvetica-Bold">Green</font></color> Butterflies
 
-      Acquire Palawan Birdwing'
-    levelWinText: 'Briliant!
 
-      Level Completed'
+      Acquire
+      <font="Helvetica-Bold">Palawan Birdwing</font>'
+    levelWinText: Abi gir pls!
