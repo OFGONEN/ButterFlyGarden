@@ -133,7 +133,7 @@ public class GameLoopManager : MonoBehaviour
            {
                acquiredTarget.entityAnimator.SetTrigger("Idle");
                acquiredTarget.entityAnimator.SetFloat("IdleBlend", 1);
-               //raise
+               targetButterflyAcquired.Raise();
            });
         acquiredTarget.transform.DORotate(new Vector3(0, 0, 0), 1);
     }

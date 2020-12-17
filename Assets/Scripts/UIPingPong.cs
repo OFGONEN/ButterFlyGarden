@@ -11,9 +11,10 @@ public class UIPingPong : MonoBehaviour
     public RectTransform uiRectTransform;
     public Image targetImage;
     public TextMeshProUGUI uiText;
+    public Button uiButton;
     public Vector2 destination;
     public float speed;
-    Vector2 position;
+    public Vector2 position;
 
     private void Start()
     {
@@ -23,10 +24,20 @@ public class UIPingPong : MonoBehaviour
     [Button]
     public void GoDestination()
     {
-        uiRectTransform.DOAnchorPos(destination, speed);
+        if (uiButton != null)
+            uiButton.interactable = false;
 
-        var _temp = position;
-        position = destination;
-        destination = _temp;
+        var _temp = destination;
+        destination = position;
+        position = _temp;
+
+        uiRectTransform.DOComplete();
+        uiRectTransform.DOAnchorPos(_temp, speed).OnComplete(EnableButtonInteraction);
+    }
+
+    void EnableButtonInteraction()
+    {
+        if (uiButton != null)
+            uiButton.interactable = true;
     }
 }

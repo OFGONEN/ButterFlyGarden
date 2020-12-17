@@ -6,23 +6,22 @@ using DG.Tweening;
 
 public class AppManager : MonoBehaviour
 {
+    public GameEvent nextLevelLoadedEvent;
+    public EventListenerDelegateResponse loadNextLevelEventListener;
     public CurrentLevelData currentLevel;
-    public EventListenerDelegateResponse targetAquired;
-
     private void OnEnable()
     {
-        targetAquired.OnEnable();
+        loadNextLevelEventListener.OnEnable();
     }
     private void OnDisable()
     {
-        targetAquired.OnDisable();
+        loadNextLevelEventListener.OnDisable();
     }
     private void Start()
     {
-        targetAquired.response = LoadLevel;
+        loadNextLevelEventListener.response = LoadLevel;
         SceneManager.LoadSceneAsync(1, LoadSceneMode.Additive);
     }
-
     void LoadLevel()
     {
         DOTween.KillAll();
@@ -34,11 +33,23 @@ public class AppManager : MonoBehaviour
         currentLevel.LoadCurrentLevelData();
 
         var _operation = SceneManager.UnloadSceneAsync(SceneManager.GetSceneByBuildIndex(1));
-        _operation.completed += LoadNextLevel;
+        _operation.completed += UnloadPreviousSceneDone;
+    }
+    void UnloadPreviousSceneDone(AsyncOperation operation)
+    {
+        var _operation = SceneManager.LoadSceneAsync(1, LoadSceneMode.Additive);
+        _operation.completed += NextLevelLoaded;
     }
 
-    void LoadNextLevel(AsyncOperation operation)
+    void NextLevelLoaded(AsyncOperation operation)
     {
-        SceneManager.LoadSceneAsync(1, LoadSceneMode.Additive);
+        StartCoroutine(RaiseNextLevelLoadedEvent());
     }
+
+    IEnumerator RaiseNextLevelLoadedEvent()
+    {
+        yield return new WaitForEndOfFrame();
+        nextLevelLoadedEvent.Raise();
+    }
+
 }

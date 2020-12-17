@@ -43,3 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b924498d01fe8c43bcc6c0b426b5a5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextLevelLoadedEvent: {fileID: 11400000, guid: 4c32627adf9439f4fa30b38173e3476d, type: 2}
+  loadNextLevelEventListener:
+    gameEvent: {fileID: 11400000, guid: 91a6164a7e3a7f4418f9138df4e967ac, type: 2}
+  currentLevel: {fileID: 11400000, guid: 7a8bf9dea00590b4abe352811f59e3e8, type: 2}

@@ -273,6 +273,7 @@ MonoBehaviour:
   uiRectTransform: {fileID: 186458535}
   targetImage: {fileID: 0}
   uiText: {fileID: 186458536}
+  uiButton: {fileID: 0}
   destination: {x: 0, y: 145}
   speed: 0.5
 --- !u!1 &365919671
@@ -366,6 +367,7 @@ MonoBehaviour:
   uiRectTransform: {fileID: 365919672}
   targetImage: {fileID: 365919673}
   uiText: {fileID: 0}
+  uiButton: {fileID: 0}
   destination: {x: -111.1667, y: -83.375}
   speed: 0.5
 --- !u!1 &526968848
@@ -551,6 +553,7 @@ MonoBehaviour:
   uiRectTransform: {fileID: 677103774}
   targetImage: {fileID: 0}
   uiText: {fileID: 2040800417}
+  uiButton: {fileID: 677103775}
   destination: {x: 50, y: -50}
   speed: 0.5
 --- !u!1 &696090879
@@ -750,8 +753,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentLevelData: {fileID: 11400000, guid: 7a8bf9dea00590b4abe352811f59e3e8, type: 2}
   startLevelEvent: {fileID: 11400000, guid: c576e6b8d7c02814e8b642dd8d6dabc4, type: 2}
+  loadNextLevelEvent: {fileID: 11400000, guid: 91a6164a7e3a7f4418f9138df4e967ac, type: 2}
   tapToPlayEventListener:
     gameEvent: {fileID: 11400000, guid: 45ac856853e68874286b6522a2dc42c2, type: 2}
+  targetAquiredEventListener:
+    gameEvent: {fileID: 11400000, guid: 8ba81f9a8a809f34ab24effb71d95828, type: 2}
+  nextLevelLoadedEventListener:
+    gameEvent: {fileID: 11400000, guid: 4c32627adf9439f4fa30b38173e3476d, type: 2}
   backGroundImage: {fileID: 696090881}
   butterFlyImage: {fileID: 1626327701}
   targetImage: {fileID: 365919675}
@@ -1435,6 +1443,7 @@ MonoBehaviour:
   uiRectTransform: {fileID: 2123453300}
   targetImage: {fileID: 0}
   uiText: {fileID: 2026737628}
+  uiButton: {fileID: 2123453301}
   destination: {x: 0, y: -67.2}
   speed: 0.5
 --- !u!1001 &558816962053579442
@@ -1448,14 +1457,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: App
       objectReference: {fileID: 0}
-    - target: {fileID: 558816960874550382, guid: 0d1f0d25af1dc06449658c6fa437060c, type: 3}
-      propertyPath: currentLevel
-      value: 
-      objectReference: {fileID: 11400000, guid: 7a8bf9dea00590b4abe352811f59e3e8, type: 2}
-    - target: {fileID: 558816960874550382, guid: 0d1f0d25af1dc06449658c6fa437060c, type: 3}
-      propertyPath: targetAquired.gameEvent
-      value: 
-      objectReference: {fileID: 11400000, guid: 8ba81f9a8a809f34ab24effb71d95828, type: 2}
     - target: {fileID: 558816960874550383, guid: 0d1f0d25af1dc06449658c6fa437060c, type: 3}
       propertyPath: m_RootOrder
       value: 1
