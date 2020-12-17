@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using FFStudio;
 using UnityEngine;
+using DG.Tweening;
 
 public class GameLoopManager : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class GameLoopManager : MonoBehaviour
     public EventListenerDelegateResponse swipeInputEventListener;
     public EventListenerDelegateResponse endPhaseEventListener;
     public EventListenerDelegateResponse replayUIEventListener;
+    public EventListenerDelegateResponse startLevelEventListener;
     public GameEvent targetButterflyAcquired;
     public GameEvent restartLevelEvent;
     public PlatformEntitySet platformEntitySet;
@@ -18,14 +20,14 @@ public class GameLoopManager : MonoBehaviour
     public NewCreatedObjectsSet newCreatedObjects;
     public CurrentLevelData currentLevelData;
 
-    [HideInInspector]
-    public bool gameLoopStarted = false;
+    public bool gameLoopStarted = true;
     public List<int> acquiredTargets = new List<int>(4);
     private void OnEnable()
     {
         swipeInputEventListener.OnEnable();
         replayUIEventListener.OnEnable();
         endPhaseEventListener.OnEnable();
+        startLevelEventListener.OnEnable();
     }
 
     private void OnDisable()
@@ -33,13 +35,18 @@ public class GameLoopManager : MonoBehaviour
         swipeInputEventListener.OnDisable();
         replayUIEventListener.OnDisable();
         endPhaseEventListener.OnDisable();
+        startLevelEventListener.OnDisable();
     }
     private void Start()
     {
         swipeInputEventListener.response = SwipeInputResponse;
         replayUIEventListener.response = ReplayUIResponse;
         endPhaseEventListener.response = EndLoopCheck;
-
+        startLevelEventListener.response = StartLevelResponse;
+    }
+    private void StartLevelResponse()
+    {
+        gameLoopStarted = false;
     }
     private void LevelLoadedResponse()
     {
@@ -83,7 +90,6 @@ public class GameLoopManager : MonoBehaviour
         if (acquiredTargets.Count == currentLevelData.levelData.targetButterFlyDatas.Count)
         {
             gameLoopStarted = true;
-            targetButterflyAcquired.Raise();
         }
     }
     public void AcquireTarget(MergedButterFly mergedButterFly)
@@ -100,7 +106,7 @@ public class GameLoopManager : MonoBehaviour
             if (_samePattern && _matchColors && !acquiredTargets.Contains(i))
             {
                 acquiredTargets.Add(i);
-                PopAcquireTarget(i);
+                PopAcquireTarget(i, mergedButterFly);
             }
         }
     }
@@ -118,8 +124,17 @@ public class GameLoopManager : MonoBehaviour
         return _sameColor;
     }
 
-    public void PopAcquireTarget(int index)
+    public void PopAcquireTarget(int index, MergedButterFly acquiredTarget)
     {
-        Debug.Log("Pop index:" + index);
+        acquiredTarget.entityAnimator.SetTrigger("Fly");
+
+        acquiredTarget.graphicTransform.SetParent(acquiredTarget.transform);
+        acquiredTarget.transform.DOMove(new Vector3(0, 6f, -1.25f), 1).OnComplete(() =>
+           {
+               acquiredTarget.entityAnimator.SetTrigger("Idle");
+               acquiredTarget.entityAnimator.SetFloat("IdleBlend", 1);
+               //raise
+           });
+        acquiredTarget.transform.DORotate(new Vector3(0, 0, 0), 1);
     }
 }

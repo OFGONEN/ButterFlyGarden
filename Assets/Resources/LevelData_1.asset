@@ -65,3 +65,6 @@ MonoBehaviour:
     - {fileID: 2800000, guid: abd6f53acb3e38f4aa6a05e3109ff621, type: 3}
     - {fileID: 2800000, guid: 57d024e2f87a64e48a23e7efade33b59, type: 3}
     finalPattern: {fileID: 2800000, guid: 57d024e2f87a64e48a23e7efade33b59, type: 3}
+  levelIntroductionData:
+    targetButterFlyImage: {fileID: 21300000, guid: 8e9ee693828cad44b94b99985cd6a090, type: 3}
+    introductionText: Merge <color="blue">Blue,</color> Butterflies\n Acquire Crimson
