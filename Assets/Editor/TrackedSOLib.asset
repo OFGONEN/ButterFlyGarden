@@ -14,4 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trackedSO:
   - {fileID: 11400000, guid: 7a8bf9dea00590b4abe352811f59e3e8, type: 2}
-  trackedSOCount: 1
+  - {fileID: 11400000, guid: db1587f0ea15a0d4d91e83db81eb45cf, type: 2}
+  - {fileID: 11400000, guid: ee667069fd21a3f43b0324bd251935ad, type: 2}
+  - {fileID: 11400000, guid: 410e6b4d763120e42baadd67efe6353b, type: 2}
+  trackedSOCount: 4
