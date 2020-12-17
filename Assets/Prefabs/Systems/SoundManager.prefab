@@ -50,4 +50,3 @@ MonoBehaviour:
   - gameEvent: {fileID: 11400000, guid: 30366fa19de41c24192e3b78ec9198ed, type: 2}
   - gameEvent: {fileID: 11400000, guid: d35a35c0cf49a9b459e62d84886eaa86, type: 2}
   - gameEvent: {fileID: 11400000, guid: 78708cbf20480014d93dcbb9ec4457da, type: 2}
-  - gameEvent: {fileID: 11400000, guid: 034e3c97a9efe92479a8f59f6cfc926b, type: 2}
