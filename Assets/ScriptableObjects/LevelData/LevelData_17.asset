@@ -107,8 +107,8 @@ MonoBehaviour:
   targetButterFlyDatas:
   - butterFlyObject: {fileID: 2568486715695232862, guid: 1134c8e3dd179744a93de9e049614ece, type: 3}
     butterFlyColors:
-    - {r: 1, g: 1, b: 1, a: 0}
     - {r: 0, g: 0, b: 0, a: 0}
+    - {r: 1, g: 1, b: 1, a: 0}
     butterFlyPatterns:
     - {fileID: 2800000, guid: 0cb6bc6894c06d74fb935cb386ed7346, type: 3}
     finalPattern: {fileID: 2800000, guid: 0cb6bc6894c06d74fb935cb386ed7346, type: 3}
@@ -121,3 +121,8 @@ MonoBehaviour:
     - {fileID: 2800000, guid: abd6f53acb3e38f4aa6a05e3109ff621, type: 3}
     - {fileID: 2800000, guid: 57d024e2f87a64e48a23e7efade33b59, type: 3}
     finalPattern: {fileID: 2800000, guid: 57d024e2f87a64e48a23e7efade33b59, type: 3}
+  levelIntroductionData:
+    introduce: 0
+    targetButterFlyImage: {fileID: 0}
+    introductionText: 
+    levelWinText: 

@@ -16,5 +16,6 @@ MonoBehaviour:
   verticalDistance: 1.75
   butterFlyDistanceToLily: 0.2
   frogFlyDistanceToLily: 0.1
+  butterFlyFlyDuration: 0.75
   butterFlyIdleAnimRepeatMin: 5
   butterFlyIdleAnimRepeatMax: 10
