@@ -13,6 +13,7 @@ public class LevelData : ScriptableObject
     public List<BubbleData> bubbleDatas = new List<BubbleData>();
     public List<TargetButterFlyData> targetButterFlyDatas = new List<TargetButterFlyData>();
     public TargetButterFlyData wrongTargetData;
+    public LevelIntroductionData levelIntroductionData;
 }
 
 [System.Serializable]
@@ -59,6 +60,16 @@ public struct TargetButterFlyData
     public List<Color> butterFlyColors;
     public List<Texture2D> butterFlyPatterns;
     public Texture2D finalPattern;
+}
+
+
+[System.Serializable]
+public struct LevelIntroductionData
+{
+    public bool introduce;
+    public Sprite targetButterFlyImage;
+    public string introductionText;
+    public string levelWinText;
 }
 
 
