@@ -74,4 +74,6 @@ MonoBehaviour:
 
       Acquire
       <font="Helvetica-Bold">Palawan Birdwing</font>'
-    levelWinText: Abi gir pls!
+    levelWinText: '<font="Helvetica-Bold">Brilliant!</font>
+
+      Level Completed'

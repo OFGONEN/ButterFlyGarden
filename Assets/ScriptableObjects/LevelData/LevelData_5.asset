@@ -88,7 +88,14 @@ MonoBehaviour:
     - {fileID: 2800000, guid: 57d024e2f87a64e48a23e7efade33b59, type: 3}
     finalPattern: {fileID: 2800000, guid: 57d024e2f87a64e48a23e7efade33b59, type: 3}
   levelIntroductionData:
-    introduce: 0
-    targetButterFlyImage: {fileID: 0}
-    introductionText: 
-    levelWinText: 
+    introduce: 1
+    targetButterFlyImage: {fileID: 21300000, guid: 4cb2e043c3fb1cc45be21261e42946f8, type: 3}
+    introductionText: 'Merge <color=#d5bc2b><font="Helvetica-Bold">Yellow</font></color>
+      and <color=#F88903><font="Helvetica-Bold">Orange</font></color> Butterflies
+
+
+      Acquire
+      <font="Helvetica-Bold">Orange Tip</font>'
+    levelWinText: '<font="Helvetica-Bold">Brilliant!</font>
+
+      Level Completed'
