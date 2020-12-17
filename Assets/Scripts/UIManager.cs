@@ -37,6 +37,8 @@ public class UIManager : MonoBehaviour
     }
     void Start()
     {
+        backGroundImage.DOFade(0.8f, 0.5f);
+        butterFlyImage.sprite = currentLevelData.levelData.levelIntroductionData.targetButterFlyImage;
         tapToPlayEventListener.response = TapToPlayPressed;
         targetAquiredEventListener.response = TargetAquired;
         nextLevelLoadedEventListener.response = NewLevelLoaded;
@@ -44,7 +46,6 @@ public class UIManager : MonoBehaviour
 
     void TapToPlayPressed()
     {
-        backGroundImage.DOFade(0, 0.5f);
         targetImage.targetImage.sprite = currentLevelData.levelData.levelIntroductionData.targetButterFlyImage;
 
         if (currentLevelData.levelData.levelIntroductionData.introduce)
@@ -60,11 +61,13 @@ public class UIManager : MonoBehaviour
     }
     void IntroduceButterFly()
     {
+        backGroundImage.DOFade(0.8f, 0.5f);
         introductionText.uiText.text = currentLevelData.levelData.levelIntroductionData.introductionText;
         butterFlyImage.sprite = currentLevelData.levelData.levelIntroductionData.targetButterFlyImage;
         butterFlyImage.transform.position = rightSide.position;
-        tapToPlayButton.uiText.text = "Tap To Play";
+        tapToPlayButton.uiText.text = "Tap To Play!";
 
+        butterFlyImage.enabled = true;
         butterFlyImage.rectTransform.DOMove(center.transform.position, 0.5f);
         introductionText.GoDestination();
         tapToPlayButton.GoDestination();
@@ -74,6 +77,7 @@ public class UIManager : MonoBehaviour
 
     void StartLevelAfterIntroduce()
     {
+        backGroundImage.DOFade(0, 0.5f);
         targetImage.GoDestination();
         resetButton.GoDestination();
         tapToPlayButton.GoDestination();
@@ -93,7 +97,7 @@ public class UIManager : MonoBehaviour
     void TargetAquired()
     {
         introductionText.uiText.text = currentLevelData.levelData.levelIntroductionData.levelWinText;
-        tapToPlayButton.uiText.text = "Next Level";
+        tapToPlayButton.uiText.text = "Next Level!";
         PlayerPrefs.SetInt("Level", currentLevelData.currentLevel + 1);
 
         introductionText.GoDestination();

@@ -181,10 +181,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Butterfly Garden
+  m_text: ButterFly Garden
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 137c4dc436b74a142bb2c3d3bcf3e13d, type: 2}
+  m_sharedMaterial: {fileID: 134376344038517721, guid: 137c4dc436b74a142bb2c3d3bcf3e13d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -208,15 +208,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 108
+  m_fontSizeBase: 108
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -276,6 +276,7 @@ MonoBehaviour:
   uiButton: {fileID: 0}
   destination: {x: 0, y: 145}
   speed: 0.5
+  position: {x: 0, y: 0}
 --- !u!1 &365919671
 GameObject:
   m_ObjectHideFlags: 0
@@ -370,6 +371,7 @@ MonoBehaviour:
   uiButton: {fileID: 0}
   destination: {x: -111.1667, y: -83.375}
   speed: 0.5
+  position: {x: 0, y: 0}
 --- !u!1 &526968848
 GameObject:
   m_ObjectHideFlags: 0
@@ -556,6 +558,7 @@ MonoBehaviour:
   uiButton: {fileID: 677103775}
   destination: {x: 50, y: -50}
   speed: 0.5
+  position: {x: 0, y: 0}
 --- !u!1 &696090879
 GameObject:
   m_ObjectHideFlags: 0
@@ -606,7 +609,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.78431374}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -878,7 +881,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1626327699}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -1084,10 +1087,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Tap To Play
+  m_text: Tap To Play!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 1ce91c5dbaca37745b7aa21f29c8500b, type: 2}
+  m_sharedMaterial: {fileID: -572330320672327038, guid: 1ce91c5dbaca37745b7aa21f29c8500b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1403,7 +1406,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1446,6 +1449,7 @@ MonoBehaviour:
   uiButton: {fileID: 2123453301}
   destination: {x: 0, y: -67.2}
   speed: 0.5
+  position: {x: 0, y: 0}
 --- !u!1001 &558816962053579442
 PrefabInstance:
   m_ObjectHideFlags: 0

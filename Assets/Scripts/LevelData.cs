@@ -68,7 +68,9 @@ public struct LevelIntroductionData
 {
     public bool introduce;
     public Sprite targetButterFlyImage;
+    [TextArea]
     public string introductionText;
+    [TextArea]
     public string levelWinText;
 }
 
