@@ -84,6 +84,7 @@ public class UIManager : MonoBehaviour
         introductionText.GoDestination();
 
         butterFlyImage.rectTransform.DOMove(leftSide.transform.position, 0.25f);
+        tapInputEventListener.response = EmptyMethod;
         startLevelEvent.Raise();
     }
 
@@ -122,11 +123,16 @@ public class UIManager : MonoBehaviour
             StartLevel();
         }
     }
-
     void StartLevel()
     {
         targetImage.GoDestination();
         resetButton.GoDestination();
+        tapInputEventListener.response = EmptyMethod;
         startLevelEvent.Raise();
+    }
+
+    void EmptyMethod()
+    {
+
     }
 }

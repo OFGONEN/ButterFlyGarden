@@ -140,8 +140,11 @@ public class LevelManager : MonoBehaviour
         -creationSettings.verticalDistance * (_levelData.size.y - 1) / 2);
 
         var _cameraPos = mainCamera.transform.position;
-        _cameraPos.y = _levelData.size.x * 3;
+        var _heightModifier = Mathf.Max(0, _levelData.size.y / _levelData.size.x - 1);
+        _cameraPos.y = (_levelData.size.x + _heightModifier) * 3;
         mainCamera.transform.position = _cameraPos;
+
+        currentLevelData.mainCameraPos = _cameraPos;
     }
     public void SetUpLevel()
     {

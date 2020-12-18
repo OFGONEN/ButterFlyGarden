@@ -7,9 +7,17 @@ using UnityEngine;
 public class CurrentLevelData : ScriptableObject
 {
     public int currentLevel;
+    public LevelCreationSettings levelCreationSettings;
     public LevelData levelData;
+    public Vector3 mainCameraPos;
+
+
     public void LoadCurrentLevelData()
     {
+        if (currentLevel > levelCreationSettings.maxLevelCount)
+        {
+            currentLevel = Random.Range(1, levelCreationSettings.maxLevelCount);
+        }
         levelData = Resources.Load<LevelData>("LevelData_" + currentLevel);
     }
     public bool FindTarGetButterFly(Color colorOne, Color colorTwo, out int dataIndex)

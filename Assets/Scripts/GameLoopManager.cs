@@ -56,6 +56,9 @@ public class GameLoopManager : MonoBehaviour
     {
         if (gameLoopStarted) return;
 
+
+        DOTween.KillAll();
+
         for (int i = newCreatedObjects.itemList.Count - 1; i >= 0; i--)
         {
             newCreatedObjects.itemList[i].graphicTransform.SetParent(newCreatedObjects.itemList[i].transform);
@@ -129,7 +132,7 @@ public class GameLoopManager : MonoBehaviour
         acquiredTarget.entityAnimator.SetTrigger("Fly");
 
         acquiredTarget.graphicTransform.SetParent(acquiredTarget.transform);
-        acquiredTarget.transform.DOMove(new Vector3(0, 6f, -1.25f), 1).OnComplete(() =>
+        acquiredTarget.transform.DOMove(new Vector3(0, currentLevelData.mainCameraPos.y - 3f, -1f), 1).OnComplete(() =>
            {
                acquiredTarget.entityAnimator.SetTrigger("Idle");
                acquiredTarget.entityAnimator.SetFloat("IdleBlend", 1);

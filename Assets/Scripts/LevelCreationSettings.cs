@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "LevelCreationSettings", menuName = "FF/Data/LevelSettings")]
 public class LevelCreationSettings : ScriptableObject
 {
+    public int maxLevelCount;
     public float horizontalDistance = 1.5f;
     public float verticalDistance = 1.5f;
 

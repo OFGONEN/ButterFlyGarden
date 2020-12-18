@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea4ed1ca6c5d18c42ac5438cf31b93a9, type: 3}
   m_Name: LevelCreationSettings
   m_EditorClassIdentifier: 
+  maxLevelCount: 22
   horizontalDistance: 1.75
   verticalDistance: 1.75
   butterFlyDistanceToLily: 0.25
