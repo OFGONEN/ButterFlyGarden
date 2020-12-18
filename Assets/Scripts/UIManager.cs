@@ -10,7 +10,7 @@ public class UIManager : MonoBehaviour
     public CurrentLevelData currentLevelData;
     public GameEvent startLevelEvent;
     public GameEvent loadNextLevelEvent;
-    public EventListenerDelegateResponse tapToPlayEventListener;
+    public EventListenerDelegateResponse tapInputEventListener;
     public EventListenerDelegateResponse targetAquiredEventListener;
     public EventListenerDelegateResponse nextLevelLoadedEventListener;
     public Image backGroundImage;
@@ -25,13 +25,13 @@ public class UIManager : MonoBehaviour
 
     private void OnEnable()
     {
-        tapToPlayEventListener.OnEnable();
+        tapInputEventListener.OnEnable();
         targetAquiredEventListener.OnEnable();
         nextLevelLoadedEventListener.OnEnable();
     }
     private void OnDisable()
     {
-        tapToPlayEventListener.OnDisable();
+        tapInputEventListener.OnDisable();
         targetAquiredEventListener.OnDisable();
         nextLevelLoadedEventListener.OnDisable();
     }
@@ -39,7 +39,7 @@ public class UIManager : MonoBehaviour
     {
         backGroundImage.DOFade(0.8f, 0.5f);
         butterFlyImage.sprite = currentLevelData.levelData.levelIntroductionData.targetButterFlyImage;
-        tapToPlayEventListener.response = TapToPlayPressed;
+        tapInputEventListener.response = TapToPlayPressed;
         targetAquiredEventListener.response = TargetAquired;
         nextLevelLoadedEventListener.response = NewLevelLoaded;
     }
@@ -72,7 +72,7 @@ public class UIManager : MonoBehaviour
         introductionText.GoDestination();
         tapToPlayButton.GoDestination();
 
-        tapToPlayEventListener.response = StartLevelAfterIntroduce;
+        tapInputEventListener.response = StartLevelAfterIntroduce;
     }
 
     void StartLevelAfterIntroduce()
@@ -105,7 +105,7 @@ public class UIManager : MonoBehaviour
         resetButton.GoDestination();
         tapToPlayButton.GoDestination();
 
-        tapToPlayEventListener.response = LoadNextLevel;
+        tapInputEventListener.response = LoadNextLevel;
     }
 
     void NewLevelLoaded()
