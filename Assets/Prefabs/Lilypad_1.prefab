@@ -124,7 +124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetTransform: {fileID: 8546875923836452738}
-  maxCoordValue: 0.2
+  maxCoordValue: 0.1
   numberOfWaypoints: 5
   waypoints: []
 --- !u!1 &8768123701286535757
