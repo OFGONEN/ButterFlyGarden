@@ -25,11 +25,11 @@ public class FFMobileInput : MonoBehaviour
 
     Vector2 DecideDirection(float unsignedAngle, Vector2 delta)
     {
-        if (unsignedAngle >= 150)
+        if (unsignedAngle >= 140)
         {
             return Vector2.left;
         }
-        else if (60 <= unsignedAngle && unsignedAngle <= 120)
+        else if (50 <= unsignedAngle && unsignedAngle <= 130)
         {
             if (delta.y >= 0)
             {
@@ -40,7 +40,7 @@ public class FFMobileInput : MonoBehaviour
                 return Vector2.down;
             }
         }
-        else if (unsignedAngle <= 30)
+        else if (unsignedAngle <= 40)
         {
             return Vector2.right;
         }
