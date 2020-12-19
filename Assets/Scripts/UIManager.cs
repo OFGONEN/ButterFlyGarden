@@ -47,6 +47,7 @@ public class UIManager : MonoBehaviour
     void TapToPlayPressed()
     {
         targetImage.targetImage.sprite = currentLevelData.levelData.levelIntroductionData.targetButterFlyImage;
+        tapInputEventListener.response = EmptyMethod;
 
         if (currentLevelData.levelData.levelIntroductionData.introduce)
         {
@@ -61,7 +62,7 @@ public class UIManager : MonoBehaviour
     }
     void IntroduceButterFly()
     {
-        backGroundImage.DOFade(0.8f, 0.5f);
+        backGroundImage.DOFade(0.8f, 0.5f).OnComplete(() => tapInputEventListener.response = StartLevelAfterIntroduce);
         introductionText.uiText.text = currentLevelData.levelData.levelIntroductionData.introductionText;
         butterFlyImage.sprite = currentLevelData.levelData.levelIntroductionData.targetButterFlyImage;
         butterFlyImage.transform.position = rightSide.position;
@@ -71,12 +72,12 @@ public class UIManager : MonoBehaviour
         butterFlyImage.rectTransform.DOMove(center.transform.position, 0.5f);
         introductionText.GoDestination();
         tapToPlayButton.GoDestination();
-
-        tapInputEventListener.response = StartLevelAfterIntroduce;
     }
 
     void StartLevelAfterIntroduce()
     {
+        tapInputEventListener.response = EmptyMethod;
+
         backGroundImage.DOFade(0, 0.5f);
         targetImage.GoDestination();
         resetButton.GoDestination();
@@ -84,12 +85,12 @@ public class UIManager : MonoBehaviour
         introductionText.GoDestination();
 
         butterFlyImage.rectTransform.DOMove(leftSide.transform.position, 0.25f);
-        tapInputEventListener.response = EmptyMethod;
         startLevelEvent.Raise();
     }
 
     void LoadNextLevel()
     {
+        tapInputEventListener.response = EmptyMethod;
         backGroundImage.DOFade(1, 0.5f).OnComplete(() => loadNextLevelEvent.Raise());
         introductionText.GoDestination();
         tapToPlayButton.GoDestination();
@@ -125,10 +126,11 @@ public class UIManager : MonoBehaviour
     }
     void StartLevel()
     {
-        targetImage.GoDestination();
-        resetButton.GoDestination();
         tapInputEventListener.response = EmptyMethod;
         startLevelEvent.Raise();
+
+        targetImage.GoDestination();
+        resetButton.GoDestination();
     }
 
     void EmptyMethod()
