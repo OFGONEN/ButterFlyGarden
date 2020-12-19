@@ -14,8 +14,8 @@ public class Bubble : OccupyingEntity
 
     [HideInInspector]
     public BubbleData bubbleData;
-
     Transform levelTransform;
+    Tween verticalTween;
 
 
     private void OnEnable()
@@ -52,6 +52,7 @@ public class Bubble : OccupyingEntity
         levelTransform = transform.parent;
 
         graphicTransform.DORotate(rotateBy, 1).SetRelative().SetLoops(-1, LoopType.Incremental).SetEase(Ease.Linear);
+        verticalTween = graphicTransform.DOMoveY(0.25f, 1f).SetLoops(-1, LoopType.Yoyo);
     }
     public override void ResetToDefault()
     {
@@ -62,6 +63,8 @@ public class Bubble : OccupyingEntity
 
         attachedEntity = null;
 
+        graphicTransform.DORotate(rotateBy, 1).SetRelative().SetLoops(-1, LoopType.Incremental).SetEase(Ease.Linear);
+        verticalTween = graphicTransform.DOMoveY(0.25f, 1f).SetLoops(-1, LoopType.Yoyo);
     }
     public void Pop()
     {
@@ -69,9 +72,13 @@ public class Bubble : OccupyingEntity
             attachedEntity.attachedEntity = null;
 
         attachedEntity = null;
+
+
         graphicTransform.SetParent(transform);
         graphicTransform.gameObject.SetActive(false);
+        graphicTransform.localPosition = Vector3.zero;
         transform.SetParent(levelTransform);
+
         particles.Play();
         bubblePopSound.Raise();
     }
@@ -81,10 +88,13 @@ public class Bubble : OccupyingEntity
         if (attachedEntity != null)
             attachedEntity.attachedEntity = null;
 
+        verticalTween.Kill();
+
         attachedEntity = occupyingEntity;
         attachedEntity.attachedEntity = this;
         graphicTransform.SetParent(transform);
-        transform.SetParent(occupyingEntity.transform);
+        graphicTransform.localPosition = Vector3.zero;
+        transform.SetParent(occupyingEntity.graphicTransform);
     }
     public override void SetData()
     {

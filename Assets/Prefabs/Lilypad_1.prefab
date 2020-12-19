@@ -92,6 +92,7 @@ MonoBehaviour:
   leftPlatformEntity: {fileID: 0}
   platformEntitySet: {fileID: 11400000, guid: 6f70dcffdc9b608469ad7f2588c357ef, type: 2}
   occupyingEntitySet: {fileID: 11400000, guid: 316d0d77841efbd42a96b7992bc2f891, type: 2}
+  driftComponent: {fileID: 7875029326058567322}
 --- !u!95 &1021003599
 Animator:
   serializedVersion: 3

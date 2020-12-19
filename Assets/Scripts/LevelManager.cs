@@ -232,6 +232,11 @@ public class LevelManager : MonoBehaviour
         occupyingEntitySet.ClearSet();
         bubbleSet.ClearSet();
 
+        foreach (var lily in platformEntitySet.itemList)
+        {
+            lily.ResetToDefault();
+        }
+
         foreach (var butterFly in _butterFlies)
         {
             butterFly.ResetToDefault();

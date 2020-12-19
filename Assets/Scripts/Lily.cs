@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Lily : PlatformEntity
 {
+    public Drift driftComponent;
     private void OnEnable()
     {
         if (!hasData) return;
@@ -20,6 +21,7 @@ public class Lily : PlatformEntity
     }
     public override void ResetToDefault()
     {
+        driftComponent.DoDrift();
         inComingEntity = null;
         occupingEntity = null;
     }

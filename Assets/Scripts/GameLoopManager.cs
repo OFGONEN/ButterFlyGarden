@@ -129,6 +129,9 @@ public class GameLoopManager : MonoBehaviour
 
     public void PopAcquireTarget(int index, MergedButterFly acquiredTarget)
     {
+        if (acquiredTarget.attachedEntity is Bubble)
+            (acquiredTarget.attachedEntity as Bubble).Pop();
+
         acquiredTarget.entityAnimator.SetTrigger("Fly");
 
         acquiredTarget.graphicTransform.SetParent(acquiredTarget.transform);
