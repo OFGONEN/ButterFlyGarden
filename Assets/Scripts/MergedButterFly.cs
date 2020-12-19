@@ -196,6 +196,7 @@ public class MergedButterFly : ButterFly
             RearrangeInputButterFlies(_targetButterFlyData);
             sound_merge_correct.Raise();
             particles.Play();
+            encounterPhase.AddWait();
         }
         else
         {
