@@ -60,7 +60,7 @@ public abstract class PlatformEntity : Entity
         {
             occupingEntity.platformEntity = this;
             occupingEntity.graphicTransform.SetParent(graphicTransform);
-            occupingEntity.graphicTransform.localPosition = Vector3.zero;
+            // occupingEntity.graphicTransform.localPosition = Vector3.zero;
         }
     }
 }

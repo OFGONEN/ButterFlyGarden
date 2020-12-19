@@ -83,6 +83,7 @@ public class ButterFly : OccupyingEntity
         if (_platform == null || _platform.occupingEntity is Frog) return false;
 
         graphicTransform.SetParent(transform);
+        graphicTransform.localPosition = Vector3.zero;
         movementPhase.AddWait();
         sound_butterfly_movement.Raise();
 
