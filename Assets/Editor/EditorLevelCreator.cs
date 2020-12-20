@@ -215,6 +215,7 @@ public static class EditorLevelCreator
                 {
                     var _newData = newData.butterFlyDatas[i];
                     _newData.butterFlyColor = oldData.butterFlyDatas[x].butterFlyColor;
+                    _newData.butterflyInRecipe = oldData.butterFlyDatas[x].butterflyInRecipe;
 
                     newData.butterFlyDatas[i] = _newData;
                 }
