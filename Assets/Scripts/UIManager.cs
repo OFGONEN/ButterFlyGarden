@@ -18,6 +18,7 @@ public class UIManager : MonoBehaviour
     public UIPingPong targetImage;
     public UIPingPong introductionText;
     public UIPingPong resetButton;
+    public UIPingPong levelText;
     public UIPingPong tapToPlayButton;
     public RectTransform leftSide;
     public RectTransform center;
@@ -47,6 +48,7 @@ public class UIManager : MonoBehaviour
     void TapToPlayPressed()
     {
         targetImage.targetImage.sprite = currentLevelData.levelData.levelIntroductionData.targetButterFlyImage;
+        levelText.uiText.text = $"Level {currentLevelData.currentLevel}";
         tapInputEventListener.response = EmptyMethod;
 
         if (currentLevelData.levelData.levelIntroductionData.introduce)
@@ -80,6 +82,7 @@ public class UIManager : MonoBehaviour
 
         backGroundImage.DOFade(0, 0.5f);
         targetImage.GoDestination();
+        levelText.GoDestination();
         resetButton.GoDestination();
         tapToPlayButton.GoDestination();
         introductionText.GoDestination();
@@ -104,6 +107,7 @@ public class UIManager : MonoBehaviour
 
         introductionText.GoDestination();
         targetImage.GoDestination();
+        levelText.GoDestination();
         resetButton.GoDestination();
         tapToPlayButton.GoDestination();
 
@@ -113,6 +117,7 @@ public class UIManager : MonoBehaviour
     void NewLevelLoaded()
     {
         targetImage.targetImage.sprite = currentLevelData.levelData.levelIntroductionData.targetButterFlyImage;
+        levelText.uiText.text = $"Level {currentLevelData.currentLevel}";
         backGroundImage.DOFade(0, 0.2f);
 
         if (currentLevelData.levelData.levelIntroductionData.introduce)
@@ -131,6 +136,7 @@ public class UIManager : MonoBehaviour
 
         targetImage.GoDestination();
         resetButton.GoDestination();
+        levelText.GoDestination();
     }
 
     void EmptyMethod()

@@ -13,12 +13,17 @@ public class UIPingPong : MonoBehaviour
     public TextMeshProUGUI uiText;
     public Button uiButton;
     public Vector2 destination;
+    Vector2 position;
     public float speed;
-    public Vector2 position;
+    public bool safeArea;
+
 
     private void Start()
     {
         position = uiRectTransform.anchoredPosition;
+
+        if (safeArea)
+            destination += new Vector2(0, Mathf.Sign(destination.y) * (Screen.height - Screen.safeArea.height - Screen.safeArea.position.y));
     }
 
     [Button]
