@@ -142,7 +142,10 @@ public class LevelManager : MonoBehaviour
         var _cameraPos = mainCamera.transform.position;
         var _heightModifier = Mathf.Max(0, _levelData.size.y / _levelData.size.x - 1);
         _cameraPos.y = (_levelData.size.x + _heightModifier) * 3;
-        mainCamera.transform.position = _cameraPos;
+        /* Weird bug: Some lilypads above the origin in Z direciton do not submerge under water
+         * IF camera Y position is an integer. 
+         * Fix: Add 0.2 offset... */
+        mainCamera.transform.position = _cameraPos + new Vector3( 0.0f, 0.2f, 0.0f );
 
         currentLevelData.mainCameraPos = _cameraPos;
     }
