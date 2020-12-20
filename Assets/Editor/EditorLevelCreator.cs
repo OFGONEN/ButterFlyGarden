@@ -256,6 +256,7 @@ public static class EditorLevelCreator
         newData.targetButterFlyDatas.AddRange(oldData.targetButterFlyDatas);
         newData.wrongTargetData = oldData.wrongTargetData;
         newData.levelIntroductionData = oldData.levelIntroductionData;
+        newData.uiTutorial = oldData.uiTutorial;
     }
 
     private static void ClearLog()

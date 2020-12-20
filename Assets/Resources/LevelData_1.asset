@@ -77,3 +77,4 @@ MonoBehaviour:
     levelWinText: '<font="Helvetica-Bold">Brilliant!</font>
 
       Level Completed'
+  uiTutorial: {fileID: 0}

@@ -14,6 +14,8 @@ public class LevelData : ScriptableObject
     public List<TargetButterFlyData> targetButterFlyDatas = new List<TargetButterFlyData>();
     public TargetButterFlyData wrongTargetData;
     public LevelIntroductionData levelIntroductionData;
+
+    public UITutorial uiTutorial;
 }
 
 [System.Serializable]
