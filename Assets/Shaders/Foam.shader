@@ -2,19 +2,13 @@
 {
     Properties
     {
-        _FoamColor         ( "Foam Color", Color )          = ( 1, 1, 1, 1 )
-        _RippleColor       ( "Ripple Color", Color )        = ( 0, 1, 0, 1 )
-        _MainTex           ( "Texture", 2D )                = "white" {}
-        _NoiseTex          ( "Noise Texture", 2D )          = "cyan" {}
-        _Intensity         ( "Intensity", Float )           = 1.0
-        _FoamRadius        ( "Foam Radius", Float )         = 0.1
-        _RippleInnerRadius ( "Ripple Inner Radius", Float ) = 0.1
-        _RippleOuterRadius ( "Ripple Outer Radius", Float ) = 1.0
-        _WaveOffset        ( "Wave Offset", Float )         = 1.0
+        _Color      ( "Color",        Color          ) = ( 1, 1, 1, 1 )
+        _FoamRadius ( "Foam Radius",  Range( 0, 1 )  ) = 0.4
+        _Intensity  ( "Intensity",    Range( 0, 1 )  ) = 0.26
     }
     SubShader
     {
-        Tags { "RenderType" = "Transparent" "Queue" = "Transparent" }
+        Tags { "RenderType" = "Transparent" "Queue" = "Geometry" }
         ZWrite Off
         Blend SrcAlpha OneMinusSrcAlpha
         Cull back 
@@ -23,12 +17,12 @@
         Pass
         {
             CGPROGRAM
-            #pragma vertex Vertex
-            #pragma fragment Fragment
+            #pragma vertex vert
+            #pragma fragment frag
 
             #include "UnityCG.cginc"
 
-            struct Input
+            struct VertexInput
             {
                 float4 vertex : POSITION;
                 float2 uv     : TEXCOORD0;
@@ -36,60 +30,28 @@
 
             struct VertexToFragment
             {
-                float2 uv        : TEXCOORD0;
-                float3 objCoords : TEXCOORD1;
-                float4 vertex    : SV_POSITION;
+                float2 uv     : TEXCOORD0;
+                float4 vertex : SV_POSITION;
             };
 
-            sampler2D _MainTex;
-            sampler2D _NoiseTex;
-            float4    _MainTex_ST;
-            float4    _NoiseTex_ST;
-            
-            float4    _FoamColor;
-            float4    _RippleColor;
-            float     _FoamRadius;
-            float     _RippleInnerRadius;
-            float     _RippleOuterRadius;
-            float     _Intensity;
-            float     _WaveOffset;
+            fixed4 _Color;
+            fixed  _FoamRadius;
+            fixed  _Intensity;
 
-            VertexToFragment Vertex( Input vertexIn )
+            VertexToFragment vert( VertexInput vertexInput )
             {
-                VertexToFragment vertexOut;
-                vertexOut.vertex    = UnityObjectToClipPos( vertexIn.vertex );
-                vertexOut.objCoords = vertexIn.vertex.xyz;
-                vertexOut.uv        = TRANSFORM_TEX( vertexIn.uv, _MainTex );
-                vertexOut.uv        = TRANSFORM_TEX( vertexIn.uv, _NoiseTex );
-                return vertexOut;
+                VertexToFragment output;
+                output.vertex = UnityObjectToClipPos( vertexInput.vertex );
+                output.uv     = vertexInput.uv;
+                return output;
             }
 
-            fixed4 Fragment( VertexToFragment fragIn ) : SV_Target
+            fixed4 frag( VertexToFragment fragmentOutput ) : SV_Target
             {
-                float distanceToCenter = length( fragIn.uv - float2( 0.5, 0.5 ) );
+                fixed distanceToCenter = length( fragmentOutput.uv - fixed2( 0.5, 0.5 ) );
+                fixed insideFoam = step( distanceToCenter, _FoamRadius );
 
-                float pixelIsInTheFoamArea         = step( distanceToCenter, _FoamRadius );
-                float pixelIsOutsideTheFoamArea    = step( _FoamRadius, distanceToCenter );
-                float pixelIsOutsideTheInnerRadius = step( _RippleInnerRadius, distanceToCenter - _WaveOffset );
-                float pixelIsInsideTheOuterRadius  = step( distanceToCenter - _WaveOffset, _RippleOuterRadius );
-                
-                fixed4 color = tex2D(  _MainTex, fragIn.uv ) 
-                             * ( pixelIsInTheFoamArea * _FoamColor 
-                               + pixelIsOutsideTheFoamArea * _RippleColor );
-
-                float rippleTexAlpha = tex2D( _NoiseTex, fragIn.uv );
-
-                color.a = 
-                    /* Handle foam area: */
-                      pixelIsInTheFoamArea
-                    * _Intensity
-                    /* Handle rings: */
-                    + pixelIsOutsideTheFoamArea
-                    * pixelIsOutsideTheInnerRadius
-                    * pixelIsInsideTheOuterRadius
-                    * _Intensity * rippleTexAlpha; // Don't forget to incorporate ripple texture in rings.
-                
-                return color;
+                return fixed4( _Color.rgb, insideFoam *_Intensity );
             }
             ENDCG
         }

@@ -2411,6 +2411,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b6bf140b3548fe40b134e65e85566dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelStartEventListener:
+    gameEvent: {fileID: 11400000, guid: c576e6b8d7c02814e8b642dd8d6dabc4, type: 2}
 --- !u!1 &1964423411
 GameObject:
   m_ObjectHideFlags: 0
@@ -2447,7 +2449,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.70980394, g: 0.77254903, b: 0.8666667, a: 1}
+  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0

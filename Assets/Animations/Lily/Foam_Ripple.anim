@@ -42,7 +42,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: material._WaveOffset
-    path: Graphics/Foam
+    path: Graphics/Ripple
     classID: 23
     script: {fileID: 0}
   m_PPtrCurves: []
@@ -54,7 +54,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 2392835947
+      path: 3709631895
       attribute: 2361656776
       script: {fileID: 0}
       typeID: 23
@@ -107,7 +107,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: material._WaveOffset
-    path: Graphics/Foam
+    path: Graphics/Ripple
     classID: 23
     script: {fileID: 0}
   m_EulerEditorCurves: []

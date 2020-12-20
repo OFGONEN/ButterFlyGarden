@@ -39,6 +39,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _GradientNoiseTex:
+        m_Texture: {fileID: 2800000, guid: 556cf23b8ecba2e41a07d022596c4d4f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -58,11 +62,14 @@ Material:
     m_Floats:
     - COLOR_BLEND_LERP: 1
     - _BumpScale: 1
+    - _CausticsSlimness: 3.6
+    - _CausticsSpeed: 9
     - _CellSize: 1.5
     - _Color_Blend_Lerp: 0
     - _Color_Blend_On: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
+    - _Displacement: 0.04
     - _DstBlend: 0
     - _Emission: 0
     - _GlossMapScale: 1
@@ -73,20 +80,22 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _RadialShearStrength: 0.0036
-    - _RippleSlimness: 6.6
-    - _RippleSpeed: 7
+    - _RadialShearStrength: 0.0042
+    - _RippleSlimness: 8.1
+    - _RippleSpeed: 7.3
     - _Smoothness: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
+    - _WaveSpeed: 0.106
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0, g: 0.79703546, b: 1, a: 1}
+    - _BaseColor: {r: 0, g: 0.6354575, b: 1, a: 0.85490197}
+    - _CausticsColor: {r: 0.3679245, g: 0.3679245, b: 0.3679245, a: 1}
     - _Color: {r: 0, g: 0.73734903, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _RadialShearCenter: {r: 0, g: 0, b: 0, a: 0}
     - _RadialShearOffset: {r: 0, g: 0, b: 0, a: 0}
-    - _RippleColor: {r: 0.21982774, g: 0.2924528, b: 0.29023257, a: 1}
+    - _RippleColor: {r: 0.16715094, g: 0.34673452, b: 0.4056604, a: 1}
   m_BuildTextureStacks: []
