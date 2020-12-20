@@ -13,19 +13,19 @@ MonoBehaviour:
   m_Name: LevelData_10
   m_EditorClassIdentifier: 
   leftDown: {x: 1, y: 2}
-  size: {x: 3, y: 5}
+  size: {x: 3, y: 4}
   lilyDatas:
-  - levelObject: {fileID: 5649308766709187496, guid: b360c0488b5d672448e3ea8dbbab6cdb, type: 3}
-    position: {x: 0, y: 0}
-    mapCord: {x: 0, y: 0}
-    direction: 0
   - levelObject: {fileID: 5649308766709187496, guid: b360c0488b5d672448e3ea8dbbab6cdb, type: 3}
     position: {x: 0, y: 1}
     mapCord: {x: 0, y: 1}
     direction: 0
   - levelObject: {fileID: 5649308766709187496, guid: b360c0488b5d672448e3ea8dbbab6cdb, type: 3}
-    position: {x: 0, y: 4}
-    mapCord: {x: 0, y: 4}
+    position: {x: 0, y: 2}
+    mapCord: {x: 0, y: 2}
+    direction: 0
+  - levelObject: {fileID: 5649308766709187496, guid: b360c0488b5d672448e3ea8dbbab6cdb, type: 3}
+    position: {x: 0, y: 3}
+    mapCord: {x: 0, y: 3}
     direction: 0
   - levelObject: {fileID: 5649308766709187496, guid: b360c0488b5d672448e3ea8dbbab6cdb, type: 3}
     position: {x: 1, y: 0}
@@ -44,10 +44,6 @@ MonoBehaviour:
     mapCord: {x: 1, y: 3}
     direction: 0
   - levelObject: {fileID: 5649308766709187496, guid: b360c0488b5d672448e3ea8dbbab6cdb, type: 3}
-    position: {x: 1, y: 4}
-    mapCord: {x: 1, y: 4}
-    direction: 0
-  - levelObject: {fileID: 5649308766709187496, guid: b360c0488b5d672448e3ea8dbbab6cdb, type: 3}
     position: {x: 2, y: 1}
     mapCord: {x: 2, y: 1}
     direction: 0
@@ -58,43 +54,35 @@ MonoBehaviour:
   - levelObject: {fileID: 5649308766709187496, guid: b360c0488b5d672448e3ea8dbbab6cdb, type: 3}
     position: {x: 2, y: 3}
     mapCord: {x: 2, y: 3}
-    direction: 180.00002
+    direction: 0
   butterFlyDatas:
   - levelObject: {fileID: 2418258055063634259, guid: 2dcc9cd08bbad2f4cb53529e2d139c3f, type: 3}
-    position: {x: 0, y: 1}
-    mapCord: {x: 0, y: 1}
+    position: {x: 0, y: 3}
+    mapCord: {x: 0, y: 3}
     direction: 0
-    butterFlyColor: {r: 0.49019608, g: 0.22352941, b: 0.22352941, a: 0}
+    butterFlyColor: {r: 0.69803923, g: 0.28627452, b: 0, a: 0}
+    butterflyInRecipe: 1
   - levelObject: {fileID: 2418258055063634259, guid: 2dcc9cd08bbad2f4cb53529e2d139c3f, type: 3}
-    position: {x: 0, y: 4}
-    mapCord: {x: 0, y: 4}
-    direction: 0
-    butterFlyColor: {r: 0.27450982, g: 0.5568628, b: 0.54901963, a: 0}
-  - levelObject: {fileID: 2418258055063634259, guid: 2dcc9cd08bbad2f4cb53529e2d139c3f, type: 3}
-    position: {x: 1, y: 4}
-    mapCord: {x: 1, y: 4}
-    direction: 0
-    butterFlyColor: {r: 0, g: 0, b: 0, a: 0}
-  - levelObject: {fileID: 2418258055063634259, guid: 2dcc9cd08bbad2f4cb53529e2d139c3f, type: 3}
-    position: {x: 2, y: 2}
-    mapCord: {x: 2, y: 2}
-    direction: 0
-    butterFlyColor: {r: 0.14117648, g: 0.3882353, b: 0.78431374, a: 0}
-  frogDatas:
-  - levelObject: {fileID: 2535748549582999888, guid: bba1eeb7aba8be442abe13526dccb215, type: 3}
     position: {x: 2, y: 3}
     mapCord: {x: 2, y: 3}
-    direction: 180.00002
-    frogColor: {r: 0.8784314, g: 0.69411767, b: 0, a: 0}
+    direction: 0
+    butterFlyColor: {r: 0.99215686, g: 0.8627451, b: 0.1254902, a: 0}
+    butterflyInRecipe: 1
+  frogDatas:
+  - levelObject: {fileID: 2535748549582999888, guid: bba1eeb7aba8be442abe13526dccb215, type: 3}
+    position: {x: 1, y: 2}
+    mapCord: {x: 1, y: 2}
+    direction: 0
+    frogColor: {r: 0.6509434, g: 0.107467055, b: 0.107467055, a: 0}
   bubbleDatas: []
   targetButterFlyDatas:
-  - butterFlyObject: {fileID: 7143063899957402014, guid: 3a29f8c0f91f3344abdec8bb5d479efc, type: 3}
+  - butterFlyObject: {fileID: 495522695025836666, guid: c3297c6b293407a4c819de30869464ba, type: 3}
     butterFlyColors:
-    - {r: 0, g: 0, b: 0, a: 0}
-    - {r: 0.14117648, g: 0.3882353, b: 0.78431374, a: 0}
+    - {r: 0.6981132, g: 0.28529143, b: 0, a: 0}
+    - {r: 0.990566, g: 0.86213946, b: 0.126157, a: 0}
     butterFlyPatterns:
-    - {fileID: 2800000, guid: d4d9e1e72f151ea43aebee2848651b41, type: 3}
-    finalPattern: {fileID: 2800000, guid: d4d9e1e72f151ea43aebee2848651b41, type: 3}
+    - {fileID: 2800000, guid: aa77dda5658bbc645aa0bc21e7f97d8d, type: 3}
+    finalPattern: {fileID: 2800000, guid: aa77dda5658bbc645aa0bc21e7f97d8d, type: 3}
   wrongTargetData:
     butterFlyObject: {fileID: 4717035510698555668, guid: ffa5c60ada59ca942bbdf28ce7c99f0a, type: 3}
     butterFlyColors: []
@@ -106,8 +94,9 @@ MonoBehaviour:
     finalPattern: {fileID: 2800000, guid: 57d024e2f87a64e48a23e7efade33b59, type: 3}
   levelIntroductionData:
     introduce: 0
-    targetButterFlyImage: {fileID: 21300000, guid: af24db2ea99bd424583213e05e7f8247, type: 3}
+    targetButterFlyImage: {fileID: 21300000, guid: 4cb2e043c3fb1cc45be21261e42946f8, type: 3}
     introductionText: 
     levelWinText: '<font="Helvetica-Bold">Brilliant!</font>
 
-      Level Completed'
+      Orange Tip Acquired!'
+  uiTutorial: {fileID: 0}

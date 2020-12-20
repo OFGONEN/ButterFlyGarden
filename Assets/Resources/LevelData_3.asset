@@ -13,66 +13,49 @@ MonoBehaviour:
   m_Name: LevelData_3
   m_EditorClassIdentifier: 
   leftDown: {x: 1, y: 3}
-  size: {x: 3, y: 4}
+  size: {x: 3, y: 1}
   lilyDatas:
   - levelObject: {fileID: 5649308766709187496, guid: b360c0488b5d672448e3ea8dbbab6cdb, type: 3}
-    position: {x: 0, y: 1}
-    mapCord: {x: 0, y: 1}
-    direction: 0
-  - levelObject: {fileID: 5649308766709187496, guid: b360c0488b5d672448e3ea8dbbab6cdb, type: 3}
-    position: {x: 0, y: 2}
-    mapCord: {x: 0, y: 2}
-    direction: 0
-  - levelObject: {fileID: 5649308766709187496, guid: b360c0488b5d672448e3ea8dbbab6cdb, type: 3}
-    position: {x: 0, y: 3}
-    mapCord: {x: 0, y: 3}
+    position: {x: 0, y: 0}
+    mapCord: {x: 0, y: 0}
     direction: 0
   - levelObject: {fileID: 5649308766709187496, guid: b360c0488b5d672448e3ea8dbbab6cdb, type: 3}
     position: {x: 1, y: 0}
     mapCord: {x: 1, y: 0}
     direction: 0
   - levelObject: {fileID: 5649308766709187496, guid: b360c0488b5d672448e3ea8dbbab6cdb, type: 3}
-    position: {x: 1, y: 1}
-    mapCord: {x: 1, y: 1}
-    direction: 0
-  - levelObject: {fileID: 5649308766709187496, guid: b360c0488b5d672448e3ea8dbbab6cdb, type: 3}
-    position: {x: 1, y: 2}
-    mapCord: {x: 1, y: 2}
-    direction: 0
-  - levelObject: {fileID: 5649308766709187496, guid: b360c0488b5d672448e3ea8dbbab6cdb, type: 3}
-    position: {x: 2, y: 1}
-    mapCord: {x: 2, y: 1}
-    direction: 0
-  - levelObject: {fileID: 5649308766709187496, guid: b360c0488b5d672448e3ea8dbbab6cdb, type: 3}
-    position: {x: 2, y: 2}
-    mapCord: {x: 2, y: 2}
+    position: {x: 2, y: 0}
+    mapCord: {x: 2, y: 0}
     direction: 0
   butterFlyDatas:
   - levelObject: {fileID: 2418258055063634259, guid: 2dcc9cd08bbad2f4cb53529e2d139c3f, type: 3}
-    position: {x: 0, y: 3}
-    mapCord: {x: 0, y: 3}
+    position: {x: 0, y: 0}
+    mapCord: {x: 0, y: 0}
     direction: 0
-    butterFlyColor: {r: 0.87058824, g: 0.16862746, b: 0.14117648, a: 0}
+    butterFlyColor: {r: 0.6886792, g: 0.3216002, b: 0.5956065, a: 0}
+    butterflyInRecipe: 0
   - levelObject: {fileID: 2418258055063634259, guid: 2dcc9cd08bbad2f4cb53529e2d139c3f, type: 3}
-    position: {x: 1, y: 2}
-    mapCord: {x: 1, y: 2}
+    position: {x: 1, y: 0}
+    mapCord: {x: 1, y: 0}
     direction: 0
-    butterFlyColor: {r: 0.83137256, g: 0, b: 0.56078434, a: 0}
+    butterFlyColor: {r: 0, g: 0, b: 0, a: 0}
+    butterflyInRecipe: 1
   - levelObject: {fileID: 2418258055063634259, guid: 2dcc9cd08bbad2f4cb53529e2d139c3f, type: 3}
-    position: {x: 2, y: 1}
-    mapCord: {x: 2, y: 1}
+    position: {x: 2, y: 0}
+    mapCord: {x: 2, y: 0}
     direction: 0
-    butterFlyColor: {r: 1, g: 1, b: 1, a: 0}
+    butterFlyColor: {r: 0.2509804, g: 0.47058824, b: 0.35686275, a: 0}
+    butterflyInRecipe: 1
   frogDatas: []
   bubbleDatas: []
   targetButterFlyDatas:
-  - butterFlyObject: {fileID: 2179886177030818107, guid: 8e6e38fb224af724ea8ee2920a5c3da1, type: 3}
+  - butterFlyObject: {fileID: 3417641457342845, guid: ba46af89cf8943340a403b866511dc29, type: 3}
     butterFlyColors:
-    - {r: 0.87058824, g: 0.16862746, b: 0.14117648, a: 0}
-    - {r: 1, g: 1, b: 1, a: 0}
+    - {r: 0, g: 0, b: 0, a: 0}
+    - {r: 0.2509804, g: 0.47058824, b: 0.35686275, a: 0}
     butterFlyPatterns:
-    - {fileID: 2800000, guid: 73feb0aadfc583f42b4521703dfde274, type: 3}
-    finalPattern: {fileID: 2800000, guid: 73feb0aadfc583f42b4521703dfde274, type: 3}
+    - {fileID: 2800000, guid: 7d0322f4a5fd07f4388c913618936406, type: 3}
+    finalPattern: {fileID: 2800000, guid: 7d0322f4a5fd07f4388c913618936406, type: 3}
   wrongTargetData:
     butterFlyObject: {fileID: 4717035510698555668, guid: ffa5c60ada59ca942bbdf28ce7c99f0a, type: 3}
     butterFlyColors: []
@@ -83,14 +66,11 @@ MonoBehaviour:
     - {fileID: 2800000, guid: 57d024e2f87a64e48a23e7efade33b59, type: 3}
     finalPattern: {fileID: 2800000, guid: 57d024e2f87a64e48a23e7efade33b59, type: 3}
   levelIntroductionData:
-    introduce: 1
-    targetButterFlyImage: {fileID: 21300000, guid: fb561a483c646df42ba9f6c6cc4ad236, type: 3}
-    introductionText: 'Merge <color=#CECECE><font="Helvetica-Bold">White</font></color>
-      and <color=#DE2B24><font="Helvetica-Bold">Red</font></color> Butterflies
-
-
-      Acquire
-      <font="Helvetica-Bold">Crimson Tip</font>'
+    introduce: 0
+    targetButterFlyImage: {fileID: 21300000, guid: b7c6392082e69a644975910d97fb7e61, type: 3}
+    introductionText: 
     levelWinText: '<font="Helvetica-Bold">Brilliant!</font>
 
-      Level Completed'
+      Palawan Birdwing
+      Acquired!'
+  uiTutorial: {fileID: 0}

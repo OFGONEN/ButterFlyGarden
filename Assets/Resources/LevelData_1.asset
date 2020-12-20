@@ -13,39 +13,29 @@ MonoBehaviour:
   m_Name: LevelData_1
   m_EditorClassIdentifier: 
   leftDown: {x: 1, y: 3}
-  size: {x: 3, y: 3}
+  size: {x: 2, y: 1}
   lilyDatas:
   - levelObject: {fileID: 5649308766709187496, guid: b360c0488b5d672448e3ea8dbbab6cdb, type: 3}
-    position: {x: 0, y: 2}
-    mapCord: {x: 0, y: 2}
+    position: {x: 0, y: 0}
+    mapCord: {x: 0, y: 0}
     direction: 0
   - levelObject: {fileID: 5649308766709187496, guid: b360c0488b5d672448e3ea8dbbab6cdb, type: 3}
     position: {x: 1, y: 0}
     mapCord: {x: 1, y: 0}
-    direction: 0
-  - levelObject: {fileID: 5649308766709187496, guid: b360c0488b5d672448e3ea8dbbab6cdb, type: 3}
-    position: {x: 1, y: 1}
-    mapCord: {x: 1, y: 1}
-    direction: 0
-  - levelObject: {fileID: 5649308766709187496, guid: b360c0488b5d672448e3ea8dbbab6cdb, type: 3}
-    position: {x: 1, y: 2}
-    mapCord: {x: 1, y: 2}
-    direction: 0
-  - levelObject: {fileID: 5649308766709187496, guid: b360c0488b5d672448e3ea8dbbab6cdb, type: 3}
-    position: {x: 2, y: 2}
-    mapCord: {x: 2, y: 2}
     direction: 0
   butterFlyDatas:
   - levelObject: {fileID: 2418258055063634259, guid: 2dcc9cd08bbad2f4cb53529e2d139c3f, type: 3}
-    position: {x: 0, y: 2}
-    mapCord: {x: 0, y: 2}
+    position: {x: 0, y: 0}
+    mapCord: {x: 0, y: 0}
     direction: 0
-    butterFlyColor: {r: 0.2509804, g: 0.47058824, b: 0.35686275, a: 0}
+    butterFlyColor: {r: 0, g: 0, b: 0, a: 0}
+    butterflyInRecipe: 1
   - levelObject: {fileID: 2418258055063634259, guid: 2dcc9cd08bbad2f4cb53529e2d139c3f, type: 3}
     position: {x: 1, y: 0}
     mapCord: {x: 1, y: 0}
     direction: 0
-    butterFlyColor: {r: 0, g: 0, b: 0, a: 0}
+    butterFlyColor: {r: 0.2509804, g: 0.47058824, b: 0.35686275, a: 0}
+    butterflyInRecipe: 1
   frogDatas: []
   bubbleDatas: []
   targetButterFlyDatas:
@@ -68,13 +58,6 @@ MonoBehaviour:
   levelIntroductionData:
     introduce: 1
     targetButterFlyImage: {fileID: 21300000, guid: b7c6392082e69a644975910d97fb7e61, type: 3}
-    introductionText: 'Merge <color=#000000><font="Helvetica-Bold">Black</font></color>
-      and <color=#407058><font="Helvetica-Bold">Green</font></color> Butterflies
-
-
-      Acquire
-      <font="Helvetica-Bold">Palawan Birdwing</font>'
-    levelWinText: '<font="Helvetica-Bold">Brilliant!</font>
-
-      Level Completed'
+    introductionText: Acquire <font="Helvetica-Bold">Palawan Birdwing</font> Butterfly
+    levelWinText: Level Completed!
   uiTutorial: {fileID: 0}

@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentLevel: 1
   levelCreationSettings: {fileID: 11400000, guid: 9ce2f8cf8f3f7804ebb5162fc2382187, type: 2}
-  levelData: {fileID: 11400000, guid: be4a68b0dfd1e664dbf50b707f545f47, type: 2}
+  levelData: {fileID: 0}
   mainCameraPos: {x: 0, y: 0, z: 0}
