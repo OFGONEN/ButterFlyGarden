@@ -2,16 +2,30 @@
 {
 	Properties
     {
-        _Color( "Color", Color ) 						       		   	 = ( 1, 1, 1, 1 )
-        _Metallic( "Metallic", Range( 0, 1 ) )							 = 0.5
-        _Smoothness( "Smoothness", Range( 0, 1 ) ) 						 = 0
-        _Emission( "Emission", Range( -1, 1 ) ) 						 = 0
-		_CellSize( "Cell Size", Range( 0, 50 ) ) 		       		   	 = 2
-		_RippleSpeed( "Ripple Speed", Range( 1, 100 ) ) 	       		 = 6
-		_RippleSlimness( "Ripple Slimness", Range( 1, 10 ) )   		   	 = 5
-		_RadialShearCenter( "Radial Shear Center", Vector )    		   	 = ( 0.5, 0.5, 0, 0 )
-		_RadialShearStrength( "Radial Shear Strength", Range( 0, 0.1 ) ) = 0.05
-		_RadialShearOffset( "Radial Shear Offset", Vector )    		   	 = ( 0.5, 0.5, 0, 0 )
+		// Shader keywords set from the inspector.
+		[Toggle] _Color_Blend_Lerp( "Use Lerp To Combine Colors", Float ) = 0 // Will set _COLOR_BLEND_LERP_ON when toggled.
+
+		// Regular properties.
+		[Space( 10 )]
+		[Header( PBR )]
+		[Space( 2 )]
+		_BaseColor           ( "Base Color", 			Color 			) = ( 0, 1, 0, 1 )
+        _Metallic            ( "Metallic", 				Range( 0, 1 ) 	) = 0.5
+        _Smoothness          ( "Smoothness", 			Range( 0, 1 ) 	) = 0
+        _Emission            ( "Emission", 				Range( -1, 1 ) 	) = 0
+		[Space( 10 )]
+		[Header( Ripple )]
+		[Space( 2 )]
+		_RippleColor         ( "Ripple Color", 			Color 			) = ( 0, 0, 1, 1 )
+        _CellSize            ( "Cell Size", 			Range( 0, 50 ) 	) = 2
+        _RippleSlimness      ( "Ripple Slimness", 		Range( 1, 50 ) 	) = 5
+        _RippleSpeed         ( "Ripple Speed", 			Range( 1, 100 ) ) = 6
+		[Space( 10 )]
+		[Header( Radial Shearing )]
+		[Space( 2 )]
+        _RadialShearStrength ( "Radial Shear Strength", Range( 0, 0.1 ) ) = 0.05
+        _RadialShearCenter   ( "Radial Shear Center", 	Vector 			) = ( 0.5, 0.5, 0, 0 )
+        _RadialShearOffset   ( "Radial Shear Offset", 	Vector 			) = ( 0.5, 0.5, 0, 0 )
 	}
 	SubShader
     {
@@ -22,9 +36,12 @@
 		#pragma surface Surf Standard fullforwardshadows
 		#pragma target 3.0
 
+		#pragma shader_feature_local _COLOR_BLEND_LERP_ON
+
 		#include "Random.cginc"
 
-		float4 _Color;
+		float4 _BaseColor;
+		float4 _RippleColor;
 		float  _Metallic;
 		float  _Smoothness;
 		float  _Emission;
@@ -48,21 +65,25 @@
 			Out 				= UV + float2( delta.y, -delta.x ) * delta_offset + Offset;
 		}
 
-		void Surf( Input i, inout SurfaceOutputStandard o )
+		void Surf( Input input, inout SurfaceOutputStandard output )
         {
-			float2 value = i.worldPos.xz / _CellSize;
+			float2 value = input.worldPos.xz / _CellSize;
 
 			float2 shearedValue;
 			Unity_RadialShear_float( value, _RadialShearCenter, _RadialShearStrength, _RadialShearOffset, shearedValue );
 			
-            float noise = VoronoiNoise( shearedValue, _Time * _RippleSpeed ).x;
-			float noiseRaised = pow( noise, _RippleSlimness );
+            float noise       = VoronoiNoise( shearedValue, _Time * _RippleSpeed ).x;
+            float noiseRaised = pow( noise, _RippleSlimness );
 
-            o.Albedo     = _Color.rgb + ( _Color.rgb * noiseRaised );
-			o.Alpha  	 = _Color.a;
-			o.Metallic   = _Metallic;
-			o.Smoothness = _Smoothness;
-			o.Emission   = _Emission;
+		#ifdef _COLOR_BLEND_LERP_ON
+            output.Albedo     = lerp(_BaseColor.rgb, _RippleColor.rgb, noiseRaised );
+		#else
+            output.Albedo     = _BaseColor.rgb + ( _RippleColor.rgb * noiseRaised );
+		#endif
+			output.Alpha  	 = _BaseColor.a;
+			output.Metallic   = _Metallic;
+			output.Smoothness = _Smoothness;
+			output.Emission   = _Emission;
 		}
 		ENDCG
 	}

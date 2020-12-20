@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: ToonWater
   m_Shader: {fileID: 4800000, guid: be333f6e61580d4499d0ad872eb87e73, type: 3}
-  m_ShaderKeywords: 
+  m_ShaderKeywords: COLOR_BLEND_LERP_ON _COLOR_BLEND_ON_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -56,8 +56,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - COLOR_BLEND_LERP: 1
     - _BumpScale: 1
-    - _CellSize: 1.1
+    - _CellSize: 1.5
+    - _Color_Blend_Lerp: 0
+    - _Color_Blend_On: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
@@ -70,9 +73,9 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _RadialShearStrength: 0
-    - _RippleSlimness: 4.36
-    - _RippleSpeed: 10.9
+    - _RadialShearStrength: 0.0036
+    - _RippleSlimness: 6.6
+    - _RippleSpeed: 7
     - _Smoothness: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -80,8 +83,10 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0, g: 0.7701149, b: 1, a: 1}
+    - _BaseColor: {r: 0, g: 0.79703546, b: 1, a: 1}
+    - _Color: {r: 0, g: 0.73734903, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _RadialShearCenter: {r: 0, g: 0, b: 0, a: 0}
     - _RadialShearOffset: {r: 0, g: 0, b: 0, a: 0}
+    - _RippleColor: {r: 0.21982774, g: 0.2924528, b: 0.29023257, a: 1}
   m_BuildTextureStacks: []
