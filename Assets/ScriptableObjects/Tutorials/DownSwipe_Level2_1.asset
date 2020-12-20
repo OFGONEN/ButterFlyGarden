@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7ff584221282e143b4d53f8c447eb0c, type: 3}
+  m_Name: DownSwipe_Level2_1
+  m_EditorClassIdentifier: 
+  uIHelperManager: {fileID: 0}
+  nextTutorial: {fileID: 11400000, guid: 4899564640e052f40bd571c73198c15a, type: 2}
+  swipeInputEventListener:
+    gameEvent: {fileID: 11400000, guid: a243713d15ad18045b2567d2d12ff3e8, type: 2}
+  tutorialData:
+    handStartPosition: {x: 250, y: 60}
+    handEndAttive: {x: 0, y: -320}
+    arrowPosition: {x: 200, y: -75}
+    textPosition: {x: 0, y: 0}
+    expectedInput: {x: 0, y: -1}
+    handAssetName: Hand
+    arrowLineAssetName: DownArrow
+    textMessageAssetName: 
+    textMessage: 

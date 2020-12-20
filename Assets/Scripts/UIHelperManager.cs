@@ -11,6 +11,7 @@ public class UIHelperManager : MonoBehaviour
     public GameObject[] helperAssets;
     public Dictionary<string, UIHelperAsset> helperAssetDictionary = new Dictionary<string, UIHelperAsset>(8);
 
+    [HideInInspector]
     public UITutorial currentUITutorial;
 
     private void Awake()

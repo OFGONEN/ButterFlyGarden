@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a7ff584221282e143b4d53f8c447eb0c, type: 3}
-  m_Name: RightSwipeTutorial2_Level1
+  m_Name: DownSwipe_Level2_2
   m_EditorClassIdentifier: 
   uIHelperManager: {fileID: 0}
   nextTutorial: {fileID: 0}
   swipeInputEventListener:
     gameEvent: {fileID: 11400000, guid: a243713d15ad18045b2567d2d12ff3e8, type: 2}
   tutorialData:
-    handStartPosition: {x: -102.5, y: 292.5}
-    handEndAttive: {x: 0, y: 97.5}
-    rightArrowPosition: {x: 0, y: 330}
-    textPosition: {x: 0, y: 405}
-    expectedInput: {x: 0, y: 1}
+    handStartPosition: {x: 250, y: 60}
+    handEndAttive: {x: 0, y: -320}
+    arrowPosition: {x: 200, y: -75}
+    textPosition: {x: 0, y: 0}
+    expectedInput: {x: 0, y: -1}
     handAssetName: Hand
-    arrowLineAssetName: UpArrow
-    textMessageAssetName: TutorialText
-    textMessage: Swipe Up
+    arrowLineAssetName: DownArrow
+    textMessageAssetName: 
+    textMessage: 

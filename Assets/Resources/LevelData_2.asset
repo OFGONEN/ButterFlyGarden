@@ -64,4 +64,4 @@ MonoBehaviour:
     targetButterFlyImage: {fileID: 21300000, guid: b7c6392082e69a644975910d97fb7e61, type: 3}
     introductionText: 
     levelWinText: Level Completed!
-  uiTutorial: {fileID: 0}
+  uiTutorial: {fileID: 11400000, guid: 9fefe2d8b9c299d46bcae9709eaa32f1, type: 2}

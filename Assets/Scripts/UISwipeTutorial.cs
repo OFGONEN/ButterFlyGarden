@@ -10,14 +10,14 @@ public class UISwipeTutorial : UITutorial
     public UIRightSwipeTutorialData tutorialData;
     UIHelperAsset hand;
     UIHelperAsset arrowLine;
-    UIHelperAsset tutorialText;
+    // UIHelperAsset tutorialText;
 
     int tweenStarted = 0;
     public override void StartTutorial()
     {
         hand = GetHelperAsset(tutorialData.handAssetName);
         arrowLine = GetHelperAsset(tutorialData.arrowLineAssetName);
-        tutorialText = GetHelperAsset(tutorialData.textMessageAssetName);
+        // tutorialText = GetHelperAsset(tutorialData.textMessageAssetName);
 
         swipeInputEventListener.OnEnable();
         swipeInputEventListener.response = SwipeInputResponse;
@@ -29,17 +29,17 @@ public class UISwipeTutorial : UITutorial
     public override void SetHelperAssetDatas()
     {
         arrowLine.ResetAsset();
-        arrowLine.uiRectTransform.anchoredPosition = tutorialData.rightArrowPosition;
+        arrowLine.uiRectTransform.anchoredPosition = tutorialData.arrowPosition;
         arrowLine.gameObject.SetActive(true);
 
         hand.ResetAsset();
         hand.uiRectTransform.anchoredPosition = tutorialData.handStartPosition;
         hand.gameObject.SetActive(true);
 
-        tutorialText.ResetAsset();
-        tutorialText.uiRectTransform.anchoredPosition = tutorialData.textPosition;
-        tutorialText.uiText.text = tutorialData.textMessage;
-        tutorialText.gameObject.SetActive(true);
+        // tutorialText.ResetAsset();
+        // tutorialText.uiRectTransform.anchoredPosition = tutorialData.textPosition;
+        // tutorialText.uiText.text = tutorialData.textMessage;
+        // tutorialText.gameObject.SetActive(true);
     }
     public override void EndTutorial(bool success)
     {
@@ -50,7 +50,7 @@ public class UISwipeTutorial : UITutorial
 
         hand.uiImage.DOKill();
         arrowLine.uiImage.DOKill();
-        tutorialText.uiText.DOKill();
+        // tutorialText.uiText.DOKill();
 
         tweenStarted = 0;
 
@@ -62,7 +62,7 @@ public class UISwipeTutorial : UITutorial
         hand.uiRectTransform.DOKill();
         hand.uiImage.DOKill();
         arrowLine.uiImage.DOKill();
-        tutorialText.uiText.DOKill();
+        // tutorialText.uiText.DOKill();
 
 
         tweenStarted = 0;
@@ -103,9 +103,9 @@ public class UISwipeTutorial : UITutorial
         arrowLine.uiImage.DOFade(0f, 1f).SetEase(Ease.InQuint).OnComplete(() => EndTutorial(success));
 
 
-        tutorialText.uiText.color = color;
-        tweenStarted++;
-        tutorialText.uiText.DOFade(0, 1f).SetEase(Ease.InQuint).OnComplete(() => EndTutorial(success));
+        // tutorialText.uiText.color = color;
+        // tweenStarted++;
+        // tutorialText.uiText.DOFade(0, 1f).SetEase(Ease.InQuint).OnComplete(() => EndTutorial(success));
     }
 }
 
@@ -114,7 +114,7 @@ public struct UIRightSwipeTutorialData
 {
     public Vector2 handStartPosition;
     public Vector2 handEndAttive;
-    public Vector2 rightArrowPosition;
+    public Vector2 arrowPosition;
     public Vector2 textPosition;
     public Vector2 expectedInput;
     public string handAssetName;

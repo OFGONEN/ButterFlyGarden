@@ -60,4 +60,4 @@ MonoBehaviour:
     targetButterFlyImage: {fileID: 21300000, guid: b7c6392082e69a644975910d97fb7e61, type: 3}
     introductionText: Acquire <font="Helvetica-Bold">Palawan Birdwing</font> Butterfly
     levelWinText: Level Completed!
-  uiTutorial: {fileID: 0}
+  uiTutorial: {fileID: 11400000, guid: 05bd61e0f20c80a46b7673964346b5da, type: 2}

@@ -73,4 +73,4 @@ MonoBehaviour:
 
       Palawan Birdwing
       Acquired!'
-  uiTutorial: {fileID: 0}
+  uiTutorial: {fileID: 11400000, guid: 05bd61e0f20c80a46b7673964346b5da, type: 2}

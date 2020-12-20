@@ -68,7 +68,7 @@ public class UIManager : MonoBehaviour
         introductionText.uiText.text = currentLevelData.levelData.levelIntroductionData.introductionText;
         butterFlyImage.sprite = currentLevelData.levelData.levelIntroductionData.targetButterFlyImage;
         butterFlyImage.transform.position = rightSide.position;
-        tapToPlayButton.uiText.text = "Tap To Start!";
+        tapToPlayButton.uiText.text = "Tap to Start!";
 
         butterFlyImage.enabled = true;
         butterFlyImage.rectTransform.DOMove(center.transform.position, 0.5f);
