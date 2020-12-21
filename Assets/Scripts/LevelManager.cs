@@ -59,7 +59,7 @@ public class LevelManager : MonoBehaviour
             _lily.transform.SetParent(parentTransform);
 
             _lily.transform.position = new Vector3(_lilyData.position.x * creationSettings.horizontalDistance,
-             0,
+             0.02f,
              _lilyData.position.y * creationSettings.verticalDistance);
 
             _lily.transform.rotation = Quaternion.Euler(0, Random.Range(0, 360), 0);
