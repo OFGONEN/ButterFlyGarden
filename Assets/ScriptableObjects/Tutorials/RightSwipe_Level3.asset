@@ -22,6 +22,7 @@ MonoBehaviour:
     arrowPosition: {x: 0, y: -160}
     textPosition: {x: 0, y: 0}
     expectedInput: {x: 1, y: 0}
+    notrInput: {x: 0, y: 0}
     handAssetName: Hand
     arrowLineAssetName: RightArrow
     textMessageAssetName: TutorialText

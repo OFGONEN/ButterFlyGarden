@@ -84,6 +84,10 @@ public class UISwipeTutorial : UITutorial
             //correct
             GoColor(Color.green, true);
         }
+        else if (_input == tutorialData.notrInput)
+        {
+            GoColor(Color.white, false);
+        }
         else
         {
             //invalid
@@ -117,6 +121,7 @@ public struct UIRightSwipeTutorialData
     public Vector2 arrowPosition;
     public Vector2 textPosition;
     public Vector2 expectedInput;
+    public Vector2 notrInput;
     public string handAssetName;
     public string arrowLineAssetName;
     public string textMessageAssetName;

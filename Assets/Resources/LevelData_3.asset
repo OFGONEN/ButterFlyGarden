@@ -34,18 +34,21 @@ MonoBehaviour:
     direction: 0
     butterFlyColor: {r: 0.6886792, g: 0.3216002, b: 0.5956065, a: 0}
     butterflyInRecipe: 0
+    butterflyInRecipeIndex: 0
   - levelObject: {fileID: 2418258055063634259, guid: 2dcc9cd08bbad2f4cb53529e2d139c3f, type: 3}
     position: {x: 1, y: 0}
     mapCord: {x: 1, y: 0}
     direction: 0
     butterFlyColor: {r: 0, g: 0, b: 0, a: 0}
     butterflyInRecipe: 1
+    butterflyInRecipeIndex: 0
   - levelObject: {fileID: 2418258055063634259, guid: 2dcc9cd08bbad2f4cb53529e2d139c3f, type: 3}
     position: {x: 2, y: 0}
     mapCord: {x: 2, y: 0}
     direction: 0
     butterFlyColor: {r: 0.2509804, g: 0.47058824, b: 0.35686275, a: 0}
     butterflyInRecipe: 1
+    butterflyInRecipeIndex: 0
   frogDatas: []
   bubbleDatas: []
   targetButterFlyDatas:
@@ -73,4 +76,4 @@ MonoBehaviour:
 
       Palawan Birdwing
       Acquired!'
-  uiTutorial: {fileID: 11400000, guid: 05bd61e0f20c80a46b7673964346b5da, type: 2}
+  uiTutorial: {fileID: 11400000, guid: ce54303623e50414095f26c68cfd508a, type: 2}
