@@ -7,6 +7,7 @@ using NaughtyAttributes;
 public class LevelManager : MonoBehaviour
 {
     Camera mainCamera;
+    public GameEvent startLevelEvent;
     public EventListenerDelegateResponse restartLevelEventListener;
     public LevelCreationSettings creationSettings;
     public CurrentLevelData currentLevelData;
@@ -273,5 +274,6 @@ public class LevelManager : MonoBehaviour
         }
 
         SetUpLevel();
+        startLevelEvent.Raise();
     }
 }

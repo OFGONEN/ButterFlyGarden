@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25f14648403cac3469c545b9afba5d4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startLevelEvent: {fileID: 11400000, guid: c576e6b8d7c02814e8b642dd8d6dabc4, type: 2}
   restartLevelEventListener:
     gameEvent: {fileID: 11400000, guid: 1a0154134c8268e43be1271ffeb08b4e, type: 2}
   creationSettings: {fileID: 11400000, guid: 9ce2f8cf8f3f7804ebb5162fc2382187, type: 2}
