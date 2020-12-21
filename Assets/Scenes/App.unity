@@ -1335,11 +1335,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentLevelData: {fileID: 11400000, guid: 7a8bf9dea00590b4abe352811f59e3e8, type: 2}
   startLevelEvent: {fileID: 11400000, guid: c576e6b8d7c02814e8b642dd8d6dabc4, type: 2}
+  restartLevelEvent: {fileID: 11400000, guid: 2f74e50961731914bbca197426d6e67e, type: 2}
   loadNextLevelEvent: {fileID: 11400000, guid: 91a6164a7e3a7f4418f9138df4e967ac, type: 2}
   tapInputEventListener:
     gameEvent: {fileID: 11400000, guid: f09093470ce4c0f4697da9cbbe4dac30, type: 2}
   targetAquiredEventListener:
     gameEvent: {fileID: 11400000, guid: 8ba81f9a8a809f34ab24effb71d95828, type: 2}
+  crossLandedEventListener:
+    gameEvent: {fileID: 11400000, guid: b27ecafb1ae4abb4597d5957ee5b1982, type: 2}
   nextLevelLoadedEventListener:
     gameEvent: {fileID: 11400000, guid: 4c32627adf9439f4fa30b38173e3476d, type: 2}
   backGroundImage: {fileID: 696090881}

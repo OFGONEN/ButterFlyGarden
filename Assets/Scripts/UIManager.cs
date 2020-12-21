@@ -10,9 +10,11 @@ public class UIManager : MonoBehaviour
 {
     public CurrentLevelData currentLevelData;
     public GameEvent startLevelEvent;
+    public GameEvent restartLevelEvent;
     public GameEvent loadNextLevelEvent;
     public EventListenerDelegateResponse tapInputEventListener;
     public EventListenerDelegateResponse targetAquiredEventListener;
+    public EventListenerDelegateResponse crossLandedEventListener;
     public EventListenerDelegateResponse nextLevelLoadedEventListener;
     public Image backGroundImage;
     public Image butterFlyImage;
@@ -30,12 +32,14 @@ public class UIManager : MonoBehaviour
         tapInputEventListener.OnEnable();
         targetAquiredEventListener.OnEnable();
         nextLevelLoadedEventListener.OnEnable();
+        crossLandedEventListener.OnEnable();
     }
     private void OnDisable()
     {
         tapInputEventListener.OnDisable();
         targetAquiredEventListener.OnDisable();
         nextLevelLoadedEventListener.OnDisable();
+        crossLandedEventListener.OnDisable();
     }
     void Start()
     {
@@ -44,8 +48,8 @@ public class UIManager : MonoBehaviour
         tapInputEventListener.response = TapToPlayPressed;
         targetAquiredEventListener.response = TargetAquired;
         nextLevelLoadedEventListener.response = NewLevelLoaded;
+        crossLandedEventListener.response = CrossLandedResponse;
     }
-
     void TapToPlayPressed()
     {
         targetButterflies.SetData();
@@ -143,6 +147,33 @@ public class UIManager : MonoBehaviour
         targetButterflies.GoDestination();
         resetButton.GoDestination();
         levelText.GoDestination();
+    }
+    void CrossLandedResponse()
+    {
+        backGroundImage.DOFade(0.8f, 0.5f).OnComplete(() => tapInputEventListener.response = RestartLevelAfterFail);
+
+        introductionText.uiText.text = "Level Failed";
+        tapToPlayButton.uiText.text = "Retry!";
+
+        introductionText.GoDestination();
+        tapToPlayButton.GoDestination();
+        targetButterflies.GoDestination();
+        levelText.GoDestination();
+        resetButton.GoDestination();
+    }
+
+    void RestartLevelAfterFail()
+    {
+        tapInputEventListener.response = EmptyMethod;
+
+        backGroundImage.DOFade(0, 0.8f).OnComplete(() => restartLevelEvent.Raise());
+        targetButterflies.GoDestination();
+        levelText.GoDestination();
+        resetButton.GoDestination();
+        tapToPlayButton.GoDestination();
+        introductionText.GoDestination();
+
+        Elephant.LevelStarted(currentLevelData.currentLevel); // Analitic Event
     }
 
     void EmptyMethod()
