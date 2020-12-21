@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using TMPro;
+using ElephantSDK;
 
 public class UIManager : MonoBehaviour
 {
@@ -89,6 +90,8 @@ public class UIManager : MonoBehaviour
 
         butterFlyImage.rectTransform.DOMove(leftSide.transform.position, 0.25f);
         startLevelEvent.Raise();
+
+        Elephant.LevelStarted(currentLevelData.currentLevel); // Analitic Event
     }
 
     void LoadNextLevel()
@@ -110,6 +113,8 @@ public class UIManager : MonoBehaviour
         levelText.GoDestination();
         resetButton.GoDestination();
         tapToPlayButton.GoDestination();
+
+        Elephant.LevelCompleted(currentLevelData.currentLevel);
 
         tapInputEventListener.response = LoadNextLevel;
     }
@@ -133,6 +138,7 @@ public class UIManager : MonoBehaviour
     {
         tapInputEventListener.response = EmptyMethod;
         startLevelEvent.Raise();
+        Elephant.LevelStarted(currentLevelData.currentLevel);
 
         targetButterflies.GoDestination();
         resetButton.GoDestination();

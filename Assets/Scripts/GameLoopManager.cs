@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using FFStudio;
 using UnityEngine;
 using DG.Tweening;
+using ElephantSDK;
 
 public class GameLoopManager : MonoBehaviour
 {
@@ -69,6 +70,7 @@ public class GameLoopManager : MonoBehaviour
         newCreatedObjects.itemDictionary.Clear();
         acquiredTargets.Clear();
 
+        Elephant.LevelFailed(currentLevelData.currentLevel);
         restartLevelEvent.Raise();
     }
     private void SwipeInputResponse()
