@@ -147,7 +147,7 @@ public class GameLoopManager : MonoBehaviour
         acquiredTarget.entityAnimator.SetTrigger("Fly");
 
         acquiredTarget.graphicTransform.SetParent(acquiredTarget.transform);
-        acquiredTarget.transform.DOMove(new Vector3(0, currentLevelData.mainCameraPos.y - 3f, -1f), 1).OnComplete(() =>
+        acquiredTarget.transform.DOMove(new Vector3(0, currentLevelData.mainCameraPos.y - 3f, -2f), 1).OnComplete(() =>
            {
                acquiredTarget.entityAnimator.SetTrigger("Idle");
                acquiredTarget.entityAnimator.SetFloat("IdleBlend", 1);
