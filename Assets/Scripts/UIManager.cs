@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using TMPro;
-using ElephantSDK;
+// using ElephantSDK;
 
 public class UIManager : MonoBehaviour
 {
@@ -26,6 +26,7 @@ public class UIManager : MonoBehaviour
     public RectTransform leftSide;
     public RectTransform center;
     public RectTransform rightSide;
+    bool onFailUI = false;
 
     private void OnEnable()
     {
@@ -95,7 +96,7 @@ public class UIManager : MonoBehaviour
         butterFlyImage.rectTransform.DOMove(leftSide.transform.position, 0.25f);
         startLevelEvent.Raise();
 
-        Elephant.LevelStarted(currentLevelData.currentLevel); // Analitic Event
+        // Elephant.LevelStarted(currentLevelData.currentLevel); // Analitic Event
     }
 
     void LoadNextLevel()
@@ -118,7 +119,7 @@ public class UIManager : MonoBehaviour
         resetButton.GoDestination();
         tapToPlayButton.GoDestination();
 
-        Elephant.LevelCompleted(currentLevelData.currentLevel);
+        // Elephant.LevelCompleted(currentLevelData.currentLevel);
 
         tapInputEventListener.response = LoadNextLevel;
     }
@@ -142,7 +143,7 @@ public class UIManager : MonoBehaviour
     {
         tapInputEventListener.response = EmptyMethod;
         startLevelEvent.Raise();
-        Elephant.LevelStarted(currentLevelData.currentLevel);
+        // Elephant.LevelStarted(currentLevelData.currentLevel);
 
         targetButterflies.GoDestination();
         resetButton.GoDestination();
@@ -150,6 +151,9 @@ public class UIManager : MonoBehaviour
     }
     void CrossLandedResponse()
     {
+        if (onFailUI) return;
+
+        onFailUI = true;
         backGroundImage.DOFade(0.8f, 0.5f).OnComplete(() => tapInputEventListener.response = RestartLevelAfterFail);
 
         introductionText.uiText.text = "Level Failed";
@@ -164,6 +168,7 @@ public class UIManager : MonoBehaviour
 
     void RestartLevelAfterFail()
     {
+        onFailUI = false;
         tapInputEventListener.response = EmptyMethod;
 
         backGroundImage.DOFade(0, 0.8f).OnComplete(() => restartLevelEvent.Raise());
@@ -173,7 +178,7 @@ public class UIManager : MonoBehaviour
         tapToPlayButton.GoDestination();
         introductionText.GoDestination();
 
-        Elephant.LevelStarted(currentLevelData.currentLevel); // Analitic Event
+        // Elephant.LevelStarted(currentLevelData.currentLevel); // Analitic Event
     }
 
     void EmptyMethod()
