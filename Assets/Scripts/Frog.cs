@@ -61,6 +61,7 @@ public class Frog : OccupyingEntity
 
                 var _bubble = _butterFly.attachedEntity as Bubble;
                 _bubble.Pop();
+                platformEntity.entityAnimator.SetTrigger("Ripple");
             }
             else
             {

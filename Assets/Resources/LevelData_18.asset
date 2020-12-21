@@ -74,24 +74,28 @@ MonoBehaviour:
     direction: 0
     butterFlyColor: {r: 0, g: 0, b: 0, a: 0}
     butterflyInRecipe: 1
+    butterflyInRecipeIndex: 0
   - levelObject: {fileID: 2418258055063634259, guid: 2dcc9cd08bbad2f4cb53529e2d139c3f, type: 3}
     position: {x: 2, y: 0}
     mapCord: {x: 2, y: 0}
     direction: 0
     butterFlyColor: {r: 1, g: 1, b: 1, a: 0}
     butterflyInRecipe: 1
+    butterflyInRecipeIndex: 0
   - levelObject: {fileID: 2418258055063634259, guid: 2dcc9cd08bbad2f4cb53529e2d139c3f, type: 3}
     position: {x: 2, y: 1}
     mapCord: {x: 2, y: 1}
     direction: 0
     butterFlyColor: {r: 0.24390353, g: 0.38287988, b: 0.5943396, a: 0}
     butterflyInRecipe: 0
+    butterflyInRecipeIndex: 0
   - levelObject: {fileID: 2418258055063634259, guid: 2dcc9cd08bbad2f4cb53529e2d139c3f, type: 3}
     position: {x: 2, y: 3}
     mapCord: {x: 2, y: 3}
     direction: 0
     butterFlyColor: {r: 0.5283019, g: 0.16696332, b: 0.48379603, a: 0}
     butterflyInRecipe: 0
+    butterflyInRecipeIndex: 0
   frogDatas:
   - levelObject: {fileID: 2535748549582999888, guid: bba1eeb7aba8be442abe13526dccb215, type: 3}
     position: {x: 0, y: 2}
