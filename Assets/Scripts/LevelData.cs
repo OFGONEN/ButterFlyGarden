@@ -35,6 +35,7 @@ public struct ButterFlyData
     public float direction;
     public Color butterFlyColor;
     public bool butterflyInRecipe;
+    public int butterflyInRecipeIndex;
 
 }
 [System.Serializable]

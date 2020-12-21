@@ -57,6 +57,7 @@ MonoBehaviour:
   attachedEntity: {fileID: 0}
   particles: {fileID: 9084837325451494333}
   color: {r: 0, g: 0, b: 0, a: 0}
+  recipeButterflyCross: {fileID: 11400000, guid: 4d889e54d09ed1148a973f41f0a119c0, type: 2}
   eatPhase: {fileID: 11400000, guid: db1587f0ea15a0d4d91e83db81eb45cf, type: 2}
   occupyingEntitySet: {fileID: 11400000, guid: 316d0d77841efbd42a96b7992bc2f891, type: 2}
   frogSet: {fileID: 11400000, guid: 8dd3065ee0d11bd4a989da9ae0e61fd0, type: 2}

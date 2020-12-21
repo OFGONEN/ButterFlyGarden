@@ -14,6 +14,8 @@ public class MergedButterFly : ButterFly
     public SoundEvent sound_merge_wrong;
     public Texture2D patternTexture;
     public List<ButterFly> inputButterFlies;
+    [HideInInspector]
+    public bool wrongMerge;
 
     private static readonly int inputButterflyColorsShaderID = Shader.PropertyToID("inputButterflyColors");
     private static readonly int numberOfInputButterfliesShaderID = Shader.PropertyToID("numberOfInputButterflies");
@@ -106,6 +108,7 @@ public class MergedButterFly : ButterFly
                 _mergedButterFly.inputButterFlies.Add(_butterFly);
             }
 
+            //TODO: Eger 3 ' lu target bolumlerimiz de wrong kelebekler barindiracak ise burayi da handle etmem lazim.
             _mergedButterFly.TryMerge();
 
             if (_mergedButterFly.attachedEntity == null && attachedEntity is Bubble)
@@ -130,7 +133,13 @@ public class MergedButterFly : ButterFly
                 (attachedEntity as Bubble).Attach(this);
             }
 
-            TryMerge();
+            var _validMerge = TryMerge();
+
+            if (!_validMerge && _butterFly.butterFlyData.butterflyInRecipe)
+            {
+                recipeButterflyCross.intValue = _butterFly.butterFlyData.butterflyInRecipeIndex;
+                recipeButterflyCross.Raise();
+            }
 
             _butterFly.graphicTransform.SetParent(_butterFly.transform);
             _butterFly.gameObject.SetActive(false);
@@ -157,12 +166,14 @@ public class MergedButterFly : ButterFly
             _targetButterFlyData = currentLevelData.levelData.targetButterFlyDatas[dataIndex];
             RearrangeInputButterFlies(_targetButterFlyData);
 
+            wrongMerge = false;
             sound_merge_correct.Raise();
             particles.Play();
             encounterPhase.AddWait();
         }
         else
         {
+            wrongMerge = true;
             _targetButterFlyData = currentLevelData.levelData.wrongTargetData;
             sound_merge_wrong.Raise();
         }
@@ -180,7 +191,7 @@ public class MergedButterFly : ButterFly
         Merge();
     }
 
-    public void TryMerge()
+    public bool TryMerge()
     {
         var _targetButterFlies = currentLevelData.levelData.targetButterFlyDatas;
 
@@ -197,11 +208,13 @@ public class MergedButterFly : ButterFly
             sound_merge_correct.Raise();
             particles.Play();
             encounterPhase.AddWait();
+            wrongMerge = false;
         }
         else
         {
             _targetButterFlyData = currentLevelData.levelData.wrongTargetData;
             sound_merge_wrong.Raise();
+            wrongMerge = true;
         }
 
         if (inputButterFlies.Count <= _targetButterFlyData.butterFlyPatterns.Count)
@@ -214,6 +227,8 @@ public class MergedButterFly : ButterFly
         }
 
         Merge();
+
+        return _canMerge;
     }
 
 

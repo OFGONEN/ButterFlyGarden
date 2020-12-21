@@ -13,7 +13,7 @@ public class UIPingPong : MonoBehaviour
     public TextMeshProUGUI uiText;
     public Button uiButton;
     public Vector2 destination;
-    Vector2 position;
+    public Vector2 position;
     public float speed;
     public bool safeArea;
 

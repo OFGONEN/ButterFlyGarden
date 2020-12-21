@@ -71,9 +71,16 @@ public class LevelManager : MonoBehaviour
 
         }
 
+        int _recipeIndex = 0;
         for (int i = 0; i < _levelData.butterFlyDatas.Count; i++)
         {
             var _butterFlyData = _levelData.butterFlyDatas[i];
+
+            if (_butterFlyData.butterflyInRecipe)
+            {
+                _butterFlyData.butterflyInRecipeIndex = _recipeIndex;
+                _recipeIndex++;
+            }
 
             var _butterFly = GameObject.Instantiate(_butterFlyData.levelObject);
             _butterFly.transform.SetParent(parentTransform);
@@ -145,7 +152,7 @@ public class LevelManager : MonoBehaviour
         /* Weird bug: Some lilypads above the origin in Z direciton do not submerge under water
          * IF camera Y position is an integer. 
          * Fix: Add 0.2 offset... */
-        mainCamera.transform.position = _cameraPos + new Vector3( 0.0f, 0.2f, 0.0f );
+        mainCamera.transform.position = _cameraPos + new Vector3(0.0f, 0.2f, 0.0f);
 
         currentLevelData.mainCameraPos = _cameraPos;
     }

@@ -7,6 +7,7 @@ public class Frog : OccupyingEntity
 {
     public ParticleSystem particles;
     public Color color;
+    public IntGameEvent recipeButterflyCross;
     public EatPhase eatPhase;
     public OccupyingEntitySet occupyingEntitySet;
     public FrogSet frogSet;
@@ -71,6 +72,26 @@ public class Frog : OccupyingEntity
                 _targetTransform.DOMove(transform.position, levelCreationSettings.butterFlyFlyDuration).OnComplete(() => Eat(_platform));
                 _targetTransform.DOScale(new Vector3(0.1f, 0.1f, 0.1f), levelCreationSettings.butterFlyFlyDuration);
 
+                var _mergedButterFly = _butterFly as MergedButterFly;
+
+                if (_mergedButterFly != null && !_mergedButterFly.wrongMerge)
+                {
+                    var _inputButterflies = _mergedButterFly.inputButterFlies;
+
+                    for (int i = 0; i < _inputButterflies.Count; i++)
+                    {
+                        if (_inputButterflies[i].butterFlyData.butterflyInRecipe)
+                        {
+                            recipeButterflyCross.intValue = _inputButterflies[i].butterFlyData.butterflyInRecipeIndex;
+                            recipeButterflyCross.Raise();
+                        }
+                    }
+                }
+                else if (_butterFly.butterFlyData.butterflyInRecipe)
+                {
+                    recipeButterflyCross.intValue = _butterFly.butterFlyData.butterflyInRecipeIndex;
+                    recipeButterflyCross.Raise();
+                }
             }
 
             eatPhase.AddWait();

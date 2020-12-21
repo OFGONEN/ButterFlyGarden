@@ -15,7 +15,7 @@ public class UIManager : MonoBehaviour
     public EventListenerDelegateResponse nextLevelLoadedEventListener;
     public Image backGroundImage;
     public Image butterFlyImage;
-    public UIPingPong targetImage;
+    public UIBaseButterflies targetButterflies;
     public UIPingPong introductionText;
     public UIPingPong resetButton;
     public UIPingPong levelText;
@@ -47,7 +47,7 @@ public class UIManager : MonoBehaviour
 
     void TapToPlayPressed()
     {
-        targetImage.targetImage.sprite = currentLevelData.levelData.levelIntroductionData.targetButterFlyImage;
+        targetButterflies.SetData();
         levelText.uiText.text = $"Level {currentLevelData.currentLevel}";
         tapInputEventListener.response = EmptyMethod;
 
@@ -81,7 +81,7 @@ public class UIManager : MonoBehaviour
         tapInputEventListener.response = EmptyMethod;
 
         backGroundImage.DOFade(0, 0.5f);
-        targetImage.GoDestination();
+        targetButterflies.GoDestination();
         levelText.GoDestination();
         resetButton.GoDestination();
         tapToPlayButton.GoDestination();
@@ -106,7 +106,7 @@ public class UIManager : MonoBehaviour
         PlayerPrefs.SetInt("Level", currentLevelData.currentLevel + 1);
 
         introductionText.GoDestination();
-        targetImage.GoDestination();
+        targetButterflies.GoDestination();
         levelText.GoDestination();
         resetButton.GoDestination();
         tapToPlayButton.GoDestination();
@@ -116,7 +116,7 @@ public class UIManager : MonoBehaviour
 
     void NewLevelLoaded()
     {
-        targetImage.targetImage.sprite = currentLevelData.levelData.levelIntroductionData.targetButterFlyImage;
+        targetButterflies.SetData();
         levelText.uiText.text = $"Level {currentLevelData.currentLevel}";
         backGroundImage.DOFade(0, 0.2f);
 
@@ -134,7 +134,7 @@ public class UIManager : MonoBehaviour
         tapInputEventListener.response = EmptyMethod;
         startLevelEvent.Raise();
 
-        targetImage.GoDestination();
+        targetButterflies.GoDestination();
         resetButton.GoDestination();
         levelText.GoDestination();
     }

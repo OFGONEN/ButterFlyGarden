@@ -14,6 +14,7 @@ public class ButterFly : OccupyingEntity
     public OccupyingEntitySet occupyingEntitySet;
     public ButterFlySet butterFlySet;
     public SoundEvent sound_butterfly_movement;
+    public IntGameEvent recipeButterflyCross;
     public LevelCreationSettings creationSettings;
 
     [HideInInspector]
@@ -156,7 +157,14 @@ public class ButterFly : OccupyingEntity
             }
 
             _mergedButterFly.inputButterFlies.Add(this);
-            _mergedButterFly.TryMerge();
+            var _validMerge = _mergedButterFly.TryMerge();
+
+            if (!_validMerge && butterFlyData.butterflyInRecipe)
+            {
+                recipeButterflyCross.intValue = butterFlyData.butterflyInRecipeIndex;
+                recipeButterflyCross.Raise();
+            }
+
         }
         else if (platformEntity.occupingEntity is ButterFly && platformEntity.occupingEntity != this)
         {
@@ -178,9 +186,24 @@ public class ButterFly : OccupyingEntity
 
             GameObject _mergedObject;
             if (_canMerge)
+            {
                 _mergedObject = currentLevelData.levelData.targetButterFlyDatas[_dataIndex].butterFlyObject;
+            }
             else
+            {
                 _mergedObject = currentLevelData.levelData.wrongTargetData.butterFlyObject;
+
+                if (butterFlyData.butterflyInRecipe)
+                {
+                    recipeButterflyCross.intValue = butterFlyData.butterflyInRecipeIndex;
+                    recipeButterflyCross.Raise();
+                }
+                else if (_occupyingButterFly.butterFlyData.butterflyInRecipe)
+                {
+                    recipeButterflyCross.intValue = _occupyingButterFly.butterFlyData.butterflyInRecipeIndex;
+                    recipeButterflyCross.Raise();
+                }
+            }
 
 
             var _mergedButterFly = GameObject.Instantiate(_mergedObject,
