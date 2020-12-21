@@ -12,9 +12,13 @@ public class UISwipeTutorial : UITutorial
     UIHelperAsset arrowLine;
     // UIHelperAsset tutorialText;
 
+    bool responsedInput = false;
     int tweenStarted = 0;
     public override void StartTutorial()
     {
+        tweenStarted = 0;
+        responsedInput = false;
+
         hand = GetHelperAsset(tutorialData.handAssetName);
         arrowLine = GetHelperAsset(tutorialData.arrowLineAssetName);
         // tutorialText = GetHelperAsset(tutorialData.textMessageAssetName);
@@ -53,6 +57,7 @@ public class UISwipeTutorial : UITutorial
         // tutorialText.uiText.DOKill();
 
         tweenStarted = 0;
+        responsedInput = false;
 
         swipeInputEventListener.OnDisable();
         tutorialEnded(success);
@@ -66,6 +71,7 @@ public class UISwipeTutorial : UITutorial
 
 
         tweenStarted = 0;
+        responsedInput = false;
         swipeInputEventListener.OnDisable();
     }
     public override UIHelperAsset GetHelperAsset(string assetName)
@@ -77,6 +83,10 @@ public class UISwipeTutorial : UITutorial
     }
     public void SwipeInputResponse()
     {
+        if (responsedInput) return;
+
+        responsedInput = true;
+
         var _input = (swipeInputEventListener.gameEvent as SwipeInputEvent).swipeDirection;
 
         if (_input == tutorialData.expectedInput)

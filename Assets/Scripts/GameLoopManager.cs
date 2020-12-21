@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using FFStudio;
 using UnityEngine;
 using DG.Tweening;
-using ElephantSDK;
+// using ElephantSDK;
 
 public class GameLoopManager : MonoBehaviour
 {
@@ -12,6 +12,7 @@ public class GameLoopManager : MonoBehaviour
     public EventListenerDelegateResponse endPhaseEventListener;
     public EventListenerDelegateResponse replayUIEventListener;
     public EventListenerDelegateResponse startLevelEventListener;
+    public EventListenerDelegateResponse lockInputEventListener;
     public GameEvent targetButterflyAcquired;
     public GameEvent restartLevelEvent;
     public PlatformEntitySet platformEntitySet;
@@ -22,6 +23,7 @@ public class GameLoopManager : MonoBehaviour
     public CurrentLevelData currentLevelData;
 
     public bool gameLoopStarted = true;
+    public bool inputLocked = false;
     public List<int> acquiredTargets = new List<int>(4);
     private void OnEnable()
     {
@@ -29,6 +31,7 @@ public class GameLoopManager : MonoBehaviour
         replayUIEventListener.OnEnable();
         endPhaseEventListener.OnEnable();
         startLevelEventListener.OnEnable();
+        lockInputEventListener.OnEnable();
     }
 
     private void OnDisable()
@@ -37,6 +40,7 @@ public class GameLoopManager : MonoBehaviour
         replayUIEventListener.OnDisable();
         endPhaseEventListener.OnDisable();
         startLevelEventListener.OnDisable();
+        lockInputEventListener.OnDisable();
     }
     private void Start()
     {
@@ -44,10 +48,16 @@ public class GameLoopManager : MonoBehaviour
         replayUIEventListener.response = ReplayUIResponse;
         endPhaseEventListener.response = EndLoopCheck;
         startLevelEventListener.response = StartLevelResponse;
+        lockInputEventListener.response = LockInputResponse;
+    }
+    private void LockInputResponse()
+    {
+        inputLocked = true;
     }
     private void StartLevelResponse()
     {
         gameLoopStarted = false;
+        inputLocked = false;
     }
     private void LevelLoadedResponse()
     {
@@ -70,14 +80,14 @@ public class GameLoopManager : MonoBehaviour
         newCreatedObjects.itemDictionary.Clear();
         acquiredTargets.Clear();
 
-        Elephant.LevelFailed(currentLevelData.currentLevel);
+        // Elephant.LevelFailed(currentLevelData.currentLevel);
         restartLevelEvent.Raise();
     }
     private void SwipeInputResponse()
     {
         var _swipeInputEvent = swipeInputEventListener.gameEvent as SwipeInputEvent;
 
-        if (gameLoopStarted || _swipeInputEvent.swipeDirection == Vector2.zero) return;
+        if (inputLocked || gameLoopStarted || _swipeInputEvent.swipeDirection == Vector2.zero) return;
 
         gameLoopStarted = true;
         entryPhase.Execute();

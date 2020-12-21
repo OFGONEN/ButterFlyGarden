@@ -165,6 +165,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fdbe8fa9818b884d946de36e8214b07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockInput: {fileID: 11400000, guid: 15eeae6d438e5de488953424de41498d, type: 2}
+  crossLanded: {fileID: 11400000, guid: b27ecafb1ae4abb4597d5957ee5b1982, type: 2}
   butterflyWings: {fileID: 3897387138719101180}
   cross: {fileID: 2812249730524035513}
 --- !u!1 &3897387140379110524
