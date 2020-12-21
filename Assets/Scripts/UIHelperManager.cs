@@ -43,6 +43,8 @@ public class UIHelperManager : MonoBehaviour
         {
             StartTutorial(currentLevelData.levelData.uiTutorial);
         }
+        else
+            DisableAllHelperAssets();
     }
     void RestartLevelResponse()
     {
@@ -56,10 +58,12 @@ public class UIHelperManager : MonoBehaviour
     }
     void StartTutorial(UITutorial uiTutorial)
     {
-        for (int i = 0; i < helperAssets.Length; i++)
+        if (currentUITutorial != null)
         {
-            helperAssets[i].gameObject.SetActive(false);
+            currentUITutorial.ForseEndTutorial();
         }
+
+        DisableAllHelperAssets();
 
         currentUITutorial = uiTutorial;
         currentUITutorial.tutorialEnded = TutorialEnded;
@@ -73,6 +77,15 @@ public class UIHelperManager : MonoBehaviour
         if (success && currentUITutorial.nextTutorial != null)
         {
             StartTutorial(currentUITutorial.nextTutorial);
+        }
+        else
+            DisableAllHelperAssets();
+    }
+    void DisableAllHelperAssets()
+    {
+        for (int i = 0; i < helperAssets.Length; i++)
+        {
+            helperAssets[i].gameObject.SetActive(false);
         }
     }
 }
