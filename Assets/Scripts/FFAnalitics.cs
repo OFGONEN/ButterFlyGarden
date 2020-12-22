@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Facebook.Unity;
 using NaughtyAttributes;
+using ElephantSDK;
 
 public class FFAnalitics : MonoBehaviour
 {
@@ -12,8 +13,31 @@ public class FFAnalitics : MonoBehaviour
             FB.Init(OnFacebookInitialized, OnHideUnity);
         else
             FB.ActivateApp();
+
+        gameObject.AddComponent<ElephantCore>();
+
+        ElephantCore.onInitialized += OnElephantInitiliazed;
+        ElephantCore.onRemoteConfigLoaded += OnElephantRemoveConfigLoaded;
+        ElephantCore.onOpen += OnElephantOpen;
     }
 
+    private void Start()
+    {
+        Elephant.Init(false, true);
+    }
+
+    void OnElephantInitiliazed()
+    {
+        Debug.Log("[FFAnalitic] Elephant initiliazed");
+    }
+    void OnElephantRemoveConfigLoaded()
+    {
+        Debug.Log("[FFAnalitic] Elephant Remote Config Loaded");
+    }
+    void OnElephantOpen(bool gdprRequired)
+    {
+
+    }
     void OnFacebookInitialized()
     {
         if (FB.IsInitialized)
