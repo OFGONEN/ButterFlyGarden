@@ -60,16 +60,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fc98219a83dff145947365dc914d06e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TapThreshold: 0.2
+  TapThreshold: 0.5
   SwipeThreshold: 50
   ReferenceDpi: 200
   GuiLayers:
     serializedVersion: 2
-    m_Bits: 32
-  RecordFingers: 1
+    m_Bits: 4294967295
+  RecordFingers: 0
   RecordThreshold: 5
-  RecordLimit: 10
-  SimulateMultiFingers: 1
+  RecordLimit: 0
+  SimulateMultiFingers: 0
   PinchTwistKey: 306
   MovePivotKey: 308
   MultiDragKey: 308
